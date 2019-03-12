@@ -7,4 +7,4 @@
 * [Tijana Todorov](https://github.com/TodorovTijana)
 * [David Nedeljkovic](https://github.com/DavidNedeljkovic)
 * [Tamara Garibovic](https://github.com/mi16401)
-* [Mihajlo Vicentijevic]
+* [Mihajlo Vicentijevic](https://github.com/vicentijevic)
