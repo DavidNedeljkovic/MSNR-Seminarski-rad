@@ -1,4 +1,23 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{ionide}
+{Ionide}.
+\newblock on-line at: \url{http://ionide.io/}.
+
+\bibitem{jetBrains}
+{ JetBrains s.r.o. Developed with drive and IntelliJ IDEA}.
+\newblock {Jet Brains rider}, 2000-2019.
+\newblock on-line at: \url{https://www.jetbrains.com/rider/}.
+
+\bibitem{progFs}
+Smith Chris.
+\newblock {\em Programing F\#}.
+\newblock O’Reilly Media, 1005 Gravenstein Highway North, 2009.
+
+\bibitem{fwFs}
+{F\# Software Foundation and individual contributors}.
+\newblock {List of frameworks}, 2012-2018.
+\newblock on-line at: \url{https://fsharp.org/guides/web/}.
 
 \bibitem{fsharp}
 {F\# Software Foundation and individual contributors}.
@@ -16,11 +35,26 @@ Microsoft.
 \newblock on-line at:
   \url{https://dotnet.microsoft.com/learn/dotnet/what-is-dotnet}.
 
+\bibitem{vStud}
+{Microsoft}.
+\newblock {Visual Studio}, 2019.
+\newblock on-line at: \url{https://visualstudio.microsoft.com/}.
+
+\bibitem{vStudCode}
+{Microsoft}.
+\newblock {Visual Studio Code}, 2019.
+\newblock on-line at: \url{https://code.visualstudio.com/}.
+
 \bibitem{Milner:1972:LCF:891954}
 Robin Milner.
 \newblock Logic for computable functions: Description of a machine
   implementation.
 \newblock Technical report, Stanford, CA, USA, 1972.
+
+\bibitem{mono}
+{Mono Project}.
+\newblock {Mono}, 2019.
+\newblock on-line at: \url{https://www.mono-project.com/}.
 
 \bibitem{early_history}
 Don Syme.
