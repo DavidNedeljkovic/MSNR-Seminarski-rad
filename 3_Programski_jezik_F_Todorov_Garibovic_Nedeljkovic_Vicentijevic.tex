@@ -130,11 +130,64 @@ Neke od osnovnih osobina programskog jezika F\# su:\\
 
 	- \textbf{Automatski zaključuje tipove}: Tipovi vrednosti se automatski zaključuju prilikom kompilacije u zavisnosti od konteksta u kome se javljaju, što dovodi do toga da se eksplicitno navođenje retko dešava.
 
-	- \textbf{Kompatibilan}: F\# programi mogu da pozivaju i da budu pozvani iz drugih programa koji su napisani na nekom od jezika koje podržava .NET platforma(C\#).
+	- \textbf{Kompatibilan}: F\# programi mogu da pozivaju i da budu pozvani iz drugih programa koji su napisani na nekom od jezika koje podržava .NET platforma, kao na primer C\#. %dodati referencu na official-page C#
 \\
-%Nešto više o njima\cite{Harrop:2008:FS:1481410}. 
+%Nešto više o njima\cite{Harrop:2008:FS:1481410}.
+ 
+	Još neke specifičnosti jezika: \\
+	
+	- Za razliku od drugih programskih jezika struktura \textbf{if/elif/else} u svakoj grani ima povratnu vrednost.
+	 
+	- Povratna vrednost ne mora uvek biti vraćena ključnom reči return. Ukoliko je \textbf{return} izostavljen, kao povratna vrednost se uzima poslednja izvršena naredba.
+	 
+	- Korišćenjem ključne reči \textbf{let} definišemo promenljive koje se ne mogu menjati što kod čini sigurnijim od slučajnih promena. Ukoliko smo sigurni da će se vrednost promenljive menjati, uz let se dodaje ključna reč \textbf{mutable}.
+	 
+	- Struktura \textbf{switch/case} je u F\# zamenjena pattern matching-om\cite{progFsPM}.
+	 
+	- Pored uobičajenih tipova podataka podržanih u većini programskih jezika, F\# podržava novi tip \textbf{option type}, koji označava vrednost promenljive koja može da postoji a i ne mora. Dve moguće vrednosti ovog tipa su: Some(x) i None.
 
-Za razliku od drugih programskih jezika naredba if-else u svakoj grani ima povratnu vrednost. Povratna vrednost ne mora uvek biti vraćena ključnom reči return. Ukoliko je return izostavljen, kao povratna vrednost se uzima poslednja izvršena naredba. Korišćenjem ključne reči let definišemo promenljive koje se ne mogu menjati što kod čini sigurnijim od slučajnih promena. Ukoliko smo sigurni da će se vrednost promenljive menjati, uz let se dodaje ključna reč mutable. Struktura switch-case je u F\# zamenjena pattern matching-om\cite{progFsPM}. Pored uobičajenih tipova podataka podržanih u većini programskih jezika, F\# podržava novi tip option type, koji označava vrednost promenljive koja može da postoji a i ne mora. Dve moguće vrednosti ovog tipa su: Some(x) i None.
+\section{Funkcionalno programiranje}
+
+%dodati naucni rad o ovoj oblasti
+% dodati referencu na kod
+% dodati referencu na tabelu
+
+Kao glavna, funkcionalna paradigma programskog jezika F\# podržava osnovne koncepte koji su podržani i od strane nekih drugih programskih jezika. U ovom odeljku nećemo davati prevelik značaj osnovama funkcionalne paradigme, već ćemo akcenat staviti na \textbf{pattern matching}.\\
+
+Jedan od važnih mehanizama u F\# programiranju jeste pattern matching. Pattern matching se predstavlja kao match ... with ... konstrukcija koja kombinuje mehanizme dekompozicije i kontrole toka za poklapanje obrazaca. Kao takav, možemo ga koristiti sa  jednostavnim kolekcijama(list,tuple) i option vrednostima. Naredni primer pokazuje kako se definiše pattern matching.
+\\
+
+\begin{lstlisting}
+let urlFilter url agent =
+ match (url,agent) with
+ | "http://www.control.org", 99 -> true
+ | "http://www.kaos.org" , _ -> false
+ | _, 86 -> true
+ | _ -> false
+\end{lstlisting} 
+
+Izvedeni tip funkcije je:
+
+\begin{lstlisting}
+val urlFilter: string -> int -> bool
+\end{lstlisting}
+
+Izraz nakon ključne reči match je tupple tipa(string * int). Svako pravilo obrasca se uvodi sa simbolom $\|$ iza koga sledi pravilo. Nakon navodjenja pravila sledi simbol -> nakon čega sledi rezultat. Kada se izvrše, pravila obrasca se koriste jedan po jedan i prvi obrazac koji je poklopljen određuje rezultat. Prvi obrazac se poklapa ukoliko su navedene identične vrednosti, dok poslednja tri, na mestima gde se javlja simbol $\_$ za ulazne parametre mogu da imaju bilo koju vrednost. U tabeli prikazaćemo koje vrste obrazaca postoje u F\# i na koji način ih možemo formirati.
+ 
+\begin{table}[h!]
+\begin{center}
+\caption{Načini formiranja obrazaca u F\#}
+\begin{tabular}{|c|l|r|} \hline
+Opšti oblik& Vrsta& Primer\\ \hline
+(pat, ... ,pat) &Tuple pattern&(1,2,("3",x))
+\\ \hline
+[pat, ... ,pat] &List pattern&[x;y;z]\\ \hline
+[$\|$pat, ... ,pat$\|$] &Array pattern&['a';'b';'c']\\ \hline
+null &Null test pattern&null\\ \hline
+\end{tabular}
+\label{tab:tabela1}
+\end{center}
+\end{table}
 
 
 \section{Asinhrono i paralelno programiranje}
