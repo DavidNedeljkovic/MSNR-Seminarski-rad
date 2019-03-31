@@ -1,5 +1,8 @@
 \begin{thebibliography}{10}
 
+\bibitem{microsoft_c}
+
+
 \bibitem{ionide}
 {Ionide}.
 \newblock on-line at: \url{http://ionide.io/}.
@@ -19,15 +22,20 @@ Smith Chris.
 \newblock {\em Programing F\#, Asynchronous Workflows str.268}.
 \newblock O’Reilly Media, 1005 Gravenstein Highway North, 2009.
 
-\bibitem{progFsPM}
+\bibitem{progFsPFX}
 Smith Chris.
-\newblock {\em Programing F\#, Patern matching str.62}.
+\newblock {\em Programing F\#, PFX str.276}.
 \newblock O’Reilly Media, 1005 Gravenstein Highway North, 2009.
 
 \bibitem{theAL}
 Smith Chris.
 \newblock {\em Programing F\#, The Async Library str.269}.
 \newblock O’Reilly Media, 1005 Gravenstein Highway North, 2009.
+
+\bibitem{expertFS}
+Antonio~Cisternino Don~Syme, Adam~Granicz.
+\newblock {\em Expert F\#}.
+\newblock Kinetic Publishing Services, LLC, New York, NY 10013., 2007.
 
 \bibitem{fwFs}
 {F\# Software Foundation and individual contributors}.
