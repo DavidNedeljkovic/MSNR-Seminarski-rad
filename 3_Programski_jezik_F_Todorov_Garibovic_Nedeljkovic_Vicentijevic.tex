@@ -144,16 +144,16 @@ Neke od osnovnih osobina programskog jezika F\# su:\\
 	 
 	- Struktura \textbf{switch/case} je u F\# zamenjena pattern matching-om\cite{expertFS}.
 	 
-	- Pored uobičajenih tipova podataka podržanih u većini programskih jezika, F\# podržava novi tip \textbf{option type}, koji označava vrednost promenljive koja može da postoji a i ne mora. Dve moguće vrednosti ovog tipa su: Some(x) i None.
+	- Pored uobičajenih tipova podataka podržanih u većini programskih jezika, F\# podržava novi tip \textbf{option type}, koji označava vrednost promenljive koja može da postoji a i ne mora. Dve moguće vrednosti ovog tipa su: {\em Some(x)} i {\em None}.
 
 \section{Funkcionalno programiranje}
 
 %dodati naucni rad o ovoj oblasti
 
 
-Kao glavna, funkcionalna paradigma programskog jezika F\# podržava osnovne koncepte koji su podržani i od strane nekih drugih programskih jezika. U ovom odeljku nećemo davati prevelik značaj osnovama funkcionalne paradigme, već ćemo akcenat staviti na \textbf{pattern matching}\cite{expertFS}.\\
+Kao glavna, funkcionalna paradigma programskog jezika F\# podržava osnovne koncepte koji su podržani i od strane nekih drugih programskih jezika. U ovom odeljku nećemo davati prevelik značaj osnovama funkcionalne paradigme, već ćemo akcenat staviti na {\em pattern matching}\cite{expertFS}.
 
-Jedan od važnih mehanizama u F\# programiranju jeste pattern matching. Pattern matching se predstavlja kao match ... with ... konstrukcija koja kombinuje mehanizme dekompozicije i kontrole toka za poklapanje obrazaca. Kao takav, možemo ga koristiti sa  jednostavnim kolekcijama(list,tuple) i option vrednostima. Naredni listing \ref{primer} pokazuje kako se definiše pattern matching.
+Jedan od važnih mehanizama u F\# programiranju jeste pattern matching. Predstavlja se kao {\em match ... with ...} konstrukcija koja kombinuje mehanizme dekompozicije i kontrole toka za poklapanje obrazaca. Kao takav, možemo ga koristiti sa  jednostavnim kolekcijama (na primer: {\em list,tuple}) i {\em option} vrednostima. Naredni listing \ref{primer} pokazuje kako se definiše pattern matching.
 \\
 \begin{lstlisting}[caption={Primer pattern matching-a\cite{expertFS}},frame=single, label=primer]
 let urlFilter url agent =
@@ -170,13 +170,13 @@ Izvedeni tip funkcije je:
 val urlFilter: string -> int -> bool
 \end{lstlisting}
 
-Izraz nakon ključne reči match je tupple tipa(string * int). Svako pravilo obrasca se uvodi sa simbolom | iza koga sledi pravilo. Nakon navodjenja pravila sledi simbol -> nakon čega sledi rezultat. Kada se izvrše, pravila obrasca se koriste jedan po jedan i prvi obrazac koji je poklopljen određuje rezultat. Prvi obrazac se poklapa ukoliko su navedene identične vrednosti, dok poslednja tri, na mestima gde se javlja simbol $\_$ za ulazne parametre mogu da imaju bilo koju vrednost. U tabeli \ref{tab:tabela1} prikazaćemo koje vrste obrazaca postoje u F\# i na koji način ih možemo formirati.
+Izraz nakon ključne reči {\em match} je tupple tipa {\em (string * int)}. Svako pravilo obrasca se uvodi sa simbolom | iza koga sledi pravilo. Nakon navodjenja pravila sledi simbol -> nakon čega sledi rezultat. Kada se izvrše, pravila obrasca se koriste jedan po jedan i prvi obrazac koji je poklopljen određuje rezultat. Prvi obrazac se poklapa ukoliko su navedene identične vrednosti, dok poslednja tri, na mestima gde se javlja simbol $\_$ za ulazne parametre, mogu da imaju bilo koju vrednost. U tabeli \ref{tab:tabela1} ćemo prikazati koje vrste obrazaca postoje u F\# i na koji način ih možemo formirati.
  
 \begin{table}[h!]
 \begin{center}
 \caption{Načini formiranja obrazaca u F\#}
 \begin{tabular}{|c|c|c|} \hline
-Opšti oblik& Vrsta& Primer\\ \hline
+\textbf{Opšti oblik}& \textbf{Vrsta}& \textbf{Primer}\\ \hline
 (pat, ... ,pat) &Tuple pattern&(1,2,("3",x))
 \\ \hline
 [pat, ... ,pat] &List pattern&[x;y;z]\\ \hline
@@ -190,35 +190,34 @@ null &Null test pattern&null\\ \hline
 
 \section{Asinhrono i paralelno programiranje}
 
-Razlog zbog kojeg izučavamo asinhrono i paralelno programiranje se ogleda u maksimalnoj iskorišćenosti hardvera. Ranije se ovaj način programiranja izbegavao zbog dodatne složenosti i rizika od bagova. Sa pojavom velikog broja biblioteka u kombinaciji sa funkcionalnim programiranjem i izbegavanjem bočnih efekata ovaj problem je smanjen. Fokus ćemo staviti na to kako ubrzati računanje u F\# koristeći asinhrono i paralelno programiranje. Izvršavanje koda se odvija pomoću niti i F\# biblioteka. 
-Iskoristite prednosti više procesora i jezgara tako sto cete podeliti jedan posao na vise manjih. Najvažniji razlog uvođenja ova dva načina programiranja je ubrzanje izvršavanja koda.
+Razlog zbog kojeg izučavamo asinhrono i paralelno programiranje se ogleda u maksimalnoj iskorišćenosti hardvera. Ranije se ovaj način programiranja izbegavao zbog dodatne složenosti i rizika od bagova. Sa pojavom velikog broja biblioteka u kombinaciji sa funkcionalnim programiranjem i izbegavanjem bočnih efekata ovaj problem je smanjen. Fokus ćemo staviti na to kako ubrzati računanje u F\# koristeći asinhrono i paralelno programiranje. Izvršavanje koda se odvija pomoću niti i F\# biblioteka. Mogu se potpuno iskoristiti prednosti više procesora i jezgara tako što se podeli jedan posao na više manjih. Najvažniji razlog uvođenja ova dva načina programiranja je ubrzanje izvršavanja programa.
 
 
 \subsection{Asinhrono programiranje} 
+%referenca za APM
+Opisuje programe i operacije koje se izvršavaju u pozadini i završavaju nakon nekog vremena (na primer: preuzimanje novog email-a bez čestog proveravanja). Asinhroni programi na .NET platformi su pisani korišćenjem modela asinhronog programiranja (APM). APM je obrazac koji deli asinhrone operacije na dve metode: {\em BeginOperation} i {\em EndOperation}. Kada se pozove {\em BeginOperation} operacije počinju sa asinhronim izvršavanjem koje po završetku pozivaju {\em EndOperation} koji dohvata rezultat asinhronog izračunavanja. Problemi koji nastaju korišćenjem ovog obrasca su: 
 
-Opisuje programe i operacije koje se izvršavaju u pozadini i završavaju nakon nekog vremena (primer: preuzimanje novog email-a bez čestog proveravanja). Asinhroni programi na .NET platformi su pisani korišćenjem modela asinhronog programiranja (APM). APM je obrazac koji deli asinhrone operacije na dve metode: BeginOperation i EndOperation. Kada se pozove BeginOperation operacije počinju sa asinhronim izvršavanjem koje po završetku pozivaju EndOperation koji dohvata rezultat asinhronog izračunavanja. Problemi koji nastaju korišćenjem ovog obrasca su: 
-
-	- izostavljanje poziva EndOperation dolazi do neželjenih efekata, curenja memorije 
+	- Izostavljanje poziva {\em EndOperation} dolazi do neželjenih efekata i curenja memorije. 
  
-	- ukoliko se nekoliko asinhronih izračunavanja vrati nazad teško je pratiti tok programa
+	- Ukoliko se nekoliko asinhronih izračunavanja vrati nazad teško je pratiti tok programa.
 	
-	- posledica prethodnog problema uzrokuje pojavu špageti programiranja
+	- Posledica prethodnog problema uzrokuje pojavu špageti programiranja.
 
-Umesto APM-a sve asinhrone operacije ćemo izvršavati pomoću F\# biblioteke asinhronih radnih tokova\cite{workFlow}. Ključna reč async se koristi za kreiranje bloka u koji se smešta kod za izvršavanje, korišćenjem let! i do! operatora. Rezultat ovog izvršavanja će biti tipa Async<T>\cite{theAL}.
+Umesto APM-a sve asinhrone operacije mogu se izvršavati pomoću F\# biblioteke asinhronih radnih tokova\cite{workFlow}. Ključna reč {\em async} se koristi za kreiranje bloka u koji se smešta kod za izvršavanje, korišćenjem {\em let!} i {\em do!} operatora. Rezultat ovog izvršavanja će biti tipa {\em Async<T>}\cite{theAL}.
 
 \subsection{Paralelno programiranje}
 
-Paralelno programiranje se koristi za podelu poslova na n delova kako bi se dobilo n puta brže izvršavanje što je retko u praksi. Najjednostavniji način koriščćenja paralelnog programiranja na .NET 4.0 platformi se zasniva na upotrebi Parallel Extesions biblioteke(PFX)\cite{progFsPFX}. Jedna od pogodnosti PFX biblioteke je ta što programer ne mora da misli o kontroli rada niti. Za razliku od paralelnog, asinhroni tok izvršavanja je dostupan i na prethodnim verzijama .NET platforme. Task objekat predstavlja osnovnu strukturu PFX paralelizma, koji ima zadatak da izvrši posao nakon nekog vremena. Kao takav, nije dovoljan za paralelne aplikacije. Zbog problema koji se javlja pri radu Task objekta sa deljivim podacima uvodi se zaključavanje podatka(exclusive lock). PFX biblioteka uvodi nove tipove kolekcija System.Collections.Concurrent \cite{sysCC} kao rešenje prethodnog problema.  
+Paralelno programiranje se koristi za podelu poslova na n delova kako bi se dobilo n puta brže izvršavanje što je retko u praksi. Najjednostavniji način koriščćenja paralelnog programiranja na .NET 4.0 platformi se zasniva na upotrebi {\em Parallel Extesions} biblioteke (PFX)\cite{progFsPFX}. Jedna od pogodnosti PFX biblioteke je ta što programer ne mora da misli o kontroli rada niti. Za razliku od paralelnog, asinhroni tok izvršavanja je dostupan i na prethodnim verzijama .NET platforme. Task objekat predstavlja osnovnu strukturu PFX paralelizma, koji ima zadatak da izvrši posao nakon nekog vremena. Kao takav, nije dovoljan za paralelne aplikacije. Zbog problema koji se javlja pri radu Task objekta sa deljivim podacima uvodi se zaključavanje podatka ({\em exclusive lock}). PFX biblioteka uvodi nove tipove kolekcija {\em System.Collections.Concurrent} \cite{sysCC} kao rešenje prethodnog problema.  
 
 
 \section{Radni okviri}
+%stavila bih reference za pojmove CLI, MSIL
+Najpoznatiji i najznačajniji radni okvir (eng. framework) za ovaj programski jezik je .NET koji je ranije već pomeut. Ovaj radni okvir je potpuno besplatan i na njemu je moguće kreirati veliki broj različitih aplikacija. On podržava veliki broj programskih jezika iz različitih paradigmi, editora i biblioteka za igradnju mobilnih i veb aplikacija. 
 
-Najpoznatiji i najznačajniji radni okvir(framework) za ovaj programski jezik je .NET koji je ranije već pomeut. Ovaj radni okvir je potpuno besplatan i na njemu je moguće kreirati veliki broj različitih aplikacija. On podržava veliki broj programskih jezika iz različitih paradigmi, editora i biblioteka za igradnju mobilnih i veb aplikacija. 
+Temelj .NET platforme je zajednička jezička infrastruktura CLI ({\em Common Language Infrastructure}). Pokretanje F\# kôda na ovoj platformi se vrši tako što na samom početku kompajler prevodi kôd u binarni fajl koji je preveden na asemblerski jezik višeg nivoa koji se zove MSIL ({\em Microsoft Intermediate Language}). Implementacija na CLI kompajleru ovog asemblerskog kôda u toku izvršavanja je mnogo brža nego da je kôd samo interpretiran i ova kompilacija se izvršava u trenutku\cite{progFs}.
+Kôd koji je preveden u MSIL i izvršen u trenutku, predstavlja kôd za upravljanje za razliku od kodova pisanih na progamskim jezicima kao što su C ili C++ koji su sirovi kodovi.   
 
-Temelj .NET platforme je zajednička jezička infrastruktura CLI (Common Language Infrastructure). Pokretanje F\# koda na ovoj platformi se vrši tako što na samom početku kompajler prevodi kod u binarni fajl koji je preveden na asemblerski jezik višeg nivoa koji se zove MSIL (Microsoft Intermediate Language). Implementacija na CLI kompajleru ovog asemblerskog koda u toku izvršavanja je mnogo brža nego da je kod samo interpretiran i ova kompilacija se izvršava u trenutku\cite{progFs}.
-Kod koji je preveden u MSIL i izvršen u trenutku, predstavlja kod za upravljanje za razliku od kodova pisanih na progamskim jezicima kao što su C ili C++ koji su sirovi kodovi.   
-
-Postoje neke prednosti za prolazak kroz CLI ili upravljani kod a ne direktnog kompiliranja na mašinski nivo:	
+Postoje neke prednosti za prolazak kroz CLI ili upravljani kôd a ne direktnog kompiliranja na mašinski nivo:	
 
 	- kompatibilnost medju jezicima
 	
@@ -227,9 +226,9 @@ Postoje neke prednosti za prolazak kroz CLI ili upravljani kod a ne direktnog ko
 	- mašinska nezavisnost
 \\
 
-.NET platforma ima jos jednu prednost a to je prikupljanje smeća sto omogućava programeru da ne razmislja mnogo o alociranju memorije i oslobadjanju, već da se samo skoncentriše na pisanje koda. Iako ne mora da obraća pažnju na smeće i rad sa memorijom poželjno je da programer zna na koji način taj sakupljač smeća radi, kako on oslobadja memoriju i rešava taj problem.
+.NET platforma ima još jednu prednost a to je prikupljanje smeća sto omogućava programeru da ne razmišlja mnogo o alociranju memorije i oslobađanju, već da se samo skoncentriše na pisanje kôda. Iako ne mora da obraća pažnju na smeće i rad sa memorijom poželjno je da programer zna na koji način taj sakupljač smeća radi, kako on oslobađa memoriju i rešava taj problem.
 
-Naravno da ova platforma nije jedina koja se koristi za ovaj progamski jezik, pored nje postoje: web radni okviri (Suave, Fable, ASP.NET Core, Giraffe, WebSharper, Freya, NancyFx, Serving Requests with IHttpHandler, Serving Requests with Azure, Functions, Pure F\# Web API 2.0, SignalR, ServiceStack, ASP.NET Blazor) i radni okviri za testiranje weba (Web Testing, Frameworks, Canopy for Client-side Testing, Unit Testing Libraries)\cite{fwFs}.
+Naravno da ova platforma nije jedina koja se koristi za ovaj progamski jezik, pored nje postoje: web radni okviri (na primer: {\em Suave, Fable, ASP.NET Core, Giraffe, WebSharper, Freya, NancyFx, Serving Requests with IHttpHandler, Serving Requests with Azure, Functions, Pure F\# Web API 2.0, SignalR, ServiceStack, ASP.NET Blazor}) i radni okviri za testiranje web-a (na primer: {\em Web Testing, Frameworks, Canopy for Client-side Testing, Unit Testing Libraries})\cite{fwFs}.
 
 \section{Uputstvo za instalaciju}
 
@@ -237,19 +236,19 @@ U ovom poglavlju biće opisano uputstvo za instalaciju programskog jezika F\# na
 
 \subsection{Uputstvo za Windows}
 
-Na ovom operativnom sistemu postoje tri načina za instalaciju F\#-a. To su: Visual studio\cite{vStud}, Visual Studio Code \cite{vStudCode} i JetBrains Rider \cite{jetBrains}.
+Na ovom operativnom sistemu postoje tri načina za instalaciju F\#-a. To su: {\em Visual studi}o\cite{vStud}, {\em Visual Studio Code} \cite{vStudCode} i {\em JetBrains Rider} \cite{jetBrains}.
 
 \subsubsection{Visual studio}
 	
-Na Windows operativnim sistemima se uglavnom koristi Visual Studio alat. Visual studio 2017 je alat koji dolazi sa podrškom za F\# u svim verzijama: Professional, Enterprise i Community (verzija je potpuno besplatna). Međutim, ukoliko imate  već instaliran Visual Studio 2012/13/15  Professional ili above možete ga takođe koristiti zato što i on podržava alate za F\# iako nije toliko napredan kao Visual Studio 2017.
+Na Windows operativnim sistemima se uglavnom koristi {\em Visual Studio} alat. {\em Visual studio 2017} je alat koji dolazi sa podrškom za F\# u svim verzijama: {\em Professional, Enterprise} i {\em Community} (verzija je potpuno besplatna). Međutim, ukoliko imate  već instaliran {\em Visual Studio 2012/13/15  Professional} ili {\em Above} možete ga takođe koristiti zato što i on podržava alate za F\# iako nije toliko napredan kao {\em Visual Studio 2017}.
 
 \subsubsection{Visual Studio Code}
 	
-Visual Studio Code je besplatna platforma koja podržava mnogo jezika,a među njima i F\# . On je podržan od strane Ionide\cite{ionide}.
+{\em Visual Studio Code} je besplatna platforma koja podržava mnogo jezika,a među njima i F\# . On je podržan od strane {\em Ionide}\cite{ionide}.
 
-\textbf{1.korak:} Instalirati Visual studio Code za Windows
+\textbf{1.korak:} Instalirati {\em Visual Studio Code} za Windows.
 
-\textbf{2.korak:} Pritisnuti \textbf{Ctrl+Shift+p} i ukucati sledeću naredbu za instalaciju Ionide paketa za Visual Strudio Code:
+\textbf{2.korak:} Pritisnuti \textbf{Ctrl+Shift+p} i ukucati sledeću naredbu za instalaciju {\em Ionide} paketa za {\em Visual Studio Code}:
 \\
 \begin{lstlisting}
  ext install Ionide-fsharp
@@ -257,24 +256,24 @@ Visual Studio Code je besplatna platforma koja podržava mnogo jezika,a među nj
  
 \subsubsection{JetBrains Rider}
 
-JetBrains Rider je platforma .NET IDE izgrađena je pomoću InteliJ i  ReSharper tehnologije. JetBrains nudi podršku .NET i .NET Core aplikacijama na svim platformama.
+{\em JetBrains Rider} je platforma .NET IDE izgrađena je pomoću {\em InteliJ} i {\em ReSharper} tehnologije. {\em JetBrains} nudi podršku .NET i .NET Core aplikacijama na svim platformama.
 
-\textbf{1.korak:} Instalirati JetBrains za Windows
+\textbf{1.korak:} Instalirati {\em JetBrains} za Windows.
 
-\textbf{2.korak}(opciono): instalirati poslednju .NED Core SDK
+\textbf{2.korak}(opciono): Instalirati poslednju .NED Core SDK.
 
-Takođe vam je potrebno da instalirate ceo Visual Studio ili F\# kompajler.
+Takođe vam je potrebno da instalirate ceo {\em Visual Studio} ili F\# kompajler.
 
 
 \subsection{Uputstvo za Linux}
 
-Instalacija F\# na Linuxu se izvršava na potpuno identičan način za Ubuntu, Mint i Debian verziju.
+Instalacija F\# na Linuxu se izvršava na potpuno identičan način za {\em Ubuntu, Mint} i {\em Debian} verziju.
 
 \subsubsection{Ubuntu/Mint/Debian}
 
-\textbf{1.korak:} Dodajte Mono\cite{mono} repozitorijum vašem menadžeru paketa.
+\textbf{1.korak:} Dodati {\em Mono}\cite{mono} repozitorijum vašem menadžeru paketa.
 
-\textbf{2.korak:} Instalirati F\# koji će istovremeno povući novu verziju Mono-a ukoliko je to potrebno.
+\textbf{2.korak:} Instalirati F\# koji će istovremeno povući novu verziju {\em Mono}-a ukoliko je to potrebno.
 \\
 \begin{lstlisting}
 sudo apt-get update
