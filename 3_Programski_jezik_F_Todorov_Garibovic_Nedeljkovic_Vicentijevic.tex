@@ -122,7 +122,7 @@ F\# je jezik koji ima pretežno funkcionalne karakteristike, ali on je svoju pri
 
 Neke od osnovnih osobina programskog jezika F\# su:\\
 
-	- \textbf{Bezbedan}: F\# programi temeljno se proveravaju pre izvršavanja, što ga čini bezbednim za pokretanje.
+	- \textbf{Bezbedan}: F\# programi se temeljno proveravaju pre izvršenja, što ga čini bezbednim za pokretanje.
 
 	- \textbf{Funkcionalan}: Funkcije mogu biti ugnježdene, prosleđene kao argumenti drugim funkcijama i vraćene kao povratna vrednost.
 
@@ -130,34 +130,32 @@ Neke od osnovnih osobina programskog jezika F\# su:\\
 
 	- \textbf{Automatski zaključuje tipove}: Tipovi vrednosti se automatski zaključuju prilikom kompilacije u zavisnosti od konteksta u kome se javljaju, što dovodi do toga da se eksplicitno navođenje retko dešava.
 
-	- \textbf{Kompatibilan}: F\# programi mogu da pozivaju i da budu pozvani iz drugih programa koji su napisani na nekom od jezika koje podržava .NET platforma. Jedan od primera je C\# ,ali i mnogi drugi. %dodati referencu na official-page C#
+	- \textbf{Kompatibilan}: F\# programi mogu da pozivaju i da budu pozvani iz drugih programa koji su napisani na nekom od jezika koje podržava .NET platforma, kao na primer C\#\cite{microsoft_c}. 
 \\
 %Nešto više o njima\cite{Harrop:2008:FS:1481410}.
  
-	\textbf{Još neke specifičnosti jezika:} \\
+	Još neke specifičnosti jezika: \\
 	
 	- Za razliku od drugih programskih jezika struktura \textbf{if/elif/else} u svakoj grani ima povratnu vrednost.
 	 
-	- Povratna vrednost ne mora uvek biti vraćena ključnom reči \textbf{return}. Ukoliko je \textbf{return} izostavljen, kao povratna vrednost se uzima poslednja izvršena naredba.
+	- Povratna vrednost ne mora uvek biti vraćena ključnom reči return. Ukoliko je \textbf{return} izostavljen, kao povratna vrednost se uzima poslednja izvršena naredba.
 	 
-	- Korišćenjem ključne reči \textbf{let} definišemo promenljive koje se ne mogu menjati što kod čini sigurnijim od slučajnih promena. Ukoliko smo sigurni da će se vrednost promenljive menjati, uz \textbf{let} se dodaje ključna reč \textbf{mutable}.
+	- Korišćenjem ključne reči \textbf{let} definišemo promenljive koje se ne mogu menjati što kod čini sigurnijim od slučajnih promena. Ukoliko smo sigurni da će se vrednost promenljive menjati, uz let se dodaje ključna reč \textbf{mutable}.
 	 
-	- Struktura \textbf{switch/case} je u F\# zamenjena pattern matching-om\cite{progFsPM}.
+	- Struktura \textbf{switch/case} je u F\# zamenjena pattern matching-om\cite{expertFS}.
 	 
-	- Pored uobičajenih tipova podataka podržanih u većini programskih jezika, F\# podržava novi tip \textbf{option type}, koji označava vrednost promenljive koja može da postoji a i ne mora. Dve moguće vrednosti ovog tipa su: Some(x) i None. %ova dva bih iskosila - Tamara
+	- Pored uobičajenih tipova podataka podržanih u većini programskih jezika, F\# podržava novi tip \textbf{option type}, koji označava vrednost promenljive koja može da postoji a i ne mora. Dve moguće vrednosti ovog tipa su: Some(x) i None.
 
 \section{Funkcionalno programiranje}
 
 %dodati naucni rad o ovoj oblasti
-% dodati referencu na kod
-% dodati referencu na tabelu
 
-Kao glavna, funkcionalna paradigma programskog jezika F\# podržava osnovne koncepte koji su podržani i od strane nekih drugih programskih jezika. U ovom odeljku nećemo davati prevelik značaj osnovama funkcionalne paradigme, već ćemo akcenat staviti na \textbf{pattern matching}.
 
-Jedan od važnih mehanizama u F\# programiranju jeste pattern matching. Pattern matching se predstavlja kao \textbf{match ... with ...} konstrukcija koja kombinuje mehanizme dekompozicije i kontrole toka za poklapanje obrazaca. Kao takav, možemo ga koristiti sa  jednostavnim kolekcijama (list,tuple) i option vrednostima. Naredni primer pokazuje kako se definiše pattern matching.
+Kao glavna, funkcionalna paradigma programskog jezika F\# podržava osnovne koncepte koji su podržani i od strane nekih drugih programskih jezika. U ovom odeljku nećemo davati prevelik značaj osnovama funkcionalne paradigme, već ćemo akcenat staviti na \textbf{pattern matching}\cite{expertFS}.\\
+
+Jedan od važnih mehanizama u F\# programiranju jeste pattern matching. Pattern matching se predstavlja kao match ... with ... konstrukcija koja kombinuje mehanizme dekompozicije i kontrole toka za poklapanje obrazaca. Kao takav, možemo ga koristiti sa  jednostavnim kolekcijama(list,tuple) i option vrednostima. Naredni listing \ref{primer} pokazuje kako se definiše pattern matching.
 \\
-
-\begin{lstlisting}
+\begin{lstlisting}[caption={Primer pattern matching-a\cite{expertFS}},frame=single, label=primer]
 let urlFilter url agent =
  match (url,agent) with
  | "http://www.control.org", 99 -> true
@@ -171,18 +169,18 @@ Izvedeni tip funkcije je:
 \begin{lstlisting}
 val urlFilter: string -> int -> bool
 \end{lstlisting}
-%nejasan tip tuppl-a Tamara
-Izraz nakon ključne reči match je tupple tipa (string * int). Svako pravilo obrasca se uvodi simbolom $\|$ iza koga sledi pravilo. Nakon navodjenja pravila sledi simbol -> iza kog sledi rezultat. Kada se izvrše, pravila obrasca se koriste jedan po jedan. Prvi obrazac koji je poklopljen određuje rezultat. Prvi obrazac se poklapa ukoliko su navedene identične vrednosti, dok poslednja tri, na mestima gde se javlja simbol $\_$ za ulazne parametre, mogu da imaju bilo koju vrednost. U tabeli ćemo prikazati koje vrste obrazaca postoje u F\# i na koji način ih možemo formirati.
+
+Izraz nakon ključne reči match je tupple tipa(string * int). Svako pravilo obrasca se uvodi sa simbolom | iza koga sledi pravilo. Nakon navodjenja pravila sledi simbol -> nakon čega sledi rezultat. Kada se izvrše, pravila obrasca se koriste jedan po jedan i prvi obrazac koji je poklopljen određuje rezultat. Prvi obrazac se poklapa ukoliko su navedene identične vrednosti, dok poslednja tri, na mestima gde se javlja simbol $\_$ za ulazne parametre mogu da imaju bilo koju vrednost. U tabeli \ref{tab:tabela1} prikazaćemo koje vrste obrazaca postoje u F\# i na koji način ih možemo formirati.
  
 \begin{table}[h!]
 \begin{center}
 \caption{Načini formiranja obrazaca u F\#}
-\begin{tabular}{|c|l|r|} \hline
-\textbf{Opšti oblik}& \textbf{Vrsta}& \textbf{Primer}\\ \hline
+\begin{tabular}{|c|c|c|} \hline
+Opšti oblik& Vrsta& Primer\\ \hline
 (pat, ... ,pat) &Tuple pattern&(1,2,("3",x))
 \\ \hline
 [pat, ... ,pat] &List pattern&[x;y;z]\\ \hline
-[$\|$pat, ... ,pat$\|$] &Array pattern&['a';'b';'c']\\ \hline
+[|pat, ... ,pat|] &Array pattern&['a';'b';'c']\\ \hline
 null &Null test pattern&null\\ \hline
 \end{tabular}
 \label{tab:tabela1}
@@ -192,24 +190,25 @@ null &Null test pattern&null\\ \hline
 
 \section{Asinhrono i paralelno programiranje}
 
-Razlog zbog kojeg izučavamo asinhrono i paralelno programiranje se ogleda u maksimalnoj iskorišćenosti hardvera. Ranije se ovaj način programiranja izbegavao zbog dodatne složenosti i rizika od bagova. Sa pojavom velikog broja biblioteka u kombinaciji sa funkcionalnim programiranjem i izbegavanjem bočnih efekata ovaj problem je smanjen. Fokus ćemo staviti na to kako ubrzati računanje u F\# koristeći asinhrono i paralelno programiranje. Izvršavanje kôda se odvija pomoću niti i F\# biblioteka. Mogu se iskoristiti prednosti više procesora i jezgara tako sto ćete podeliti jedan posao na vise manjih. Najvažniji razlog uvođenja ova dva načina programiranja je ubrzanje izvršavanja kôda.
+Razlog zbog kojeg izučavamo asinhrono i paralelno programiranje se ogleda u maksimalnoj iskorišćenosti hardvera. Ranije se ovaj način programiranja izbegavao zbog dodatne složenosti i rizika od bagova. Sa pojavom velikog broja biblioteka u kombinaciji sa funkcionalnim programiranjem i izbegavanjem bočnih efekata ovaj problem je smanjen. Fokus ćemo staviti na to kako ubrzati računanje u F\# koristeći asinhrono i paralelno programiranje. Izvršavanje koda se odvija pomoću niti i F\# biblioteka. 
+Iskoristite prednosti više procesora i jezgara tako sto cete podeliti jedan posao na vise manjih. Najvažniji razlog uvođenja ova dva načina programiranja je ubrzanje izvršavanja koda.
 
 
 \subsection{Asinhrono programiranje} 
-%iskosila bihČ APM, BeginOperation, EndOperation
+
 Opisuje programe i operacije koje se izvršavaju u pozadini i završavaju nakon nekog vremena (primer: preuzimanje novog email-a bez čestog proveravanja). Asinhroni programi na .NET platformi su pisani korišćenjem modela asinhronog programiranja (APM). APM je obrazac koji deli asinhrone operacije na dve metode: BeginOperation i EndOperation. Kada se pozove BeginOperation operacije počinju sa asinhronim izvršavanjem koje po završetku pozivaju EndOperation koji dohvata rezultat asinhronog izračunavanja. Problemi koji nastaju korišćenjem ovog obrasca su: 
 
-	- Izostavljanje poziva EndOperation dolazi do neželjenih efekata, curenja memorije.
+	- izostavljanje poziva EndOperation dolazi do neželjenih efekata, curenja memorije 
  
-	- Ukoliko se nekoliko asinhronih izračunavanja vrati nazad teško je pratiti tok programa.
+	- ukoliko se nekoliko asinhronih izračunavanja vrati nazad teško je pratiti tok programa
 	
-	- Posledica prethodnog problema uzrokuje pojavu špageti programiranja.
+	- posledica prethodnog problema uzrokuje pojavu špageti programiranja
 
-Umesto APM-a sve asinhrone operacije ćemo izvršavati pomoću F\# biblioteke asinhronih radnih tokova\cite{workFlow}. Ključna reč async se koristi za kreiranje bloka u koji se smešta kod za izvršavanje, korišćenjem \textbf{let!} i \textbf{do!} operatora. Rezultat ovog izvršavanja će biti tipa Async<T>\cite{theAL}.
+Umesto APM-a sve asinhrone operacije ćemo izvršavati pomoću F\# biblioteke asinhronih radnih tokova\cite{workFlow}. Ključna reč async se koristi za kreiranje bloka u koji se smešta kod za izvršavanje, korišćenjem let! i do! operatora. Rezultat ovog izvršavanja će biti tipa Async<T>\cite{theAL}.
 
 \subsection{Paralelno programiranje}
-%referenca za parallel extension
-Paralelno programiranje se koristi za podelu poslova na n delova kako bi se dobilo n puta brže izvršavanje što je retko u praksi. Najjednostavniji način koriščćenja paralelnog programiranja na .NET 4.0 platformi se zasniva na upotrebi Parallel Extesions biblioteke(PFX). Jedna od pogodnosti PFX biblioteke je ta što programer ne mora da misli o kontroli rada niti. Za razliku od paralelnog, asinhroni tok izvršavanja je dostupan i na prethodnim verzijama .NET platforme. Task objekat predstavlja osnovnu strukturu PFX paralelizma, koji ima zadatak da izvrši posao nakon nekog vremena. Kao takav, nije dovoljan za paralelne aplikacije. Zbog problema koji se javlja pri radu Task objekta sa deljivim podacima uvodi se zaključavanje podatka (exclusive lock). PFX biblioteka uvodi nove tipove kolekcija System.Collections.Concurrent \cite{sysCC} kao rešenje prethodnog problema.  
+
+Paralelno programiranje se koristi za podelu poslova na n delova kako bi se dobilo n puta brže izvršavanje što je retko u praksi. Najjednostavniji način koriščćenja paralelnog programiranja na .NET 4.0 platformi se zasniva na upotrebi Parallel Extesions biblioteke(PFX)\cite{progFsPFX}. Jedna od pogodnosti PFX biblioteke je ta što programer ne mora da misli o kontroli rada niti. Za razliku od paralelnog, asinhroni tok izvršavanja je dostupan i na prethodnim verzijama .NET platforme. Task objekat predstavlja osnovnu strukturu PFX paralelizma, koji ima zadatak da izvrši posao nakon nekog vremena. Kao takav, nije dovoljan za paralelne aplikacije. Zbog problema koji se javlja pri radu Task objekta sa deljivim podacima uvodi se zaključavanje podatka(exclusive lock). PFX biblioteka uvodi nove tipove kolekcija System.Collections.Concurrent \cite{sysCC} kao rešenje prethodnog problema.  
 
 
 \section{Radni okviri}
