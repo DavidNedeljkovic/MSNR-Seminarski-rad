@@ -1,8 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{microsoft_c}
-
-
 \bibitem{ionide}
 {Ionide}.
 \newblock on-line at: \url{http://ionide.io/}.
@@ -15,21 +12,6 @@
 \bibitem{progFs}
 Smith Chris.
 \newblock {\em Programing F\#}.
-\newblock O’Reilly Media, 1005 Gravenstein Highway North, 2009.
-
-\bibitem{workFlow}
-Smith Chris.
-\newblock {\em Programing F\#, Asynchronous Workflows str.268}.
-\newblock O’Reilly Media, 1005 Gravenstein Highway North, 2009.
-
-\bibitem{progFsPFX}
-Smith Chris.
-\newblock {\em Programing F\#, PFX str.276}.
-\newblock O’Reilly Media, 1005 Gravenstein Highway North, 2009.
-
-\bibitem{theAL}
-Smith Chris.
-\newblock {\em Programing F\#, The Async Library str.269}.
 \newblock O’Reilly Media, 1005 Gravenstein Highway North, 2009.
 
 \bibitem{expertFS}
@@ -51,6 +33,30 @@ Antonio~Cisternino Don~Syme, Adam~Granicz.
 Jon Harrop.
 \newblock {\em F\# for Scientists}.
 \newblock Wiley-Interscience, New York, NY, USA, 2008.
+
+\bibitem{msil}
+Microsoft.
+\newblock {Assemblies in the Common Language Runtime (MSIL)}.
+\newblock on-line at:
+  \url{https://docs.microsoft.com/en-us/dotnet/framework/app-domains/assemblies-in-the-common-language-runtime}.
+
+\bibitem{apm}
+Microsoft.
+\newblock {Asynchronous Programming Model (APM)}.
+\newblock on-line at:
+  \url{https://docs.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/asynchronous-programming-model-apm}.
+
+\bibitem{microsoft_c}
+Microsoft.
+\newblock {C\# Guide}.
+\newblock on-line at:
+  \url{https://docs.microsoft.com/en-us/dotnet/csharp/index}.
+
+\bibitem{cli}
+Microsoft.
+\newblock {Get started with F\# with the .NET Core CLI}.
+\newblock on-line at:
+  \url{https://docs.microsoft.com/en-us/dotnet/fsharp/get-started/get-started-command-line}.
 
 \bibitem{microsoft_.net}
 Microsoft.
@@ -85,14 +91,19 @@ Robin Milner.
 \newblock {Mono}, 2019.
 \newblock on-line at: \url{https://www.mono-project.com/}.
 
+\bibitem{RPapp}
+ReactiveX.
+\newblock {Reactive programing}.
+\newblock on-line at: \url{http://reactivex.io/}.
+
 \bibitem{early_history}
 Don Syme.
 \newblock {The Early History of F\#}.
 \newblock on-line at: \url{https://fsharp.org/history/hopl-draft-1.pdf}.
 
-\bibitem{bookOfFs}
-Dave Fancher.
-\newblock {\em The Book of F\#: Breaking Free with Managed Functional Programming str. 8}.
-\newblock No Starch Press, San Francisco CA 94103 USA, 2014.
+\bibitem{ppNETframework}
+V.~V. Vasilchikov.
+\newblock On the recursive parallel programming for the .net framework.
+\newblock {\em Automatic Control and Computer Sciences}, 2014.
 
 \end{thebibliography}

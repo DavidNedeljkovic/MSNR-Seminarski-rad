@@ -1,12 +1,7 @@
 % !TEX encoding = UTF-8 Unicode
 \documentclass[a4paper]{article}
 
-\usepackage{xcolor}
-\definecolor{bluekeywords}{rgb}{0.13,0.13,1}
-\definecolor{greencomments}{rgb}{0,0.5,0}
-\definecolor{turqusnumbers}{rgb}{0.17,0.57,0.69}
-\definecolor{redstrings}{rgb}{0.5,0,0}
-
+\usepackage{color}
 \usepackage{url}
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -18,28 +13,6 @@
 \hypersetup{colorlinks,citecolor=green,filecolor=green,linkcolor=blue,urlcolor=blue}
 
 \usepackage{listings}
-
-\lstdefinelanguage{FSharp}
-    {morekeywords={let, new, match, with, rec, open, module, namespace, type, of, member, and, for, in, do, begin, end, fun, function, try, mutable, if, then, else},
-    keywordstyle=\color{bluekeywords},
-    sensitive=false,
-    morecomment=[l][\color{greencomments}]{///},
-    morecomment=[l][\color{greencomments}]{//},
-    morecomment=[s][\color{greencomments}]{{(*}{*)}},
-    morestring=[b]",
-    stringstyle=\color{redstrings}
-    }
-
-\lstnewenvironment{fslisting}
-  {
-    \lstset{
-        language=FSharp,
-        basicstyle=\ttfamily,
-        breaklines=true,
-        columns=fullflexible}
-  }
-  {
-  }
 
 \newtheorem{primer}{Primer}[section]
 
@@ -57,13 +30,12 @@
   deletekeywords={...},            
   escapeinside={\%*}{*)},          
   extendedchars=true,
-  firstnumber=1,              
+  firstnumber=1000,              
   frame=single,	                
   keepspaces=true,
   keywordstyle=\color{blue},     
   language=Python,                
   morekeywords={*,...},
-  numberfirstline=true,
   numbers=left, 
   numbersep=5pt,                  
   numberstyle=\tiny\color{mygray}, 
@@ -71,12 +43,11 @@
   showspaces=false,
   showstringspaces=false,
   showtabs=false,
-  stepnumber=1, 
+  stepnumber=2, 
   stringstyle=\color{mymauve},
   tabsize=2,
   title=\lstname
 }
-
 
 \begin{document}
 
@@ -107,11 +78,11 @@ U 2018. godini F\# opisan je u dokumentaciji kao "funkcionalni programski jezik 
 
 Istorija programskog jezika F\# datira još od 1970. godine pa sve do danas. U ranim 70-im godinama na Univerzitetu u Edinburgu Robin Milner sa još nekoliko svojih kolega razvija jezik ML (Meta-Language) baziran na programskom jeziku LISP. Njegova onsnovna namena bila je pragmatičnog karaktera. Osmišljen je da pomogne u dokazivanju LCF (Logical computable functions) \cite{Milner:1972:LCF:891954} teorema. ML jezik je koren svih jezika koji pripadaju familiji strogo tipiziranih funkcionalnih jezika, kao npr: Miranda, Haskell, Standard ML, Ocaml, EdinburghML, ReasonML, PureScript, a među njima i F\#.
 
-Sve do danas ključne ideje ove familije jezika ostaju osnova jezika F\# koji se nadogradjivao kasnije iz dana u dan. 
+Sve do danas ključne ideje ove familije jezika ostaju osnova jezika F\# koji se nadograđivao kasnije iz dana u dan. 
 
 Tokom 80-ih godina dolazi do velike ekspanzije u kompjuterskoj industriji. Kako su se brzo razvijali softverski alati tako su se takođe pojavljivali novi jezici i programske paradigme. U tom periodu i Microsoft doživljava veliku ekspanziju kao kompanija koja razvija operativne sisteme i aplikacije. Međutim, u ovom periodu, a najviše u kasnim 80-im godinama pojavljuje se novi, objektno-orjentisani talas razmišljanja u programiranju koji veoma utiče na razvoj softvera.
 
-Početkom 90-ih godina, dok je Microsoft težio da održi monopol na tržištu i dok je u fokusu i dalje bila objektno-orjentisana paradigma, strogo tipizirani funkcionalni jezici bili su manje aktivni i okrenuti su ka razvitku na drugim poljima. Njihova primena uglavnom je imala ulogu u pronalaženju bagova, održavanju sistema i verifikaciji hardvera i softvera. Primeri jezika koji su se koristili za izgradnju ovakvih sistema su: Edinburgh ML, Standard ML, Ocaml, Caml Light, LISP. Takođe, neki funkcionalni jezci razvijeni su u cilju istraživanja u okviru paralelnog programiranja, kao što su Parallel ML i vrsta paralelnog Haskell-a \cite{early_history}. 
+Početkom 90-ih godina, dok je Microsoft težio da održi monopol na tržištu i dok je u fokusu i dalje bila objektno-orjentisana paradigma, strogo tipizirani funkcionalni jezici bili su manje aktivni i okrenuti su ka razvitku na drugim poljima. Njihova primena uglavnom je imala ulogu u pronalaženju bagova, održavanju sistema i verifikaciji hardvera i softvera. Primeri jezika koji su se koristili za izgradnju ovakvih sistema su: Edinburgh ML, Standard ML, Ocaml, Caml Light, LISP. Takođe, neki funkcionalni jezici razvijeni su u cilju istraživanja u okviru paralelnog programiranja, kao što su Parallel ML i vrsta paralelnog Haskell-a \cite{early_history}. 
 
 \subsection{Zašto je nastao jezik F\#?}
 \label{subsec:nastanak}
@@ -177,8 +148,6 @@ Neke od osnovnih osobina programskog jezika F\# su:\\
 
 \section{Funkcionalno programiranje}
 
-%dodati naucni rad o ovoj oblasti
-
 
 Kao glavna, funkcionalna paradigma programskog jezika F\# podržava osnovne koncepte koji su podržani i od strane nekih drugih programskih jezika. U ovom odeljku nećemo davati prevelik značaj osnovama funkcionalne paradigme, već ćemo akcenat staviti na {\em pattern matching}\cite{expertFS}.
 
@@ -223,8 +192,8 @@ Razlog zbog kojeg izučavamo asinhrono i paralelno programiranje se ogleda u mak
 
 
 \subsection{Asinhrono programiranje} 
-%referenca za APM
-Opisuje programe i operacije koje se izvršavaju u pozadini i završavaju nakon nekog vremena (na primer: preuzimanje novog email-a bez čestog proveravanja). Asinhroni programi na .NET platformi su pisani korišćenjem modela asinhronog programiranja (APM). APM je obrazac koji deli asinhrone operacije na dve metode: {\em BeginOperation} i {\em EndOperation}. Kada se pozove {\em BeginOperation} operacije počinju sa asinhronim izvršavanjem koje po završetku pozivaju {\em EndOperation} koji dohvata rezultat asinhronog izračunavanja. Problemi koji nastaju korišćenjem ovog obrasca su: 
+
+Opisuje programe i operacije koje se izvršavaju u pozadini i završavaju nakon nekog vremena (na primer: preuzimanje novog email-a bez čestog proveravanja). Asinhroni programi na .NET platformi su pisani korišćenjem modela asinhronog programiranja (APM)\cite{apm}. APM je obrazac koji deli asinhrone operacije na dve metode: {\em BeginOperation} i {\em EndOperation}. Kada se pozove {\em BeginOperation} operacije počinju sa asinhronim izvršavanjem koje po završetku pozivaju {\em EndOperation} koji dohvata rezultat asinhronog izračunavanja. Problemi koji nastaju korišćenjem ovog obrasca su: 
 
 	- Izostavljanje poziva {\em EndOperation} dolazi do neželjenih efekata i curenja memorije. 
  
@@ -232,18 +201,18 @@ Opisuje programe i operacije koje se izvršavaju u pozadini i završavaju nakon 
 	
 	- Posledica prethodnog problema uzrokuje pojavu špageti programiranja.
 
-Umesto APM-a sve asinhrone operacije mogu se izvršavati pomoću F\# biblioteke asinhronih radnih tokova\cite{workFlow}. Ključna reč {\em async} se koristi za kreiranje bloka u koji se smešta kod za izvršavanje, korišćenjem {\em let!} i {\em do!} operatora. Rezultat ovog izvršavanja će biti tipa {\em Async<T>}\cite{theAL}.
+Umesto APM-a sve asinhrone operacije mogu se izvršavati pomoću F\# biblioteke asinhronih radnih tokova\cite{progFs}. Ključna reč {\em async} se koristi za kreiranje bloka u koji se smešta kod za izvršavanje, korišćenjem {\em let!} i {\em do!} operatora. Rezultat ovog izvršavanja će biti tipa {\em Async<T>}\cite{progFs}.
 
 \subsection{Paralelno programiranje}
 
-Paralelno programiranje se koristi za podelu poslova na n delova kako bi se dobilo n puta brže izvršavanje što je retko u praksi. Najjednostavniji način koriščćenja paralelnog programiranja na .NET 4.0 platformi se zasniva na upotrebi {\em Parallel Extesions} biblioteke (PFX)\cite{progFsPFX}. Jedna od pogodnosti PFX biblioteke je ta što programer ne mora da misli o kontroli rada niti. Za razliku od paralelnog, asinhroni tok izvršavanja je dostupan i na prethodnim verzijama .NET platforme. Task objekat predstavlja osnovnu strukturu PFX paralelizma, koji ima zadatak da izvrši posao nakon nekog vremena. Kao takav, nije dovoljan za paralelne aplikacije. Zbog problema koji se javlja pri radu Task objekta sa deljivim podacima uvodi se zaključavanje podatka ({\em exclusive lock}). PFX biblioteka uvodi nove tipove kolekcija {\em System.Collections.Concurrent} \cite{sysCC} kao rešenje prethodnog problema.  
+Paralelno programiranje se koristi za podelu poslova na n delova kako bi se dobilo n puta brže izvršavanje što je retko u praksi. Najjednostavniji način koriščćenja paralelnog programiranja na .NET 4.0 platformi se zasniva na upotrebi {\em Parallel Extesions} biblioteke (PFX)\cite{progFs}. Jedna od pogodnosti PFX biblioteke je ta što programer ne mora da misli o kontroli rada niti. Za razliku od paralelnog, asinhroni tok izvršavanja je dostupan i na prethodnim verzijama .NET platforme. Task objekat predstavlja osnovnu strukturu PFX paralelizma, koji ima zadatak da izvrši posao nakon nekog vremena. Kao takav, nije dovoljan za paralelne aplikacije. Zbog problema koji se javlja pri radu Task objekta sa deljivim podacima uvodi se zaključavanje podatka ({\em exclusive lock}). PFX biblioteka uvodi nove tipove kolekcija {\em System.Collections.Concurrent} \cite{sysCC} kao rešenje prethodnog problema.  
 
 
 \section{Radni okviri}
-%stavila bih reference za pojmove CLI, MSIL
-Najpoznatiji i najznačajniji radni okvir (eng. framework) za ovaj programski jezik je .NET koji je ranije već pomeut. Ovaj radni okvir je potpuno besplatan i na njemu je moguće kreirati veliki broj različitih aplikacija. On podržava veliki broj programskih jezika iz različitih paradigmi, editora i biblioteka za igradnju mobilnih i veb aplikacija. 
 
-Temelj .NET platforme je zajednička jezička infrastruktura CLI ({\em Common Language Infrastructure}). Pokretanje F\# kôda na ovoj platformi se vrši tako što na samom početku kompajler prevodi kôd u binarni fajl koji je preveden na asemblerski jezik višeg nivoa koji se zove MSIL ({\em Microsoft Intermediate Language}). Implementacija na CLI kompajleru ovog asemblerskog kôda u toku izvršavanja je mnogo brža nego da je kôd samo interpretiran i ova kompilacija se izvršava u trenutku\cite{progFs}.
+Najpoznatiji i najznačajniji radni okvir (eng. framework) za ovaj programski jezik je .NET koji je ranije već pomeut. .NET je pojednostavio razvoj RP(Reactive Programming)\cite{RPapp} aplikacija. Ovaj radni okvir je potpuno besplatan i na njemu je moguće kreirati veliki broj različitih aplikacija. On podržava veliki broj programskih jezika iz različitih paradigmi, editora i biblioteka za igradnju mobilnih i veb aplikacija. Razvijene su dve glavne komponente za korišćenje rekurzivnog paralelnog izračunavanja na lokalnoj mreži i obe su dostupne programima na .NET platformi.\cite{ppNETframework}. 
+
+Temelj .NET platforme je zajednička jezička infrastruktura CLI ({\em Common Language Infrastructure})\cite{cli}. Pokretanje F\# kôda na ovoj platformi se vrši tako što na samom početku kompajler prevodi kôd u binarni fajl koji je preveden na asemblerski jezik višeg nivoa koji se zove MSIL ({\em Microsoft Intermediate Language})\cite{msil}. Implementacija na CLI kompajleru ovog asemblerskog kôda u toku izvršavanja je mnogo brža nego da je kôd samo interpretiran i ova kompilacija se izvršava u trenutku\cite{progFs}.
 Kôd koji je preveden u MSIL i izvršen u trenutku, predstavlja kôd za upravljanje za razliku od kodova pisanih na progamskim jezicima kao što su C ili C++ koji su sirovi kodovi.   
 
 Postoje neke prednosti za prolazak kroz CLI ili upravljani kôd a ne direktnog kompiliranja na mašinski nivo:	
@@ -261,11 +230,13 @@ Naravno da ova platforma nije jedina koja se koristi za ovaj progamski jezik, po
 
 \section{Uputstvo za instalaciju}
 
-U ovom poglavlju biće opisano uputstvo za instalaciju programskog jezika F\# na Windows i Linux operativnim sistemima.
+U ovom poglavlju biće opisano uputstvo za instalaciju programskog jezika F\# na Windows i Linux operativnim sistemima, kao i uputstvo za pokretanje F\# programa.
 
 \subsection{Uputstvo za Windows}
 
 Na ovom operativnom sistemu postoje tri načina za instalaciju F\#-a. To su: {\em Visual studi}o\cite{vStud}, {\em Visual Studio Code} \cite{vStudCode} i {\em JetBrains Rider} \cite{jetBrains}.
+
+Pokretanje F\# koda na Windows-u se vrši tako što prvo označite kod ili deo koda koji želite da se izvrši zatim desnim klikom na miš izaberite opciju pošalji interaktivno (“send to interactive”) ukoliko je interaktivni prozor tj prozor na kom se ispisuje rezultat otvoren ili iskoristite prečicu Alt+Enter.
 
 \subsubsection{Visual studio}
 	
@@ -296,7 +267,15 @@ Takođe vam je potrebno da instalirate ceo {\em Visual Studio} ili F\# kompajler
 
 \subsection{Uputstvo za Linux}
 
+Kada koristite jezik koji podržava .NET platforma kao što je F\# onda on zahteva Mono\cite{mono} softversku platformu. Većina linux distributera sadrži neku verziju te platforme koja omogućava programerima lakše kreiranje aplikacija. 
+
 Instalacija F\# na Linuxu se izvršava na potpuno identičan način za {\em Ubuntu, Mint} i {\em Debian} verziju.
+
+Za pokretanje F\# programa na Linuxu preko terminala koristi se sledeća naredba ukoliko se nalazite u direktorijumu u kom se nalazi primer koji pokrećete.
+\\
+\begin{lstlisting}
+fsharpc primer.fs
+\end{lstlisting}
 
 \subsubsection{Ubuntu/Mint/Debian}
 
@@ -310,51 +289,52 @@ sudo apt-get install fsharp
 \end{lstlisting}
  
 
+
 \section{Upoznavanje sa F\texttt{\#}}
 
 F\texttt{\#} je zamišljen kao jezik sa razumljivom i čitljivom sintaksom i kao takav lakim za održavanje. Programeri "Microsoft" kompanije su se potrudili da ovaj jezik bude intuitivan i prijemčljiv svim programerima. Ono što na prvi pogled vidimo jeste da je sintaksa čista. Naime F\texttt{\#} ne koristi tačku-zarez za kraj izraza niti vitičaste zagrade za označavanje bloka.
-
-\begin{fslisting}
+\\
+\begin{lstlisting}
 module Ispis =
     printfn "Blok pravimo uvlacenjem izraza"
     printfn "Ne koristimo ;"
-\end{fslisting}
+\end{lstlisting}
 
 Navedene osobine F\texttt{\#} čine k\^{o}d kompaktnijim i konciznijim. Pa tako možemo u 3 reda da izdvojimo, kvadriramo i saberemo sve parne brojeve.
-
-\begin{fslisting}
+\\
+\begin{lstlisting}
 module SumaKvadriranihParnihBrojeva =
     let kvadrat x = x * x
     let paran x = x % 2 = 0
     [1..10] |> List.filter paran |> List.map kvadrat |> List.sum |> printfn "sum=%d"
-\end{fslisting}  
+\end{lstlisting}  
 
 Ono što u oba primera vidimo jeste ključna reč \textbf{module}. Ona grupiše vrednosti, funkcije, tipove u jednu grupu čime dobijamo logičku celinu i smanjujemo mogućnost da dođe do konflikta imena. Ukoliko ne navedemo modul, F\texttt{\#} implicitno smešta u podrazumevani modul koji se zove kao i ime datoteke sa velikim početnim slovom. Takođe ako želimo da pristupimo drugom modulu koristimo tačku pa tako ako želimo da pristupimo funkciji iz gore navedenog modula koristimo komandu: \textit{SumaKvadriranihParnihBrojeva.kvadrat}. Možemo da uočimo čudan operator \textbf{|>}  koji se zove pajp (\textit{pipe}). On sprovodi rezultat prvog izraza u argument drugog izraza.
 
 \subsection{Sve je izraz}
 F\texttt{\#} je jezik zasnovan na izrazima ({\em expression-based} \cite{bookOfFs}). To znači da svaki delić F\texttt{\#} programa može biti evaluiran. Gore govorivši o pajpu namerno sam spomenuo izraze a ne funkcije jer je ovde svaka funkcija izraz što znači da svaka funkcija vraća vrednost. Dodatno i sam konstrukt \textbf{if...else} je izraz. To možemo da vidimo u sledećoj modifikaciji gore navedenog k\^{o}da.
-
- \begin{fslisting}
+\\
+ \begin{lstlisting}
 module SumaKvadriranihParnihBrojeva =
     let kvadrat x = x * x
     let paran x =  if x % 2 = 0 then  true else false
     [1..10] |> List.filter paran |> List.map kvadrat |> List.sum |> printfn "sum=%d"
-\end{fslisting} 
+\end{lstlisting} 
 
 Naredbom \textbf{let} vezujemo promenljivu za vrednost. Na prvu ruku može pogrešno da se zaključi da je reč o običnoj dodeli. Za razliku od nekih drugih programskih jezika u F\texttt{\#} je podrazumevano povezivanje imutabilno tj. nije je moguće promeniti tokom izvršavanja programa. To za posledicu ima odsustvo sporednog efekta (\textit{side-effect}). Ukoliko želimo mutabilno povezivanje, tj. ukoliko želimo da tokom izvršavanje menjamo vrednost, dodajemo ključnu reč \textbf{mutable} pa je sintaksa \textbf{let mutable}. U našem primeru koristimo istu ključnu reč za definisanje funkcije što može da bude zbunjujuće. Naime jedina razlika između obične vrednosti i funkcije je u tomše što funkcija mora da se primeni na argument kako bi bila evaluirana. Dodatno, funkcija iako nije primenjena na argument, može da bude argument nekih drugih funkcija. Takve funkcije su poznate kao funkcije višeg reda. Tako u potipsu funkcije \textit{List.filter} koju koristimo u našem primeru stoji \textit{List.filter : ('T -> bool) -> 'T list -> 'T list} gde možemo videti da je prvi argument \textit{('T -> bool)} ustvari funkcija koja vraća \textit{bool} vrednost. Ovaj koncept je u biti funkcionalnog razmišljanja.
 
 
 
 \subsection{Briga o tipovima}
-Oni koji imaju iskustva sa drugim programskim jezicima mogu da zapaze da se nigde u k\^{o}du ne navode tipovi. Iako tip može da se eksplicitno navede sam programski jezik poseduje mehanizam za dedukciju tipova. Preciznije, kompajler može na osnovu upotrebe i pojavljivanja vrednosti da zaključi koji je tip u pitanju. F\texttt{\#} je statički tipiziran jezik pa se dedukcija tipova odvija u fazi kompilacije. U našem primeru kompajler zaključuje na osnovu date liste \textit{[1..10]} da se radi o celim brojevima pa donosi zaključak da se i množenje odvija nad celim brojevima i da se kao rezultat dobijaju celi brojevi. Ukoliko uzmemo listu sa razlomljenim brojevima kompajler prijavljuje grešku.      
- \begin{fslisting}
+Oni koji imaju iskustva sa drugim programskim jezicima mogu da zapaze da se nigde u k\^{o}du ne navode tipovi. Iako tip može da se eksplicitno navede sam programski jezik poseduje mehanizam za dedukciju tipova. Preciznije, kompajler može na osnovu upotrebe i pojavljivanja vrednosti da zaključi koji je tip u pitanju. F\texttt{\#} je statički tipiziran jezik pa se dedukcija tipova odvija u fazi kompilacije. U našem primeru kompajler zaključuje na osnovu date liste \textit{[1..10]} da se radi o celim brojevima pa donosi zaključak da se i množenje odvija nad celim brojevima i da se kao rezultat dobijaju celi brojevi. Ukoliko uzmemo listu sa razlomljenim brojevima kompajler prijavljuje grešku.      \\
+ \begin{lstlisting}
 module SumaKvadriranihParnihBrojeva =
     let kvadrat x = x * x
     let paran x =  if x % 2 = 0 then  true else false
     [1.2; 4.1; 6.3; 7.4] |> List.filter paran  |> List.map kvadrat |> List.sum |> printfn "sum=%f"
     
     // Type mismatch. Expecting a 'float -> bool' but given a 'int -> bool'
-\end{fslisting} 
+\end{lstlisting} 
 
 Na osnovu liste sa razlomljenim brojevima kompajler zaključuje da funkcija koja se prosleđuje funkciji \textit{List.filter} treba da operiše sa float vrednostima. Kako je operator za ostatak definisan nad celim brojevima potpis funkcije  \textit{paran} je \textit{int -> bool} što dovodi do konflikta. Ovde smo mogli da vidimo da F\texttt{\#} nema implicitnu konverziju i da svako nepodudaranje tipova prijavljuje kompajlersku grešku.  
 
