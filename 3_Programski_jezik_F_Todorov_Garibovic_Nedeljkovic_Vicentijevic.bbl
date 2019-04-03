@@ -90,4 +90,9 @@ Don Syme.
 \newblock {The Early History of F\#}.
 \newblock on-line at: \url{https://fsharp.org/history/hopl-draft-1.pdf}.
 
+\bibitem{bookOfFs}
+Dave Fancher.
+\newblock {\em The Book of F\#: Breaking Free with Managed Functional Programming str. 8}.
+\newblock No Starch Press, San Francisco CA 94103 USA, 2014.
+
 \end{thebibliography}

@@ -1,7 +1,12 @@
 % !TEX encoding = UTF-8 Unicode
 \documentclass[a4paper]{article}
 
-\usepackage{color}
+\usepackage{xcolor}
+\definecolor{bluekeywords}{rgb}{0.13,0.13,1}
+\definecolor{greencomments}{rgb}{0,0.5,0}
+\definecolor{turqusnumbers}{rgb}{0.17,0.57,0.69}
+\definecolor{redstrings}{rgb}{0.5,0,0}
+
 \usepackage{url}
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -13,6 +18,28 @@
 \hypersetup{colorlinks,citecolor=green,filecolor=green,linkcolor=blue,urlcolor=blue}
 
 \usepackage{listings}
+
+\lstdefinelanguage{FSharp}
+    {morekeywords={let, new, match, with, rec, open, module, namespace, type, of, member, and, for, in, do, begin, end, fun, function, try, mutable, if, then, else},
+    keywordstyle=\color{bluekeywords},
+    sensitive=false,
+    morecomment=[l][\color{greencomments}]{///},
+    morecomment=[l][\color{greencomments}]{//},
+    morecomment=[s][\color{greencomments}]{{(*}{*)}},
+    morestring=[b]",
+    stringstyle=\color{redstrings}
+    }
+
+\lstnewenvironment{fslisting}
+  {
+    \lstset{
+        language=FSharp,
+        basicstyle=\ttfamily,
+        breaklines=true,
+        columns=fullflexible}
+  }
+  {
+  }
 
 \newtheorem{primer}{Primer}[section]
 
@@ -30,12 +57,13 @@
   deletekeywords={...},            
   escapeinside={\%*}{*)},          
   extendedchars=true,
-  firstnumber=1000,              
+  firstnumber=1,              
   frame=single,	                
   keepspaces=true,
   keywordstyle=\color{blue},     
   language=Python,                
   morekeywords={*,...},
+  numberfirstline=true,
   numbers=left, 
   numbersep=5pt,                  
   numberstyle=\tiny\color{mygray}, 
@@ -43,11 +71,12 @@
   showspaces=false,
   showstringspaces=false,
   showtabs=false,
-  stepnumber=2, 
+  stepnumber=1, 
   stringstyle=\color{mymauve},
   tabsize=2,
   title=\lstname
 }
+
 
 \begin{document}
 
@@ -280,6 +309,59 @@ sudo apt-get update
 sudo apt-get install fsharp
 \end{lstlisting}
  
+
+\section{Upoznavanje sa F\texttt{\#}}
+
+F\texttt{\#} je zamišljen kao jezik sa razumljivom i čitljivom sintaksom i kao takav lakim za održavanje. Programeri "Microsoft" kompanije su se potrudili da ovaj jezik bude intuitivan i prijemčljiv svim programerima. Ono što na prvi pogled vidimo jeste da je sintaksa čista. Naime F\texttt{\#} ne koristi tačku-zarez za kraj izraza niti vitičaste zagrade za označavanje bloka.
+
+\begin{fslisting}
+module Ispis =
+    printfn "Blok pravimo uvlacenjem izraza"
+    printfn "Ne koristimo ;"
+\end{fslisting}
+
+Navedene osobine F\texttt{\#} čine k\^{o}d kompaktnijim i konciznijim. Pa tako možemo u 3 reda da izdvojimo, kvadriramo i saberemo sve parne brojeve.
+
+\begin{fslisting}
+module SumaKvadriranihParnihBrojeva =
+    let kvadrat x = x * x
+    let paran x = x % 2 = 0
+    [1..10] |> List.filter paran |> List.map kvadrat |> List.sum |> printfn "sum=%d"
+\end{fslisting}  
+
+Ono što u oba primera vidimo jeste ključna reč \textbf{module}. Ona grupiše vrednosti, funkcije, tipove u jednu grupu čime dobijamo logičku celinu i smanjujemo mogućnost da dođe do konflikta imena. Ukoliko ne navedemo modul, F\texttt{\#} implicitno smešta u podrazumevani modul koji se zove kao i ime datoteke sa velikim početnim slovom. Takođe ako želimo da pristupimo drugom modulu koristimo tačku pa tako ako želimo da pristupimo funkciji iz gore navedenog modula koristimo komandu: \textit{SumaKvadriranihParnihBrojeva.kvadrat}. Možemo da uočimo čudan operator \textbf{|>}  koji se zove pajp (\textit{pipe}). On sprovodi rezultat prvog izraza u argument drugog izraza.
+
+\subsection{Sve je izraz}
+F\texttt{\#} je jezik zasnovan na izrazima ({\em expression-based} \cite{bookOfFs}). To znači da svaki delić F\texttt{\#} programa može biti evaluiran. Gore govorivši o pajpu namerno sam spomenuo izraze a ne funkcije jer je ovde svaka funkcija izraz što znači da svaka funkcija vraća vrednost. Dodatno i sam konstrukt \textbf{if...else} je izraz. To možemo da vidimo u sledećoj modifikaciji gore navedenog k\^{o}da.
+
+ \begin{fslisting}
+module SumaKvadriranihParnihBrojeva =
+    let kvadrat x = x * x
+    let paran x =  if x % 2 = 0 then  true else false
+    [1..10] |> List.filter paran |> List.map kvadrat |> List.sum |> printfn "sum=%d"
+\end{fslisting} 
+
+Naredbom \textbf{let} vezujemo promenljivu za vrednost. Na prvu ruku može pogrešno da se zaključi da je reč o običnoj dodeli. Za razliku od nekih drugih programskih jezika u F\texttt{\#} je podrazumevano povezivanje imutabilno tj. nije je moguće promeniti tokom izvršavanja programa. To za posledicu ima odsustvo sporednog efekta (\textit{side-effect}). Ukoliko želimo mutabilno povezivanje, tj. ukoliko želimo da tokom izvršavanje menjamo vrednost, dodajemo ključnu reč \textbf{mutable} pa je sintaksa \textbf{let mutable}. U našem primeru koristimo istu ključnu reč za definisanje funkcije što može da bude zbunjujuće. Naime jedina razlika između obične vrednosti i funkcije je u tomše što funkcija mora da se primeni na argument kako bi bila evaluirana. Dodatno, funkcija iako nije primenjena na argument, može da bude argument nekih drugih funkcija. Takve funkcije su poznate kao funkcije višeg reda. Tako u potipsu funkcije \textit{List.filter} koju koristimo u našem primeru stoji \textit{List.filter : ('T -> bool) -> 'T list -> 'T list} gde možemo videti da je prvi argument \textit{('T -> bool)} ustvari funkcija koja vraća \textit{bool} vrednost. Ovaj koncept je u biti funkcionalnog razmišljanja.
+
+
+
+\subsection{Briga o tipovima}
+Oni koji imaju iskustva sa drugim programskim jezicima mogu da zapaze da se nigde u k\^{o}du ne navode tipovi. Iako tip može da se eksplicitno navede sam programski jezik poseduje mehanizam za dedukciju tipova. Preciznije, kompajler može na osnovu upotrebe i pojavljivanja vrednosti da zaključi koji je tip u pitanju. F\texttt{\#} je statički tipiziran jezik pa se dedukcija tipova odvija u fazi kompilacije. U našem primeru kompajler zaključuje na osnovu date liste \textit{[1..10]} da se radi o celim brojevima pa donosi zaključak da se i množenje odvija nad celim brojevima i da se kao rezultat dobijaju celi brojevi. Ukoliko uzmemo listu sa razlomljenim brojevima kompajler prijavljuje grešku.      
+ \begin{fslisting}
+module SumaKvadriranihParnihBrojeva =
+    let kvadrat x = x * x
+    let paran x =  if x % 2 = 0 then  true else false
+    [1.2; 4.1; 6.3; 7.4] |> List.filter paran  |> List.map kvadrat |> List.sum |> printfn "sum=%f"
+    
+    // Type mismatch. Expecting a 'float -> bool' but given a 'int -> bool'
+\end{fslisting} 
+
+Na osnovu liste sa razlomljenim brojevima kompajler zaključuje da funkcija koja se prosleđuje funkciji \textit{List.filter} treba da operiše sa float vrednostima. Kako je operator za ostatak definisan nad celim brojevima potpis funkcije  \textit{paran} je \textit{int -> bool} što dovodi do konflikta. Ovde smo mogli da vidimo da F\texttt{\#} nema implicitnu konverziju i da svako nepodudaranje tipova prijavljuje kompajlersku grešku.  
+
+
+
+\subsection{Korisnički tipovi}
+Videli smo da se mehanizam za dedukciju tipova pokazuje i kao sigurnosni mehanizam koji sprečava i obaveštava programera o problemima sa tipovima (u fazi kompilacije) čime sprečava greške u fazi izvršavanja. Ova osobina nas štiti od potencijalnih problema prilikom definisanja korisničkih tipova. 
 
 \section{Zaključak}
 \label{sec:zakljucak}
