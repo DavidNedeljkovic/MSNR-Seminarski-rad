@@ -289,7 +289,7 @@ sudo apt-get install fsharp
 \end{lstlisting}
  
 \section{Fizz Buzz problem}
-\textit{Fizz Buzz} je problem koji je osmišljen za intervjuisanje kandidata za posao. Treba napisati program koji štampa brojeve od 1 do 100 pri čemu, ako je broj deljiv sa 3 tada umesto tog broja ispisuje \textit{Fizz}, ako je deljiv sa 5 ispisuje \textit{Buzz}, dok ako je deljiv i sa 3 i sa 5 ispisuje \textit{FizzBuzz}.
+\textit{Fizz Buzz} je problem koji je osmišljen za intervjuisanje kandidata koji konkurišu za posao programera. Treba napisati program koji štampa brojeve od 1 do 100 pri čemu, ako je broj deljiv sa 3 tada umesto tog broja ispisuje \textit{Fizz}, ako je deljiv sa 5 ispisuje \textit{Buzz}, dok ako je deljiv i sa 3 i sa 5 ispisuje \textit{FizzBuzz}.
 
 \begin{lstlisting}[caption={Fizz Buzz\cite{fizzBuzz}},frame=single, label=primer]
 let (|Fizz|Buzz|FizzBuzz|Other|) n =
@@ -309,9 +309,9 @@ let fizzBuzz =
 seq { 1..100 } |> Seq.map fizzBuzz|> Seq.iter (printfn "%s")
 \end{lstlisting}
 
-Naveden primer sadrži korisničko difinisani šablon koji prepozanje 4 moguća obrasca. Obrazac je dat u obliku para (\textit{touple}) pri čemu je četvrti obrazac \textit{wildcard} i vraća \textit{Other} zajedno sa brojem sa kojim se podudara. Šablon dalje koristimo u \textit{pattern matching} izrazu koji nam vraća niske za ispis. Na kraju sprovodimo sekvencu od 1 do 100 kroz \textit{Seq.map} koja primenjuje \textit{pattern matching} nad tom sekvencom i dobijeni rezultat ispisujemo.
+Navedeni primer sadrži korisničko difinisani šablon koji prepoznaje 4 moguća obrasca. Obrazac je dat u obliku para (\textit{touple}) pri čemu je četvrti obrazac \textit{wildcard} i vraća \textit{Other} zajedno sa brojem koji odgovara tom obrascu. Šablon dalje koristimo u \textit{pattern matching} izrazu koji nam vraća niske za ispis. Na kraju sprovodimo sekvencu od 1 do 100 kroz \textit{Seq.map} koja primenjuje \textit{pattern matching} nad svakim elementom date sekvence i ispisuje dobijeni rezultat.
 
-\section{Jedinica mere - osobina svojstvena F\texttt{\#}}
+\section{Jedinica mere - osobina svojstvena jeziku F\texttt{\#}}
 Jedinica mere (\textit{Units of Measure}) svojstvena samo F\texttt{\#} je mehanizam koji omogućava da se numeričkim tipovima pridruže dodatne informacije i na taj način spreče potencijalne greške pri radu sa različitim mernim jedinicama \cite{unitsOfMeasure}. U nastavku je dat demonstrativni program koji računa godišnju zaradu u evrima.
 \begin{lstlisting}[caption={Primer jedinice mere\cite{unitsOfMeasureExample}},frame=single, label=primer]
 [<Measure>] type rsd
@@ -335,7 +335,7 @@ printfn "%f" (eurPerYear + bonus)
 
 \end{lstlisting}
 Jedinica mere se definiše kao \textbf{[<Measure>] type} nakon koje sledi njen naziv. U našem primeru imamo vremenske jedinice (sat, vikend i godina) kao i jedinice koje označavaju valutu (dinar i evro). Dalje pri definisanju promenljivih dodatno pišemo informaciju o jedinici pa tako ako definišemo zaradu po satu dopisujemo \textbf{<rsd/hour>}. Program na kraju ispisuje zaradu sa godišnjim bonusom. \\
-Ukoliko bi promenili 9. liniju koda i stavili suprotan odnos valuta, tj vrednost evra u odnosu na dinar došlo bi do greške u fazi kompilacije. 
+Ukoliko bi promenili 10. liniju koda i stavili suprotan odnos valuta, tj vrednost evra u odnosu na dinar došlo bi do greške u fazi kompilacije. 
 \begin{lstlisting}[caption={Promenjen odnos valuta},frame=single, label=primer, firstnumber=9]
 let exchangeRate = 117.0<rsd/eur>
 \end{lstlisting}
