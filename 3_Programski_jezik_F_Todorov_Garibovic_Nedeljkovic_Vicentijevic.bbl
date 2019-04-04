@@ -101,9 +101,24 @@ Don Syme.
 \newblock {The Early History of F\#}.
 \newblock on-line at: \url{https://fsharp.org/history/hopl-draft-1.pdf}.
 
+\bibitem{unitsOfMeasure}
+{Microsoft}.
+\newblock {Tour of F\#}, 2019.
+\newblock on-line at: \url{https://docs.microsoft.com/en-us/dotnet/fsharp/tour}
+
 \bibitem{ppNETframework}
 V.~V. Vasilchikov.
 \newblock On the recursive parallel programming for the .net framework.
 \newblock {\em Automatic Control and Computer Sciences}, 2014.
+
+\bibitem{unitsOfMeasureExample}
+{Mark Heath}.
+\newblock {Avoiding Silly Mistakes with F\# Unit of Measure}, 2016.
+\newblock on-line at: \url{https://markheath.net/post/avoid-silly-mistakes-fsharp-units-of-measure}
+
+\bibitem{fizzBuzz}
+Antonio~Cisternino Don~Syme, Adam~Granicz.
+\newblock {\em The Book of F\#: Breaking Free with Managed Functional Programming}.
+\newblock No Starch Press, San Francisco, CA 94103 USA.
 
 \end{thebibliography}

@@ -30,7 +30,7 @@
   deletekeywords={...},            
   escapeinside={\%*}{*)},          
   extendedchars=true,
-  firstnumber=1000,              
+  firstnumber=1,              
   frame=single,	                
   keepspaces=true,
   keywordstyle=\color{blue},     
@@ -43,7 +43,7 @@
   showspaces=false,
   showstringspaces=false,
   showtabs=false,
-  stepnumber=2, 
+  stepnumber=1, 
   stringstyle=\color{mymauve},
   tabsize=2,
   title=\lstname
@@ -288,60 +288,64 @@ sudo apt-get update
 sudo apt-get install fsharp
 \end{lstlisting}
  
+\section{Fizz Buzz problem}
+\textit{Fizz Buzz} je problem koji je osmišljen za intervjuisanje kandidata za posao. Treba napisati program koj štampa brojeve od 1 do 100 pri čemu, ako je broj deljiv sa 3 tada umesto tog broja ispisuje \textit{Fizz}, ako je deljiv sa 5 ispisuje \textit{Buzz}, dok ako je deljiv i sa 3 i sa 5 ispisuje \textit{FizzBuzz}.
 
+\begin{lstlisting}[caption={Fizz Buzz\cite{fizzBuzz}},frame=single, label=primer]
+let (|Fizz|Buzz|FizzBuzz|Other|) n =
+    match (n % 3, n % 5) with
+    | 0, 0 -> FizzBuzz
+    | 0, _ -> Fizz
+    | _, 0 -> Buzz
+    | _ -> Other n
 
-\section{Upoznavanje sa F\texttt{\#}}
+let fizzBuzz =
+    function
+    | Fizz -> "Fizz"
+    | Buzz -> "Buzz"
+    | FizzBuzz -> "FizzBuzz"
+    | Other n -> n.ToString()
 
-F\texttt{\#} je zamišljen kao jezik sa razumljivom i čitljivom sintaksom i kao takav lakim za održavanje. Programeri "Microsoft" kompanije su se potrudili da ovaj jezik bude intuitivan i prijemčljiv svim programerima. Ono što na prvi pogled vidimo jeste da je sintaksa čista. Naime F\texttt{\#} ne koristi tačku-zarez za kraj izraza niti vitičaste zagrade za označavanje bloka.
-\\
-\begin{lstlisting}
-module Ispis =
-    printfn "Blok pravimo uvlacenjem izraza"
-    printfn "Ne koristimo ;"
+seq { 1..100 } |> Seq.map fizzBuzz|> Seq.iter (printfn "%s")
 \end{lstlisting}
 
-Navedene osobine F\texttt{\#} čine k\^{o}d kompaktnijim i konciznijim. Pa tako možemo u 3 reda da izdvojimo, kvadriramo i saberemo sve parne brojeve.
-\\
-\begin{lstlisting}
-module SumaKvadriranihParnihBrojeva =
-    let kvadrat x = x * x
-    let paran x = x % 2 = 0
-    [1..10] |> List.filter paran |> List.map kvadrat |> List.sum |> printfn "sum=%d"
-\end{lstlisting}  
+Naveden primer sadrži korisničko difinisani šablon koji prepozanje 4 moguća obrasca. Obrazac je dat u obliku para (\textit{touple}) pri čemu je četvrti obrazac \textit{wildcard} i vraća \textit{Other} zajedno sa brojem sa kojim se podudara. Šablon dalje koristimo u \textit{pattern matching} izrazu koji nam vraća niske za ispis. Na kraju sprovodimo sekvencu od 1 do 100 kroz \textit{Seq.map} koja primenjuje \textit{pattern matching} nad tom sekvencom i dobijeni rezultat ispisujemo.
 
-Ono što u oba primera vidimo jeste ključna reč \textbf{module}. Ona grupiše vrednosti, funkcije, tipove u jednu grupu čime dobijamo logičku celinu i smanjujemo mogućnost da dođe do konflikta imena. Ukoliko ne navedemo modul, F\texttt{\#} implicitno smešta u podrazumevani modul koji se zove kao i ime datoteke sa velikim početnim slovom. Takođe ako želimo da pristupimo drugom modulu koristimo tačku pa tako ako želimo da pristupimo funkciji iz gore navedenog modula koristimo komandu: \textit{SumaKvadriranihParnihBrojeva.kvadrat}. Možemo da uočimo čudan operator \textbf{|>}  koji se zove pajp (\textit{pipe}). On sprovodi rezultat prvog izraza u argument drugog izraza.
+\section{Jedinica mere - osobina svojstvena F\texttt{\#}}
+Jedinica mere (\textit{Units of Measure}) svojstvena samo F\texttt{\#} je mehanizam koji omogućava da se numeričkim tipovima pridruže dodatne informacije i na taj način spreče potencijalne greške pri radu sa različitim mernim jedinicama \cite{unitsOfMeasure}. U nastavku je dat demonstrativni program koji računa godišnju zaradu u evrima.
+\begin{lstlisting}[caption={Primer jedinice mere\cite{unitsOfMeasureExample}},frame=single, label=primer]
+[<Measure>] type rsd
+[<Measure>] type eur
+[<Measure>] type hour
+[<Measure>] type week
+[<Measure>] type year
 
-\subsection{Sve je izraz}
-F\texttt{\#} je jezik zasnovan na izrazima ({\em expression-based} \cite{bookOfFs}). To znači da svaki delić F\texttt{\#} programa može biti evaluiran. Gore govorivši o pajpu namerno sam spomenuo izraze a ne funkcije jer je ovde svaka funkcija izraz što znači da svaka funkcija vraća vrednost. Dodatno i sam konstrukt \textbf{if...else} je izraz. To možemo da vidimo u sledećoj modifikaciji gore navedenog k\^{o}da.
-\\
- \begin{lstlisting}
-module SumaKvadriranihParnihBrojeva =
-    let kvadrat x = x * x
-    let paran x =  if x % 2 = 0 then  true else false
-    [1..10] |> List.filter paran |> List.map kvadrat |> List.sum |> printfn "sum=%d"
-\end{lstlisting} 
+let hoursBilledPerWeek = 40.0<hour/week>
+let weeksWorkedPerYear = 35.0<week/year>
+let rsdPerHour = 1000.0<rsd/hour>
+let exchangeRate = 0.008547<eur/rsd>
 
-Naredbom \textbf{let} vezujemo promenljivu za vrednost. Na prvu ruku može pogrešno da se zaključi da je reč o običnoj dodeli. Za razliku od nekih drugih programskih jezika u F\texttt{\#} je podrazumevano povezivanje imutabilno tj. nije je moguće promeniti tokom izvršavanja programa. To za posledicu ima odsustvo sporednog efekta (\textit{side-effect}). Ukoliko želimo mutabilno povezivanje, tj. ukoliko želimo da tokom izvršavanje menjamo vrednost, dodajemo ključnu reč \textbf{mutable} pa je sintaksa \textbf{let mutable}. U našem primeru koristimo istu ključnu reč za definisanje funkcije što može da bude zbunjujuće. Naime jedina razlika između obične vrednosti i funkcije je u tomše što funkcija mora da se primeni na argument kako bi bila evaluirana. Dodatno, funkcija iako nije primenjena na argument, može da bude argument nekih drugih funkcija. Takve funkcije su poznate kao funkcije višeg reda. Tako u potipsu funkcije \textit{List.filter} koju koristimo u našem primeru stoji \textit{List.filter : ('T -> bool) -> 'T list -> 'T list} gde možemo videti da je prvi argument \textit{('T -> bool)} ustvari funkcija koja vraća \textit{bool} vrednost. Ovaj koncept je u biti funkcionalnog razmišljanja.
+let eurPerYear = rsdPerHour * hoursBilledPerWeek * weeksWorkedPerYear * exchangeRate
 
+let bonus = 500.0<eur/year>
 
+printfn "%f" (eurPerYear + bonus)
 
-\subsection{Briga o tipovima}
-Oni koji imaju iskustva sa drugim programskim jezicima mogu da zapaze da se nigde u k\^{o}du ne navode tipovi. Iako tip može da se eksplicitno navede sam programski jezik poseduje mehanizam za dedukciju tipova. Preciznije, kompajler može na osnovu upotrebe i pojavljivanja vrednosti da zaključi koji je tip u pitanju. F\texttt{\#} je statički tipiziran jezik pa se dedukcija tipova odvija u fazi kompilacije. U našem primeru kompajler zaključuje na osnovu date liste \textit{[1..10]} da se radi o celim brojevima pa donosi zaključak da se i množenje odvija nad celim brojevima i da se kao rezultat dobijaju celi brojevi. Ukoliko uzmemo listu sa razlomljenim brojevima kompajler prijavljuje grešku.      \\
- \begin{lstlisting}
-module SumaKvadriranihParnihBrojeva =
-    let kvadrat x = x * x
-    let paran x =  if x % 2 = 0 then  true else false
-    [1.2; 4.1; 6.3; 7.4] |> List.filter paran  |> List.map kvadrat |> List.sum |> printfn "sum=%f"
-    
-    // Type mismatch. Expecting a 'float -> bool' but given a 'int -> bool'
-\end{lstlisting} 
+// Output: 12465.8
 
-Na osnovu liste sa razlomljenim brojevima kompajler zaključuje da funkcija koja se prosleđuje funkciji \textit{List.filter} treba da operiše sa float vrednostima. Kako je operator za ostatak definisan nad celim brojevima potpis funkcije  \textit{paran} je \textit{int -> bool} što dovodi do konflikta. Ovde smo mogli da vidimo da F\texttt{\#} nema implicitnu konverziju i da svako nepodudaranje tipova prijavljuje kompajlersku grešku.  
-
-
-
-\subsection{Korisnički tipovi}
-Videli smo da se mehanizam za dedukciju tipova pokazuje i kao sigurnosni mehanizam koji sprečava i obaveštava programera o problemima sa tipovima (u fazi kompilacije) čime sprečava greške u fazi izvršavanja. Ova osobina nas štiti od potencijalnih problema prilikom definisanja korisničkih tipova. 
+\end{lstlisting}
+Jedinica mere se definiše kao \textbf{[<Measure>] type} nakon koje sledi njen naziv. U našem primeru imamo vremenske jedinice (sat, vikend i godina) kao i jedinice koje označavaju valutu (dinar i evro). Dalje pri definisanju promenljivih dodatno pišemo informaciju o jedinici pa tako ako definišemo zaradu po satu dopisujemo \textbf{<rsd/hour>}. Program na kraju ispisuje zaradu sa godišnjim bonusom. \\
+Ukoliko bi promenili 9. liniju koda i stavili suprotan odnos valuta, tj vrednost evra u odnosu na dinar došlo bi do greške u fazi kompilacije. 
+\begin{lstlisting}[caption={Promenjen odnos valuta},frame=single, label=primer, firstnumber=9]
+let exchangeRate = 117.0<rsd/eur>
+\end{lstlisting}
+\begin{lstlisting}[caption={Kompajler prepoznaje grešku},frame=single, label=primer]
+Error: The unit of measure 'eur/year' does not match the unit of measure 'rsd ^ 2/(eur year)'
+\end{lstlisting}
+Daljom proverom vidimo da ako na ovaj način definišemo odnos valuta moramo da izmenimo formulu. Ukoliko u 12. liniji koda, umesto što množimo sa kursnom razlikom, podelimo sa istom, kompajler se više neće buniti i dobićemo validnu vrednost.
+\begin{lstlisting}[caption={Ispravljena linija},frame=single, label=primer, firstnumber=12]
+let eurPerYear = rsdPerHour * hoursBilledPerWeek * weeksWorkedPerYear / exchangeRate
+\end{lstlisting}
 
 \section{Zaključak}
 \label{sec:zakljucak}
