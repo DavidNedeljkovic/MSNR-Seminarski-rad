@@ -60,46 +60,50 @@
 \maketitle
 
 \abstract{
-Dodati na kraju sazetak.}
+Ovaj rad predstavlja specifičnosti i zanimljivosti o programskom jeziku F\#. U njemu ćete pronaći podatke o njegovom istorijskom poreklu. Zatim, zašto je korisno naučiti ovaj jezik i kakve sve mogućnost on pruža. Upoznaćete F\# kroz funkcionalno, paralelno i asinhrono programiranje. Možete pročitati zašto je .NET platforma važna za ovaj jezik i kako je ona nastala. Saznaćete kako instalirati i pokrenuti ovaj jezik na Windows i Linux operativnim sistemima. Na {\em Fizz Buzz} problemu predstavljena je ukratko sintaksa jezika F\#. Opisan je mehanizam {\em 'Units of Measure'} koji se u ovom jeziku može koristiti.}
 
 \tableofcontents
+\addtocontents{toc}
+{\setcounter{tocdepth}{1}}
 
 \newpage
 
 \section{Uvod}
 \label{sec:uvod}
 
-Dodati na kraju uvod u temu i obavezno izmeniti trenutni radni naslov.
+F\# je programski jezik koji danas ima veoma široku upotrebu. Pronašao je svoju primenu u raznim oblastima među kojima su i bioinformatika, finansijsko modelovanje, statistika, baze podataka i mnoge druge. Nastao je velikim trudom svog autora, {\em Don Syme}-a, koji je želeo da preusmeri jezike iz familije strogo tipiziranih funkcionalnih jezika na .NET platformu. Ova platforma je razvijena u okviru kompanije {\em Microsoft} i danas ima veoma široku upotrebu. Zahvaljujući tome ovaj jezik je kompatibilan sa svim jezicima koje platforma .NET podržava što pruža jako velike mogućnosti. Jezik je pretežno funkcionalan, ali podržava još mnogo paradigmi među kojima su i paralelna i asinhrona. Postoji širok izbor okruženja za rad koja se mogu koristi za kreiranje programa u ovom programskom jeziku. 
+
+Cilj nam je bio da izdvojimo neke posebne karakteristike jezika koje ga izdvajaju od ostalih. Prikazali smo kroz zanimljive primere svedenu sintaksu koje ovaj jezik poseduje, a koja je dovoljno moćna da reši i složene matematičke probleme. Želeli smo da zaintrigiramo i motivišemo čitaoca za izučavanje i istraživanje F\#-a, kao i jezika koji su sa njim kompatibilni.
 
 \section{Poreklo programskog jezika F\#}
 \label{sec:poreklo}
 
 U 2018. godini F\# opisan je u dokumentaciji kao "funkcionalni programski jezik koji se pokreće na .NET platformi" \cite{early_history}, ali odakle je on potekao?
 
-Istorija programskog jezika F\# datira još od 1970. godine pa sve do danas. U ranim 70-im godinama na Univerzitetu u Edinburgu Robin Milner sa još nekoliko svojih kolega razvija jezik ML (Meta-Language) baziran na programskom jeziku LISP. Njegova onsnovna namena bila je pragmatičnog karaktera. Osmišljen je da pomogne u dokazivanju LCF (Logical computable functions) \cite{Milner:1972:LCF:891954} teorema. ML jezik je koren svih jezika koji pripadaju familiji strogo tipiziranih funkcionalnih jezika, kao npr: Miranda, Haskell, Standard ML, Ocaml, EdinburghML, ReasonML, PureScript, a među njima i F\#.
+Istorija programskog jezika F\# datira još od 1970. godine pa sve do danas. U ranim 70-im godinama na Univerzitetu u Edinburgu Robin Milner sa još nekoliko svojih kolega razvija jezik ML ({\em Meta-Language}) baziran na programskom jeziku LISP. Njegova onsnovna namena bila je pragmatičnog karaktera. Osmišljen je da pomogne u dokazivanju LCF ({\em Logical computable functions}) \cite{Milner:1972:LCF:891954} teorema. ML jezik je koren svih jezika koji pripadaju familiji strogo tipiziranih funkcionalnih jezika, kao npr: {\em Miranda, Haskell, Standard ML, Ocaml, EdinburghML, ReasonML, PureScript}, a među njima i F\#.
 
 Sve do danas ključne ideje ove familije jezika ostaju osnova jezika F\# koji se nadograđivao kasnije iz dana u dan. 
 
-Tokom 80-ih godina dolazi do velike ekspanzije u kompjuterskoj industriji. Kako su se brzo razvijali softverski alati tako su se takođe pojavljivali novi jezici i programske paradigme. U tom periodu i Microsoft doživljava veliku ekspanziju kao kompanija koja razvija operativne sisteme i aplikacije. Međutim, u ovom periodu, a najviše u kasnim 80-im godinama pojavljuje se novi, objektno-orjentisani talas razmišljanja u programiranju koji veoma utiče na razvoj softvera.
+Tokom 80-ih godina dolazi do velike ekspanzije u kompjuterskoj industriji. Kako su se brzo razvijali softverski alati tako su se takođe pojavljivali novi jezici i programske paradigme. U tom periodu i {\em Microsoft} doživljava veliku ekspanziju kao kompanija koja razvija operativne sisteme i aplikacije. Međutim, u ovom periodu, a najviše u kasnim 80-im godinama pojavljuje se novi, objektno-orjentisani talas razmišljanja u programiranju koji veoma utiče na razvoj softvera.
 
-Početkom 90-ih godina, dok je Microsoft težio da održi monopol na tržištu i dok je u fokusu i dalje bila objektno-orjentisana paradigma, strogo tipizirani funkcionalni jezici bili su manje aktivni i okrenuti su ka razvitku na drugim poljima. Njihova primena uglavnom je imala ulogu u pronalaženju bagova, održavanju sistema i verifikaciji hardvera i softvera. Primeri jezika koji su se koristili za izgradnju ovakvih sistema su: Edinburgh ML, Standard ML, Ocaml, Caml Light, LISP. Takođe, neki funkcionalni jezici razvijeni su u cilju istraživanja u okviru paralelnog programiranja, kao što su Parallel ML i vrsta paralelnog Haskell-a \cite{early_history}. 
+Početkom 90-ih godina, dok je {\em Microsoft} težio da održi monopol na tržištu i dok je u fokusu i dalje bila objektno-orjentisana paradigma, strogo tipizirani funkcionalni jezici bili su manje aktivni i okrenuti su ka razvitku na drugim poljima. Njihova primena uglavnom je imala ulogu u pronalaženju bagova, održavanju sistema i verifikaciji hardvera i softvera. Primeri jezika koji su se koristili za izgradnju ovakvih sistema su: {\em Edinburgh ML, Standard ML, Ocaml, Caml Light, LISP}. Takođe, neki funkcionalni jezici razvijeni su u cilju istraživanja u okviru paralelnog programiranja, kao što su {\em Parallel ML} i vrsta paralelnog {\em Haskell}-a \cite{early_history}. 
 
 \subsection{Zašto je nastao jezik F\#?}
 \label{subsec:nastanak}
 
-Tokom 90-ih godina Microsoft razvija .NET \cite{microsoft_.net,early_history} platformu za razvoj softvera. Ideja je bila da se omogući međusobna kompatibilnost više programskih jezika, odnosno da svaki jezik podržan na ovoj platformi može da koristi kôd nekog drugog jezika platforme. Glavni cilj Microsoft-a bio je da se na ovoj platformi podrži što veći broj jezika iz različitih paradigmi. 
+Tokom 90-ih godina {\em Microsoft} razvija .NET \cite{microsoft_.net,early_history} platformu za razvoj softvera. Ideja je bila da se omogući međusobna kompatibilnost više programskih jezika, odnosno da svaki jezik podržan na ovoj platformi može da koristi kod nekog drugog jezika platforme. Glavni cilj {\em Microsoft}-a bio je da se na ovoj platformi podrži što veći broj jezika iz različitih paradigmi. 
 
-U okviru ovoga Don Syme razija projekat SML.NET koji je za ideju imao preusmeravanje Standard ML-a na .NET. Sistem je imao visok kvalitet, ali nije bio usvojen od strane programera. Početkom 2000-ih platforma .NET je već uveliko zaživela, ali za jezik SML.NET nije bilo većeg interesovanja. Autor je imao veliku želju da implementira strogo tipiziran funkcionalni jezik na način koji bi zainteresovao veliki broj programera. U razmatranje ulazi i jezik OCaml, ali prethodno dolazi do pokušaja implementacije Haskell-a za .NET. Ovaj pokušaj bio je samo delimično uspešan i primenjen na malim programima. Rad na daljoj implementaciji je zaustavljen.
+U okviru ovoga {\em Don Syme} razija projekat SML.NET koji je za ideju imao preusmeravanje {\em Standard ML}-a na .NET. Sistem je imao visok kvalitet, ali nije bio usvojen od strane programera. Početkom 2000-ih platforma .NET je već uveliko zaživela, ali za jezik SML.NET nije bilo većeg interesovanja. Autor je imao veliku želju da implementira strogo tipiziran funkcionalni jezik na način koji bi zainteresovao veliki broj programera. U razmatranje ulazi i jezik {\em OCaml}, ali prethodno dolazi do pokušaja implementacije {\em Haskell}-a za .NET. Ovaj pokušaj bio je samo delimično uspešan i primenjen na malim programima. Rad na daljoj implementaciji je zaustavljen.
 
-U decembru 2001. godine Don Syme u razmatranje vraća jezik OCaml i razvija projekat Caml.NET koji će se kasnije preimenovati u F\#.
+U decembru 2001. godine {\em Don Syme} u razmatranje vraća jezik {\em OCaml} i razvija projekat Caml.NET koji će se kasnije preimenovati u F\#.
 
-Inicijalna ideja F\# programskog jezika bila je jednostavna. Trebalo je da poveže prednosti OCaml programskog jezika sa prednostima .NET platforme. 2002. godine pojavljuje se prva verzija F\# 0.5 koja bila je slabo primećena. Don Syme 2004. godine nastavlja intenzivno da razvija ovaj jezik, a početkom 2005. godine izbacuje prvu potpunu verziju F\#-a \cite{early_history}.
+Inicijalna ideja F\# programskog jezika bila je jednostavna. Trebalo je da poveže prednosti {\em OCaml} programskog jezika sa prednostima .NET platforme. 2002. godine pojavljuje se prva verzija F\# 0.5 koja bila je slabo primećena. {\em Don Syme} 2004. godine nastavlja intenzivno da razvija ovaj jezik, a početkom 2005. godine izbacuje prvu potpunu verziju F\#-a \cite{early_history}.
 Poslednja aktuelna verzija jezika je F\# 4.1 \cite{fsharp}.
 
 \subsection{Koji programski jezici su najviše uticali na razvoj jezika F$\#$?}
 \label{subsec:uticaj}
 
-Najveći značaj za razvoj jezika F\# imaju jezik SML (Standard ML) i CAML (Categorical Abstarct Machine Language) porodica jezika koja je razvijana na Nacionalnom institutu za istraživanje informatike i automatizacije u Francuskoj 1994. godine \cite{Harrop:2008:FS:1481410}. U okviru ovog projekta pod nazivom “Cristal project” razvija se jezik Objective Caml koji ima veoma visoke performanse i naučnici ga koriste na Linux i MAC OS X platformama. Kao što je već ranije opisano, jezik OCaml i .NET platforma imali su najveći uticaj na razvoj jezika F\#. Na slici \ref{fig:stablo} može se videti deo razvojnog stabla koji ovo prikazuje.
+Najveći značaj za razvoj jezika F\# imaju jezik SML ({\em Standard ML}) i CAML ({\em Categorical Abstarct Machine Language}) porodica jezika koja je razvijana na Nacionalnom institutu za istraživanje informatike i automatizacije u Francuskoj 1994. godine \cite{Harrop:2008:FS:1481410}. U okviru ovog projekta pod nazivom {\em “Cristal project”} razvija se jezik {\em Objective Caml} koji ima veoma visoke performanse i naučnici ga koriste na Linux i MAC OS X platformama. Kao što je već ranije opisano, jezik {\em OCaml} i .NET platforma imali su najveći uticaj na razvoj jezika F\#. Na slici \ref{fig:stablo} može se videti deo razvojnog stabla koji ovo prikazuje.
 
 \begin{figure}[h!]
 \begin{center}
@@ -113,7 +117,7 @@ Najveći značaj za razvoj jezika F\# imaju jezik SML (Standard ML) i CAML (Cate
 \section{Primena i mogućnosti}
 \label{sec:primena}
 
-Snaga F\# programskog jezika leži u svedenoj sintaksi koja omogućava laku čitljivost kôda, kao i efikasan razvoj programa koji zahtevaju primenu složenih matematičkih algoritama. Jezik omogućava brzo generisanje prototipova i njihovu brzu transformaciju u produkcioni kôd. Kôd napisan u F\#-u lako se može paralelizovati, što je posebno značajno danas kada svi novi računari imaju više jezgara. F\# danas ima široku primenu u obradi baza podataka, finansijskog modelovanja, statistici i bioinformatici. Takodje, domen primene svakodnevno raste.
+Snaga F\# programskog jezika leži u svedenoj sintaksi koja omogućava laku čitljivost koda, kao i efikasan razvoj programa koji zahtevaju primenu složenih matematičkih algoritama. Jezik omogućava brzo generisanje prototipova i njihovu brzu transformaciju u produkcioni kod. Kod napisan u F\#-u lako se može paralelizovati, što je posebno značajno danas kada svi novi računari imaju više jezgara. F\# danas ima široku primenu u obradi baza podataka, finansijskog modelovanja, statistici i bioinformatici. Takodje, domen primene svakodnevno raste.
 
 F\# je jezik koji ima pretežno funkcionalne karakteristike, ali on je svoju primenu pronašao u još mnogo vrsta programiranja. Neki od njih su: imperativno, objektno-orjentisano, paralelno, distribuirano, asinhrono, meta programiranje, veb programiranje, skript programiranje, analitičko programiranje, i sl. Danas se on može koristiti na velikom broju sistema, kao što su: Linux, MAC, Windows, Android, iOS, i sl. O ovome će biti više reči u nastavku. 
 
@@ -350,7 +354,7 @@ let eurPerYear = rsdPerHour * hoursBilledPerWeek * weeksWorkedPerYear / exchange
 \section{Zaključak}
 \label{sec:zakljucak}
 
-Sta je zakljucak celog rada.
+Već nekoliko puta smo naglasili da je F\# jezik velikih mogućnosti. Ovim radom predstavili smo neke zanimljive koncepte koje on poseduje, ali se nismo bavili osnovama koje mogu pomoći u učenju ovog jezika. Ako smo uspeli da zaintrigiramo čitaoca, savetujemo učenje ovog jezika ili unapređivanje znanja o njemu ukoliko se već susretao sa njim i ranije. Rad nije bio namenjen tome. U literaturi koju smo koristili postoji mnogo knjiga, članaka i sajtova na ovu temu koji u tome mogu pomoći. Osim toga, postoji još puno lako dostupne literature na slične teme.
 
 \addcontentsline{toc}{section}{Literatura}
 \appendix
