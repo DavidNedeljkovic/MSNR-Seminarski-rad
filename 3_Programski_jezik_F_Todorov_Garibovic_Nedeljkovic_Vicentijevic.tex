@@ -313,10 +313,11 @@ let fizzBuzz =
 seq { 1..100 } |> Seq.map fizzBuzz|> Seq.iter (printfn "%s")
 \end{lstlisting}
 
-Navedeni primer sadrži korisničko difinisani šablon koji prepoznaje 4 moguća obrasca. Obrazac je dat u obliku para (\textit{touple}) pri čemu je četvrti obrazac \textit{wildcard} i vraća \textit{Other} zajedno sa brojem koji odgovara tom obrascu. Šablon dalje koristimo u \textit{pattern matching} izrazu koji nam vraća niske za ispis. Na kraju sprovodimo sekvencu od 1 do 100 kroz \textit{Seq.map} koja primenjuje \textit{pattern matching} nad svakim elementom date sekvence i ispisuje dobijeni rezultat.
+Navedeni primer sadrži korisničko difinisani šablon koji prepoznaje 4 moguća obrasca. Obrazac je dat u obliku para (\textit{tuple}) pri čemu je četvrti obrazac \textit{wildcard} i vraća \textit{Other} zajedno sa brojem koji odgovara tom obrascu. Šablon dalje koristimo u \textit{pattern matching} izrazu koji nam vraća niske za ispis. Na kraju sprovodimo sekvencu od 1 do 100 kroz \textit{Seq.map} koja primenjuje \textit{pattern matching} nad svakim elementom date sekvence i zamenjuje ga odgovarajućom niskom. Konačno funkcija \textit{Seq.iter} iterira kroz sekvencu i ispisuje rezultat.
 
 \section{Jedinica mere - osobina svojstvena jeziku F\texttt{\#}}
 Jedinica mere (\textit{Units of Measure}) svojstvena samo F\texttt{\#} je mehanizam koji omogućava da se numeričkim tipovima pridruže dodatne informacije i na taj način spreče potencijalne greške pri radu sa različitim mernim jedinicama \cite{unitsOfMeasure}. U nastavku je dat demonstrativni program koji računa godišnju zaradu u evrima.
+
 \begin{lstlisting}[caption={Primer jedinice mere\cite{unitsOfMeasureExample}},frame=single, label=primer]
 [<Measure>] type rsd
 [<Measure>] type eur
@@ -338,15 +339,19 @@ printfn "%f" (eurPerYear + bonus)
 // Output: 12465.8
 
 \end{lstlisting}
+
 Jedinica mere se definiše kao \textbf{[<Measure>] type} nakon koje sledi njen naziv. U našem primeru imamo vremenske jedinice (sat, vikend i godina) kao i jedinice koje označavaju valutu (dinar i evro). Dalje pri definisanju promenljivih dodatno pišemo informaciju o jedinici pa tako ako definišemo zaradu po satu dopisujemo \textbf{<rsd/hour>}. Program na kraju ispisuje zaradu sa godišnjim bonusom. \\
-Ukoliko bi promenili 10. liniju koda i stavili suprotan odnos valuta, tj vrednost evra u odnosu na dinar došlo bi do greške u fazi kompilacije. 
-\begin{lstlisting}[caption={Promenjen odnos valuta},frame=single, label=primer, firstnumber=9]
+Ukoliko bi promenili 10. liniju koda i stavili suprotan odnos valuta, tj vrednost evra u odnosu na dinar došlo bi do greške u fazi kompilacije.
+ 
+\begin{lstlisting}[caption={Promenjen odnos valuta},frame=single, label=primer, firstnumber=10]
 let exchangeRate = 117.0<rsd/eur>
 \end{lstlisting}
 \begin{lstlisting}[caption={Kompajler prepoznaje grešku},frame=single, label=primer]
 Error: The unit of measure 'eur/year' does not match the unit of measure 'rsd ^ 2/(eur year)'
 \end{lstlisting}
+
 Daljom proverom vidimo da ako na ovaj način definišemo odnos valuta moramo da izmenimo formulu. Ukoliko u 12. liniji koda, umesto što množimo sa kursnom razlikom, podelimo sa istom, kompajler se više neće buniti i dobićemo validnu vrednost.
+
 \begin{lstlisting}[caption={Ispravljena linija},frame=single, label=primer, firstnumber=12]
 let eurPerYear = rsdPerHour * hoursBilledPerWeek * weeksWorkedPerYear / exchangeRate
 \end{lstlisting}
