@@ -116,11 +116,7 @@ Najveći značaj za razvoj jezika F\# imaju jezik SML ({\em Standard ML}) i CAML
 \section{Primena i mogućnosti}
 \label{sec:primena}
 
-<<<<<<< HEAD
 Snaga F\# programskog jezika leži u svedenoj sintaksi koja omogućava laku čitljivost koda, kao i efikasan razvoj programa koji zahtevaju primenu složenih matematičkih algoritama. Jezik omogućava brzo generisanje prototipova i njihovu brzu transformaciju u produkcioni kôd. Kôd napisan u F\#-u lako se može paralelizovati, što je posebno značajno danas kada svi novi računari imaju više jezgara. F\# danas ima široku primenu u obradi baza podataka, finansijskog modelovanja, statistici i bioinformatici. Takodje, domen primene svakodnevno raste.
-=======
-Snaga F\# programskog jezika leži u svedenoj sintaksi koja omogućava laku čitljivost koda, kao i efikasan razvoj programa koji zahtevaju primenu složenih matematičkih algoritama. Jezik omogućava brzo generisanje prototipova i njihovu brzu transformaciju u produkcioni kôd. Kod napisan u F\#-u lako se može paralelizovati, što je posebno značajno danas kada svi novi računari imaju više jezgara. F\# danas ima široku primenu u obradi baza podataka, finansijskog modelovanja, statistici i bioinformatici. Takodje, domen primene svakodnevno raste.
->>>>>>> 8a4183b7707cbf2ec20fd7b0cf947ac7bf369b4b
 
 F\# je jezik koji ima pretežno funkcionalne karakteristike, ali on je svoju primenu pronašao u još mnogo vrsta programiranja. Neki od njih su: imperativno, objektno-orjentisano, paralelno, distribuirano, asinhrono, meta programiranje, veb programiranje, skript programiranje, analitičko programiranje, i sl. Danas se on može koristiti na velikom broju sistema, kao što su: Linux, MAC, Windows, Android, iOS, i sl. O ovome će biti više reči u nastavku. 
 
@@ -149,15 +145,9 @@ Neke od osnovnih osobina programskog jezika F\# su:\\
 	 
 	$\bullet$ Korišćenjem ključne reči \textbf{let} definišemo promenljive koje se ne mogu menjati što kôd čini sigurnijim od slučajnih promena. Ukoliko smo sigurni da će se vrednost promenljive menjati, uz let se dodaje ključna reč \textbf{mutable}.
 	 
-<<<<<<< HEAD
 	$\bullet$ Struktura \textbf{switch/case} je u F\# zamenjena {\em pattern matching}-om\cite{expertFS}.
 	 
 $\bullet$ Pored uobičajenih tipova podataka podržanih u većini programskih jezika, F\# podržava novi tip \textbf{option type}, koji označava vrednost promenljive koja može da postoji a i ne mora. Dve moguće vrednosti ovog tipa su: {\em Some(x)} i {\em None}.
-=======
-	$\bullet$ Struktura \textbf{switch/case} je u F\# zamenjena pattern matching-om\cite{expertFS}.
-	 
-	$\bullet$ Pored uobičajenih tipova podataka podržanih u većini programskih jezika, F\# podržava novi tip \textbf{option type}, koji označava vrednost promenljive koja može da postoji a i ne mora. Dve moguće vrednosti ovog tipa su: {\em Some(x)} i {\em None}.
->>>>>>> 8a4183b7707cbf2ec20fd7b0cf947ac7bf369b4b
 
 \section{Funkcionalno programiranje}
 
@@ -208,7 +198,6 @@ Razlog zbog kojeg izučavamo asinhrono i paralelno programiranje se ogleda u mak
 
 Opisuje programe i operacije koje se izvršavaju u pozadini i završavaju nakon nekog vremena (na primer: preuzimanje novog email-a bez čestog proveravanja). Asinhroni programi na .NET platformi su pisani korišćenjem modela asinhronog programiranja (APM) \cite{apm}. APM je obrazac koji deli asinhrone operacije na dve metode: {\em BeginOperation} i {\em EndOperation}. Kada se pozove {\em BeginOperation} operacije počinju sa asinhronim izvršavanjem koje po završetku pozivaju {\em EndOperation} koji dohvata rezultat asinhronog izračunavanja. Problemi koji nastaju korišćenjem ovog obrasca su: \\
 
-<<<<<<< HEAD
 $\bullet$ Izostavljanjem poziva {\em EndOperation} dolazi do neželjenih efekata i curenja memorije. 
  
 $\bullet$ Ukoliko se nekoliko asinhronih izračunavanja vrati nazad teško je pratiti tok programa.
@@ -216,15 +205,6 @@ $\bullet$ Ukoliko se nekoliko asinhronih izračunavanja vrati nazad teško je pr
 $\bullet$ Posledica prethodnog problema uzrokuje pojavu špageti programiranja. \\
 
 Umesto APM-a sve asinhrone operacije mogu se izvršavati pomoću F\# biblioteke asinhronih radnih tokova \cite{progFs}. Ključna reč {\em async} se koristi za kreiranje bloka u koji se smešta kôd za izvršavanje korišćenjem {\em let!} i {\em do!} operatora. Rezultat ovog izvršavanja će biti tipa {\em Async<T>} \cite{progFs}.
-=======
-	$\bullet$ Izostavljanje poziva {\em EndOperation} dolazi do neželjenih efekata i curenja memorije. 
- 
-	$\bullet$ Ukoliko se nekoliko asinhronih izračunavanja vrati nazad teško je pratiti tok programa.
-	
-	$\bullet$ Posledica prethodnog problema uzrokuje pojavu špageti programiranja.
-
-Umesto APM-a sve asinhrone operacije mogu se izvršavati pomoću F\# biblioteke asinhronih radnih tokova\cite{progFs}. Ključna reč {\em async} se koristi za kreiranje bloka u koji se smešta kôd za izvršavanje, korišćenjem {\em let!} i {\em do!} operatora. Rezultat ovog izvršavanja će biti tipa {\em Async<T>}\cite{progFs}.
->>>>>>> 8a4183b7707cbf2ec20fd7b0cf947ac7bf369b4b
 
 \subsection{Paralelno programiranje}
 
@@ -233,17 +213,10 @@ Paralelno programiranje se koristi za podelu poslova na n delova kako bi se dobi
 
 \section{Radni okviri}
 
-<<<<<<< HEAD
 Najpoznatiji i najznačajniji radni okvir (eng.~{\em framework}) za ovaj programski jezik je .NET koji je ranije već pomenut. .NET je pojednostavio razvoj RP({\em Reactive Programming}) \cite{RPapp} aplikacija. Ovaj radni okvir je potpuno besplatan i na njemu je moguće kreirati veliki broj različitih aplikacija. On podržava veliki broj programskih jezika iz različitih paradigmi, editora i biblioteka za izgradnju mobilnih i veb aplikacija. Razvijene su dve glavne komponente za korišćenje rekurzivnog paralelnog izračunavanja na lokalnoj mreži i obe su dostupne programima na .NET platformi \cite{ppNETframework}. 
 
 Temelj .NET platforme je zajednička jezička infrastruktura CLI ({\em Common Language Infrastructure}) \cite{cli}. Pokretanje F\# koda na ovoj platformi se vrši tako što na samom početku kompajler prevodi kôd u binarni fajl koji je preveden na asemblerski jezik višeg nivoa koji se zove MSIL ({\em Microsoft Intermediate Language}) \cite{msil}. Implementacija na CLI kompajleru ovog asemblerskog koda u toku izvršavanja je mnogo brža nego da je kôd samo interpretiran i ova kompilacija se izvršava u trenutku \cite{progFs}.
 Kôd koji je preveden u MSIL i izvršen u trenutku, predstavlja kôd za upravljanje za razliku od kodova pisanih na drugim programskim jezicima kao što su C ili C++.   
-=======
-Najpoznatiji i najznačajniji radni okvir (eng. framework) za ovaj programski jezik je .NET koji je ranije već pomeut. .NET je pojednostavio razvoj RP(Reactive Programming)\cite{RPapp} aplikacija. Ovaj radni okvir je potpuno besplatan i na njemu je moguće kreirati veliki broj različitih aplikacija. On podržava veliki broj programskih jezika iz različitih paradigmi, editora i biblioteka za izgradnju mobilnih i veb aplikacija. Razvijene su dve glavne komponente za korišćenje rekurzivnog paralelnog izračunavanja na lokalnoj mreži i obe su dostupne programima na .NET platformi\cite{ppNETframework}. 
-
-Temelj .NET platforme je zajednička jezička infrastruktura CLI ({\em Common Language Infrastructure})\cite{cli}. Pokretanje F\# koda na ovoj platformi se vrši tako što na samom početku kompajler prevodi kôd u binarni fajl koji je preveden na asemblerski jezik višeg nivoa koji se zove MSIL ({\em Microsoft Intermediate Language})\cite{msil}. Implementacija na CLI kompajleru ovog asemblerskog koda u toku izvršavanja je mnogo brža nego da je kôd samo interpretiran i ova kompilacija se izvršava u trenutku\cite{progFs}.
-Kôd koji je preveden u MSIL i izvršen u trenutku, predstavlja kôd za upravljanje za razliku od kodova pisanih na progamskim jezicima kao što su C ili C++ koji su sirovi kodovi.   
->>>>>>> 8a4183b7707cbf2ec20fd7b0cf947ac7bf369b4b
 
 Postoje neke prednosti za prolazak kroz CLI ili upravljani kôd, a ne direktnog kompiliranja na mašinski nivo:	\\
 
@@ -264,15 +237,9 @@ U ovom poglavlju biće opisano uputstvo za instalaciju programskog jezika F\# na
 
 \subsection{Uputstvo za Windows}
 
-<<<<<<< HEAD
 Na ovom operativnom sistemu postoje tri načina za instalaciju F\#-a. To su: {\em Visual studio} \cite{vStud}, {\em Visual Studio Code} \cite{vStudCode} i {\em JetBrains Rider} \cite{jetBrains}.
 
 Pokretanje F\# koda na Windows-u se vrši tako što prvo označite kôd ili deo koda koji želite da se izvrši. Zatim, desnim klikom na miša izaberite opciju {\em pošalji interaktivno} (eng.~{\em send to interactive}) ukoliko je interaktivni prozor tj. prozor na kom se ispisuje rezultat otvoren ili iskoristite prečicu \textbf{Alt + Enter}.
-=======
-Na ovom operativnom sistemu postoje tri načina za instalaciju F\#-a. To su: {\em Visual studi}o\cite{vStud}, {\em Visual Studio Code}\cite{vStudCode} i {\em JetBrains Rider}\cite{jetBrains}.
-
-Pokretanje F\# koda na Windows-u se vrši tako što prvo označite kôd ili deo koda koji želite da se izvrši zatim desnim klikom na miša izaberite opciju pošalji interaktivno (“send to interactive”) ukoliko je interaktivni prozor tj prozor na kom se ispisuje rezultat otvoren ili iskoristite prečicu Alt+Enter.
->>>>>>> 8a4183b7707cbf2ec20fd7b0cf947ac7bf369b4b
 
 \subsubsection{Visual studio}
 	
@@ -325,15 +292,9 @@ sudo apt-get install fsharp
 \end{lstlisting}
  
 \section{Fizz Buzz problem}
-<<<<<<< HEAD
 \textit{Fizz Buzz} je problem koji je osmišljen za intervjuisanje kandidata koji konkurišu za posao programera. Treba napisati program koji štampa brojeve od 1 do 100 pri čemu, ako je broj deljiv sa 3 tada umesto tog broja ispisuje \textit{Fizz}, ako je deljiv sa 5 ispisuje \textit{Buzz}, dok ako je deljiv i sa 3 i sa 5 ispisuje \textit{FizzBuzz}. \\
 
 \begin{lstlisting}[caption={Fizz Buzz \cite{fizzBuzz}},frame=single, label=fizzbuzz]
-=======
-\textit{Fizz Buzz} je problem koji je osmišljen za intervjuisanje kandidata koji konkurišu za posao programera. Treba napisati program koji štampa brojeve od 1 do 100 pri čemu, ako je broj deljiv sa 3 tada umesto tog broja ispisuje \textit{Fizz}, ako je deljiv sa 5 ispisuje \textit{Buzz}, dok ako je deljiv i sa 3 i sa 5 ispisuje \textit{FizzBuzz}.
-%dodaj reference u bib fajl 
-\begin{lstlisting}[caption={Fizz Buzz\cite{fizzBuzz}},frame=single, label=primer]
->>>>>>> 8a4183b7707cbf2ec20fd7b0cf947ac7bf369b4b
 let (|Fizz|Buzz|FizzBuzz|Other|) n =
     match (n % 3, n % 5) with
     | 0, 0 -> FizzBuzz
@@ -350,7 +311,6 @@ let fizzBuzz =
 
 seq { 1..100 } |> Seq.map fizzBuzz|> Seq.iter (printfn "%s")
 \end{lstlisting}
-<<<<<<< HEAD
 
 Navedeni primer \ref{fizzbuzz} sadrži korisničko definisani šablon koji prepoznaje četiri moguća obrasca. Obrazac je dat u obliku para (eng.~{\em tuple}) pri čemu je četvrti obrazac \textit{wildcard} i vraća \textit{Other} zajedno sa brojem koji odgovara tom obrascu. Šablon dalje koristimo u \textit{pattern matching} izrazu koji nam vraća niske za ispis. Na kraju sprovodimo sekvencu od 1 do 100 kroz \textit{Seq.map} koja primenjuje \textit{pattern matching} nad svakim elementom date sekvence i zamenjuje ga odgovarajućom niskom. Konačno, funkcija \textit{Seq.iter} iterira kroz sekvencu i ispisuje rezultat.
 
@@ -358,15 +318,6 @@ Navedeni primer \ref{fizzbuzz} sadrži korisničko definisani šablon koji prepo
 Jedinica mere (eng.~{\em Units of Measure}), svojstvena samo za F\#, je mehanizam koji omogućava da se numeričkim tipovima pridruže dodatne informacije i na taj način spreče potencijalne greške pri radu sa različitim mernim jedinicama \cite{unitsOfMeasure}. U nastavku je dat demonstrativni program \ref{jedinice} koji računa godišnju zaradu u evrima. \\
 
 \begin{lstlisting}[caption={Primer jedinice mere \cite{unitsOfMeasureExample}},frame=single, label=jedinice]
-=======
-%ispraviti definisani umesto difinisani, tupple umesto tuple. Dodaj beline izmedju koda i teksta posto sada imamo mesta i za # smo mi svugde gore pisali \# ne moras da je pises kao sto si ti stavio da bi sve izgledalo kao da je jedna osoba pisala.
-Navedeni primer sadrži korisničko difinisani šablon koji prepoznaje 4 moguća obrasca. Obrazac je dat u obliku para (\textit{tuple}) pri čemu je četvrti obrazac \textit{wildcard} i vraća \textit{Other} zajedno sa brojem koji odgovara tom obrascu. Šablon dalje koristimo u \textit{pattern matching} izrazu koji nam vraća niske za ispis. Na kraju sprovodimo sekvencu od 1 do 100 kroz \textit{Seq.map} koja primenjuje \textit{pattern matching} nad svakim elementom date sekvence i zamenjuje ga odgovarajućom niskom. Konačno funkcija \textit{Seq.iter} iterira kroz sekvencu i ispisuje rezultat.
-
-\section{Jedinica mere - osobina svojstvena jeziku F\texttt{\#}}
-Jedinica mere (\textit{Units of Measure}) svojstvena samo F\texttt{\#} je mehanizam koji omogućava da se numeričkim tipovima pridruže dodatne informacije i na taj način spreče potencijalne greške pri radu sa različitim mernim jedinicama \cite{unitsOfMeasure}. U nastavku je dat demonstrativni program koji računa godišnju zaradu u evrima.
-
-\begin{lstlisting}[caption={Primer jedinice mere\cite{unitsOfMeasureExample}},frame=single, label=primer]
->>>>>>> 8a4183b7707cbf2ec20fd7b0cf947ac7bf369b4b
 [<Measure>] type rsd
 [<Measure>] type eur
 [<Measure>] type hour
@@ -388,33 +339,20 @@ printfn "%f" (eurPerYear + bonus)
 
 \end{lstlisting}
 
-<<<<<<< HEAD
 Jedinica mere se definiše kao \textbf{[<Measure>] type} nakon čega sledi njen naziv. U našem primeru imamo vremenske jedinice (sat, vikend i godina) kao i jedinice koje označavaju valutu (dinar i evro). Dalje, pri definisanju promenljivih, dodatno pišemo informaciju o jedinici. Zbog toga, ako definišemo zaradu po satu dopisujemo \textbf{<rsd/hour>}. Program na kraju ispisuje zaradu sa godišnjim bonusom. 
 
 Ukoliko bi promenili 10. liniju koda i stavili suprotan odnos valuta \ref{valuta}, tj. vrednost evra u odnosu na dinar, došlo bi do greške u fazi kompilacije \ref{greska}. \\
  
 \begin{lstlisting}[caption={Promenjen odnos valuta},frame=single, firstnumber=10, label = valuta]
-=======
-Jedinica mere se definiše kao \textbf{[<Measure>] type} nakon koje sledi njen naziv. U našem primeru imamo vremenske jedinice (sat, vikend i godina) kao i jedinice koje označavaju valutu (dinar i evro). Dalje pri definisanju promenljivih dodatno pišemo informaciju o jedinici pa tako ako definišemo zaradu po satu dopisujemo \textbf{<rsd/hour>}. Program na kraju ispisuje zaradu sa godišnjim bonusom. \\
-Ukoliko bi promenili 10. liniju koda i stavili suprotan odnos valuta, tj vrednost evra u odnosu na dinar došlo bi do greške u fazi kompilacije.
- 
-\begin{lstlisting}[caption={Promenjen odnos valuta},frame=single, label=primer, firstnumber=10]
->>>>>>> 8a4183b7707cbf2ec20fd7b0cf947ac7bf369b4b
 let exchangeRate = 117.0<rsd/eur>
 \end{lstlisting}
 \begin{lstlisting}[caption={Kompajler prepoznaje grešku},frame=single, label=greska]
 Error: The unit of measure 'eur/year' does not match the unit of measure 'rsd ^ 2/(eur year)'
 \end{lstlisting}
 
-<<<<<<< HEAD
 Daljom proverom vidimo da, ako na ovaj način definišemo odnos valuta, moramo da izmenimo formulu. Ukoliko u 12. liniji koda \ref{12linija}, umesto što množimo sa kursnom razlikom, podelimo sa istom, kompajler se više neće buniti i dobićemo validnu vrednost. \\
 
 \begin{lstlisting}[caption={Ispravljena linija},frame=single, firstnumber=12,label={12linija}]
-=======
-Daljom proverom vidimo da ako na ovaj način definišemo odnos valuta moramo da izmenimo formulu. Ukoliko u 12. liniji koda, umesto što množimo sa kursnom razlikom, podelimo sa istom, kompajler se više neće buniti i dobićemo validnu vrednost.
-
-\begin{lstlisting}[caption={Ispravljena linija},frame=single, label=primer, firstnumber=12]
->>>>>>> 8a4183b7707cbf2ec20fd7b0cf947ac7bf369b4b
 let eurPerYear = rsdPerHour * hoursBilledPerWeek * weeksWorkedPerYear / exchangeRate
 \end{lstlisting}
 
