@@ -1,0 +1,554 @@
+ % !TEX encoding = UTF-8 Unicode
+
+\documentclass[a4paper]{report}
+
+\usepackage[T1,T2A]{fontenc} % enable Cyrillic fonts
+\usepackage[utf8x,utf8]{inputenc} % make weird characters work
+\usepackage[english,serbianc,serbian]{babel}
+\usepackage{amssymb}
+\usepackage{makeidx}
+
+\usepackage{color}
+\usepackage{url}
+\usepackage[unicode]{hyperref}
+\hypersetup{colorlinks,citecolor=green,filecolor=green,linkcolor=blue,urlcolor=blue}
+
+\newcommand{\odgovor}[1]{\textcolor{blue}{#1}}
+
+\begin{document}
+
+
+\title{F\# na .NET platformi\\ \small{Tijana Todorov, Tamara Garibović,\\ David Nedeljković, Mihajlo Vićentijević}}
+
+\maketitle
+
+\tableofcontents
+
+\chapter{Recenzent \odgovor{--- ocena: 4} }
+
+
+\section{O čemu rad govori?}
+% Напишете један кратак пасус у којим ћете својим речима препричати суштину рада (и тиме показати да сте рад пажљиво прочитали и разумели). Обим од 200 до 400 карактера.
+F\# je funkcionalni jezik nastao na .NET platformi što mu pruža kompatibilnost sa jezicima na istoj. Pored funkcionalne, ima podršku za koncepte raznih paradigmi. Omogućava asinhrono i paralelno izvršavanje i ima jednostavnu sintaksi. Primenjuje se u statistici, finansijskom modelovanju, bazama podataka, a radni okviri su pretežno pravljeni kako bi olakšali primenu u web programiranju.
+\section{Krupne primedbe i sugestije}
+% Напишете своја запажања и конструктивне идеје шта у раду недостаје и шта би требало да се промени-измени-дода-одузме да би рад био квалитетнији.
+\begin{itemize}
+    \item U poglavlju 7 nije jasno podvučena crta izmedju .NET-a kao platforme, okvira, kao i ostalih navedenih web okvira. Ukoliko se ne varam radni okviri nisu isto što i platforma? Ako sam dobro razumeo F\# se pokreće na .NET platformi u svakom slučaju (iako koristimo druge okvire poput Suave, Fable itd...)?
+    \item U sadržaju fale podsekcije. \\ \odgovor{Sadržaj je skraćen zbog prostora na prvoj strani. Na predavanju je naglašeno da to sme da se koristi.}
+    \item Razmisliti o preimenovanju poglavlja 5 tako da se iz naslova vidi da je akcenat da poklapanju obrazaca. \\ 
+    \odgovor {Sugestija je prihvaćena. Naslov je promenjen u "Funckionalno programinranje - Pattern matching".}
+    \item Postoje pasusi koji imaju samo jednu rečenicu kao i mešanje vremena i aktiva/pasiva. 
+    \\ \odgovor{Pasusi sa jednom rečenicom su prepravljeni. Problem sa aktivom i pasivom nije konkretno naveden gde se javlja. Biće ispravljen kod sugestije drugog recenzenta.}
+    \item U poglavlju 3 bi možda mogla biti dodata neka referenca koja bi prikazala da se jezik stvarno primenjuje u navedenim oblastima (ili makar nekoj od njih).
+   % \\ \odgovor{TRESNJA - dodati reference za primenu}
+    \item U poglavlju 4, Bezbednost - da li .NET platforma temeljno proverava programe? '...if/elif/else u svakoj grani imaju povratnu vrednost' da li to znači da ta struktura kao izraz ima povratnu vrednost?
+    \\ \odgovor{Primedba prihvaćena. Rečenica je preformulisana da bi bilo jasnije kako se vrši provera ispravnosti programa. Kako sve ovo funkcioniše, spada u viši nivo poznavanja verifikacije softvera u šta autor nije detaljno zalazio.
+    Struktura if/elif/else kao izraz uvek ima povratnu vrednost. U sledećoj stavci je objašnjeno kako povratna vrednost funkcioniše i bez ključne reči return. }
+% David proveri podatak o .NET platformi bezbednosti.   
+    
+
+\end{itemize}
+\section{Sitne primedbe}
+% Напишете своја запажања на тему штампарских-стилских-језичких грешки
+\begin{itemize}
+\item Prva rečenica u apstraktu bi možda mogla biti napisana 'Ovaj rad predstavlja specifičnosti i zanimljivosti programskog jezika F\#'
+\\ \odgovor{Primedba nije prihvaćena zbog toga što zanimljivosti i specifičnosti mogu da budu o nečemu.}
+\item U prvom poglavlju, 2. pasus, '...svedenu sintaksu kojU'. Možda je lepše reći '...motivišemo čitaoca NA izučavanje...'.
+Takodje 'svedena sintaksa' se pojavljuje u više poglavlja, možda treba objasniti tu reč.
+\\ \odgovor{Izmenjena  je reč kojU. Nije prihvaćena primedba za motivaciju NA izučavanje jer je ispravno da kažemo da možemo motivisati nekoga ZA nešto. Objašnjenje šta znači pojam svedena sintaksa može se naći u poglavlju 3. Prihvatamo primedbu i zamenićemo reč svedena sa jednostavna u uvodu kako bi pojam bio jasniji.}
+\item U poglavlju 3, 2. pasus '...on je svoju primenu pronašao u još mnogo VRSTA programiranja.' zameniti reč vrsta.
+\\ \odgovor{Primedba nije prihvaćena. Eventualno bi mogla da se stavi reč tip, ali to predstavlja sinonim za reč vrsta.}
+\item Pattern matching negde preveden negde ne i tako se pojavjuje u više poglavlja.
+\\ \odgovor{Svuda u tekstu je pattern matching preveden na srpski jezik.}
+\item U poglavlju 5 '...kombinuje mehanizme dekompozicije...' šta su ovi mehanizmi? Razmisliti o preformulisanju cele rečenice.
+\\ \odgovor{Primedba nije prihvaćena. Pojam dekompozicije je opste poznat u programiranju. Više informacija mogu se naći na referenci ispod primera Listing 1.}
+\item U poglavlju 6, '...dodatne složenosti...', dodati koje vrste složenosti jer može biti pogrešno protumačeno (vremenske, prostorne, složenosti izvornog koda, infrastrukture). 'Izvršavanje koda se odvija pomoću ... biblioteka.'?
+\\ \odgovor{Primedba prihvaćena. Dodato je da se misli na vremensku složenost, mada se iz konteksta celog pasusa to može zaključiti. Preformulisana je rečenica sa bibliotekama i nitima. }
+\item U poglavlju 7 razmisliti o preformulisanju rečenice 'Implementacija na CLI kompajleru ovog asemblerskog koda u toku izvršavanja je mnogo brža nego da je kôd samo interpretiran i ova kompilacija se izvršava u trenutku'. Takodje, pojasniti šta znaci kod za upravljanje i reći zasto je poželjno da programer zna kako sakupljač smeća radi.
+\\ \odgovor{Prihvaćena primedba. Rečenica je preformulisana. }
+%dodati odgovor ya sakupljač smeća
+ 
+\item U poglavlju 8.1.1, '...Visual studio ... above' je verovatno artefakt prevoda, jer mislim da kao verzija ne postoji.
+\\ \odgovor{Prihvaćena primedba. Prepravljeno u tekstu.} 
+
+\item 'Jedinice mere ... različitim mernim jedinicama' (možda staviti primer u zagradi - cm, m, l, hour, week...)
+\\ \odgovor{Primedba nije prihvaćena zbog toga što već postoji zagrada u kojoj je tremin na engleskom. Takođe, u pasusu ispod primera postoje navedene jedinice mere u zagradi koje su korišćene u primeru.} 
+
+\end{itemize}
+\section{Provera sadržajnosti i forme seminarskog rada}
+% Oдговорите на следећа питања --- уз сваки одговор дати и образложење
+
+\begin{enumerate}
+\item Da li rad dobro odgovara na zadatu temu?\\
+\odgovor{
+Odgovara, jezik F\# njegove osobine, karakteristike, kao i istorijski razvoj i primeri koda su opisani.
+}
+\item Da li je nešto važno propušteno?\\
+\odgovor{
+Pošto cilj samog rada nije bio da se korisnik upozna sa osnovama jezika (što je navedeno u zaključku) ne bih rekao da je išta izostavljeno.
+}
+\item Da li ima suštinskih grešaka i propusta?\\
+\odgovor{
+Osim potencijalnih koje su navedene u delu Krupne primedbe i sugestine, nema.
+}
+\item Da li je naslov rada dobro izabran?\\
+\odgovor{
+Jeste, korektno apstrahuje sadržaj rada.
+}
+\item Da li sažetak sadrži prave podatke o radu?\\
+\odgovor{
+Sadrži, najavljena su poglavlja i ono o čemu će u njima biti pisano.
+}
+
+\item Da li je rad lak-težak za čitanje?\\
+\odgovor{
+Rad nije bio kompleksan za čitanje, pjomovi su pretežno poznati iako bi neki mogli biti pojašnjeni.(svedena sintaksa...)
+}
+
+\item Da li je za razumevanje teksta potrebno predznanje i u kolikoj meri?\\
+\odgovor{
+Na nivou srednjoškolske informatike, npr. za pojmove povratna vrednost, naredbe grananja (if/elif/else strukture), špageti programiranje.
+}
+
+\item Da li je u radu navedena odgovarajuća literatura?\\
+\odgovor{
+Referenca pod brojem 22 je blog post u 23 fali godina. Literatura nije sortirana po imenu prvog autora, ni po redosledu navodjenja. U knjigama fale poglavlja ili stranice.
+}
+
+\item Da li su u radu reference korektno navedene?\\
+\odgovor{
+Sve reference vode do literature. Koristi se numerički stil citiranja.
+}
+
+\item Da li je struktura rada adekvatna?\\
+\odgovor{
+Poglavlja i podpoglavlja su korektno formatirana, ali fale u sadržaju. Takodje neki pasusi sadrže samo jednu rečenicu.
+}
+
+\item Da li rad sadrži sve elemente propisane uslovom seminarskog rada (slike, tabele, broj strana...)?\\
+\odgovor{
+Sadrži sliku koja izgleda kao originalna (Google Image search potvrđuje), tabelu i korektan broj strana. Sadrzi 23 reference među kojima su prisutne knjige, naučni radovi kao i web linkovi, rad ima 11 strana, sadrži potrebna poglavlja.
+}
+
+\item Da li su slike i tabele funkcionalne i adekvatne?\\
+\odgovor{
+Jesu, naslovi su korektno formatirani i pozicionirani (ispod slike i iznad tabele), na njih se referiše u tekstu, čitljive su i imaju korektne dimenzije.
+}
+
+\end{enumerate}
+
+\section{Ocenite sebe}
+% Napišite koliko ste upućeni u oblast koju recenzirate: 
+% a) ekspert u datoj oblasti
+% b) veoma upućeni u oblast
+% c) srednje upućeni
+% d) malo upućeni 
+% e) skoro neupućeni
+% f) potpuno neupućeni
+% Obrazložite svoju odluku
+d) Malo upućen. Nikada nisam koristio jezik F\#. Imao sam malo iskustva sa funkcionalnim programskim jezicima, pretežno kroz kurseve na fakultetu. Rad sa .NET platformom je postojao jedino kroz programski jezik C\# i desktop aplikacije.
+
+
+\chapter{Recenzent \odgovor{--- ocena: 4} }
+
+
+\section{O čemu rad govori?}
+% Напишете један кратак пасус у којим ћете својим речима препричати суштину рада (и тиме показати да сте рад пажљиво прочитали и разумели). Обим од 200 до 400 карактера.
+%Cilj rada je da prikaže specifičnosti i zanimljivosti o programskom jeziku F\# i mogućnostima koje pruža.
+F \#, pretežno funkcionalan i strogo tipiziran jezik, se razvio 2001. zahvaljujući Microsoft-ovoj platformi .NET, čija je osnovna svrha da omogući međusobnu kompatibilnost više programskih jezika. Kodovi su lako čitljivi sa svedenom sintaksom, podržan je option type, a strukture grananja imaju povratnu vrednost. Do pojave špageta programiranja dolazi izostavljanjem jednog od asinhronih operatora.
+
+\section{Krupne primedbe i sugestije}
+% Напишете своја запажања и конструктивне идеје шта у раду недостаје и шта би требало да се промени-измени-дода-одузме да би рад био квалитетнији.
+
+\begin{itemize}
+    \item Postoje pasusi koji sadrže samo jednu rečenicu.
+    \\ \odgovor{Prihvaćena primedba. Izmenjeno je.} 
+    \item Poslednja rečenica uvoda "Želeli smo da zaintrigiramo..." je suvišna. Podrazumeva se da autor želi da zaintrigira nekog, zato i piše rad.
+    \\ \odgovor{Primedba je delimično prihvaćena. Rečenica je izbačena iz uvoda, s tim što je dodata kao cilj rada. Smatramo da je potrebno navesti u uvodu šta smo radom želeli da postignemo.}
+    \item Zaključak bi mogao biti bolje sročen:
+    \begin{itemize}
+    \item Suvišno je "Već nekoliko puta smo naglasili..." . Ako je već nekoliko puta naglašeno, onda nije potrebno i opet.
+    \item "Ako smo uspeli da zaintrigiramo čitaoca..." ne bi trebalo uopšte pominjati. Dobar rad podrazumeva da je čitalac zaintrigiran, a ovakva rečenica navodi na pomisao da autor nema poverenja u to da je napisao dobar rad.
+    \item "Rad nije bio namenjen..." tome je suvišno. Postoji već rečenica u zaključku koja objašnjava čime se rad ne bavi.
+    \item Dva puta je naglašeno da postoji mnogo dostupne literature.
+    \end{itemize}
+    \odgovor {Primedba prihvaćena. Ceo zaključak je izmenjen. Suvišne i ponovljene rečenice su izbačene ili zamenjene.}
+\end{itemize}
+
+
+\section{Sitne primedbe}
+% Напишете своја запажања на тему штампарских-стилских-језичких грешки
+
+\begin{itemize}
+    \item Ispod sažetka bi se mogle naći ključne reči
+    \\ \odgovor{Primedba nije prihvaćena jer baš u sažetku treba da se nalaze ključne reči, na šta smo se mi i fokusirali, a ne da se nalaze ispod. Sažetak četo ulazi u bibliografske baze za pretragu radova.}
+    \item Posle uvoda i zaključka bi trebala da dođe nova strana (trebalo bi da budu sami na strani)
+    \\ \odgovor{Primedba nije prihvćena. Ovo nije bilo naglašeno kao pravilo. Pri tom bi to zauzelo mnogo prostora koji je bio potreban za pisanje razrade.}
+    \item Uočeno je mešanje prezenta i perfekta ili aktiva i pasiva na sledećim mestima:
+    \begin{itemize}
+        \item Odeljak 2, pasus 2
+        \item Odeljak 2, pasus 4
+        \item Podnaslov 2.1, pasus 1
+        \item Podnaslov 2.1, pasus 2
+        \item Podnaslov 2.1, pasus 4
+    \end{itemize}
+    \odgovor{Primedba prihvaćena. Ispravljeno je da sve bude u perfektu.}   
+
+    \item Mislim da nije ispravno da se kaže da "Istorija datira od..."  neke godine. Neki pojam može da datira, a istorija ne, jer je ona sačinjena od toka događaja.
+    \\ \odgovor{Primedba se ne prihvata. Formulacija je provereno gramatički ispravna.}    
+
+    \item Tekst nije konzistentan: Pattern matching se negde prevodi na srpski, a negde ne
+	\\ \odgovor{Primedba prihvaćena. Ispravljeno je sve na srpski jezik.}    
+    \item Uvod: "Zahvaljujući tome ovaj jezik je kompatibilan sa svim jezicima koje platforma .NET podržava što pruža jako velike mogućnosti."  - iza "podržava" treba da stoji zarez. (Zarezi su izostavljeni u dobrom delu teksta. Savet: neko od autora bi trebalo da prođe korz tekst i da ga "ispegla".)    
+	\\ \odgovor{Primedba prihvaćena. Dodat je zarez svuda gde smo primetili grešku.}    
+    \item Odeljak 2, pasus 5: "Njihova primena uglavnom je imala ulogu u..." - Primena ne može imati ulogu, ovo bi trebalo preformulisati.
+	\\ \odgovor{Primedba prihvaćena. Rečenica preformulisana.}    
+    \item Odeljak 3, pasus 1: "F\# danas ima... finansijskog modelovanja" - umesto "finansijskom modelovanju"
+	\\ \odgovor{Primedba prihvaćena. Ispravljen tekst.}    
+    \item Odeljak 3, pasus drugi, rečenica prva: "... on je svoju primenu pronašao u još mnogo vrsta programiranja" - u još mnogim vrstama programiranja. Dodatak: pošto je vrsta programiranja ženskog roda, sledeća rečenica treba da počinje sa "Neke", a ne "Neki".
+    \\ \odgovor{Primedba prihvaćena. Izmenjen je rod.}
+    \item Odeljak 4, osobina "kompatibilan" - treba da stoji "mogu da se pozivaju i..."
+	\\ \odgovor{Primedba prihvaćena. Rečenica je preformulisana tako da se jasno vidi na šta se misli.}    
+    \item Odeljak 6: Dva puta se pominje da je cilj ubrzanje izvršavanja programa.
+    \\ \odgovor{Primedba prihvaćena. Recenica u kojoj se ponovio vec pomenuti cilj je preformulisana.} 
+    \item Odeljak 7, pasus 4: "sakupljač smeća" - navesti u zagradama kako glasi originalni termin preuzet iz engleskog jezika, ili preformulisati već ponuđeni na srpskom jeziku.
+    \\ \odgovor{Prihvaćena primedba. Dodato je.} 
+\end{itemize}
+
+
+\section{Provera sadržajnosti i forme seminarskog rada}
+% Oдговорите на следећа питања --- уз сваки одговор дати и образложење
+\begin{enumerate}
+\item Da li rad dobro odgovara na zadatu temu?\\
+\odgovor{
+Da. Rad pokriva sledeće:
+\begin{itemize}
+    \item Nastanak i istorijski razvoj, mesto u razvojnom stablu, uticaji drugih programskih jezika
+    \item Osnovna namena programskog jezika, svrha i mogućnosti
+    \item Osnovne osobine ovog programskog jezika, podržane paradigme i koncepti
+    \item Najpoznatija okruženja (framework) za korišćenje ovog jezika i njihove karakteristike
+    \item Instalacija i uputstvo za pokretanje na Linux/Windows operativnim sistemima
+    \item Primer jednostavnog koda i njegovo objašnjene
+\end{itemize}
+}
+
+\item Da li je nešto važno propušteno?\\
+\odgovor{
+Kao što je gore navedeno, osnovna tematika je pokrivena. Ako je ispuštena neka važna specifičnost samog jezika, nisam u stanju to da uočim, jer sam potpuno neupućena u datu oblast.
+}
+
+\item Da li ima suštinskih grešaka i propusta?\\
+\odgovor{
+Odogovr na ovo pitanje dat je, što se tiče tematike u prethodnom pitanju, a što se tiče forme u odgovorima na pitanja pod rednim brojem 8 i 10, kao i odeljku "Krupne primedbe i sugestije".
+}
+
+\item Da li je naslov rada dobro izabran?\\
+\odgovor{
+Da. Naslov je "F\# na .NET platformi", rad govori o F\#, a kroz rad je pokazano zašto je .NET platforma važna za ovaj jezik.
+}
+
+\item Da li sažetak sadrži prave podatke o radu?\\
+\odgovor{
+Da. U sažetku je izneto sa čime će se čitalac susresti tokom čitanja rada, što se pokazalo tačnim.
+}
+
+\item Da li je rad lak-težak za čitanje?\\
+\odgovor{
+Rad je uglavnom čitljiv. Strani termini su ispravno prevedeni, pojmovi koji se koriste su upotrebljeni u pravom značenju, rečenice su razgvornog tipa, ali imaju formlani oblik. Čitljivost otežavaju izostavljeni zarezi u složenim rečenicama i pogrešno upotrebljeni padeži. Nejasnoće nastale prilikom čitanja:
+\begin{itemize}
+\item Odeljak 2.2. - prva rečenica: Da li potiče samo jedna porodica, ili ih je više? Ako je samo jedna treba navesti koja, a ako ih je više, onda bi trebalo koristiti množine: porodice, koje, su...
+\item Odeljak 2.2. - druga rečenica: Performanse u kom smislu: vremenske, memorijske...?
+\item Odeljak 4, osobina "bezbednost": Ko to proverava programe?
+\item Odeljak 6.1, prva rečenica: Ko opisuje? Pretpostavka je da je to asinhrono progrmairanje, ali pasus ne bi trebalo da počinje kao nastavak (pod)naslova, ili kao odgovor na isti.
+\item Odeljak 7, pasus drugi, rečenica treća:
+\begin{itemize}
+\item Kako se asemblerski kod implementira na kompajleru?
+\item Zar CLI nije infrastruktura, a ne kompajler?
+\item Kako se kompilacija izvršava u trenutku?
+\end{itemize}
+\item Odeljak 7, pasus drugi, poslednja rečenica: Šta je kod za upravljanje i čime upravlja?
+\item Odeljak 7, pasus treći, rečenica prva: Kakav prolazak kroz kod? Pretpostavljam liniju po liniju?
+\item Odeljak 7, pasus četvrti: Pasus je kontradiktoran - Sakupljač smeća pomaže programeru da ne misli o oslobađanju memorije, ali već u sledećoj rečenici se navodi da bi programer trebalo da zna kako sakupljač radi. Zašto?
+\end{itemize}
+}
+
+\item Da li je za razumevanje teksta potrebno predznanje i u kolikoj meri?\\
+\odgovor{
+Iako rad ne govori o osnovama F\#-a, nije potrebno predznanje o ovoj oblasti da bi se sadržina razumela, osim možda osnovnog programerskog predznanja. Pojmovi i funkcionalnosti specifične za sam jezik su objašnjeni u radu, te za njih nije potrebno predznanje.
+}
+
+\item Da li je u radu navedena odgovarajuća literatura?\\
+\odgovor{
+Delimičmo. Sva literatura je vezana za oblast koja se obrađuje. Nijedan časopis nije na listi spornih časopisa.
+Zamereke:
+\begin{itemize}
+    \item Literatura nije sortirana, ni po nazivu autora ni hronološki
+    \item Literatura pod rednim brojem 22 je blog
+    \item Literaturi pod rednim brojem 23 fali godina izdavanja, s obzirom na to da je knjiga
+    \item Člancima nisu navedeni brojevi strana na kojima se nalaze u odgovarajućem časopisu
+\end{itemize}
+}
+
+\item Da li su u radu reference korektno navedene?\\
+\odgovor{
+Da. Na svaku referencu se poziva barem jednom u tekstu, kada se klikne na link, stiže se i do onoga na šta link referiše.
+}
+
+\item Da li je struktura rada adekvatna?\\
+\odgovor{
+Delimično. Naslovi i podnaslovi su odgovarajući i smisleno raspoređeni. Pasusi imaju optimalnu veličinu i rečenice u okviru njih su grupisane tematski.
+Zamerke:
+\begin{itemize}
+    \item Neki pasusi sadrže samo jednu rečenicu
+    \item Rad sadrži potpoglavlja, ali se one ne pojavljuju u sadržaju
+    \item Odeljak 5: Ako se već ne govori o funkcionalnom programiranju u ovom odeljku, zašto se onda zove "Funkcionalno programiranje"?
+\end{itemize}
+}
+
+\item Da li rad sadrži sve elemente propisane uslovom seminarskog rada (slike, tabele, broj strana...)?\\
+\odgovor{
+Da. Rad ispunjava sledeće uslove:
+\begin{itemize}
+    \item Staje na 10 stranica
+    \item Naslov, sažetak i sadržaj staju na jednu stranu
+    \item Sadrži uvod, zaključak i literaturu
+    \item Na svaku sliku, tabelu, referencu (čiji je broj veći od minimalnih 7) se referiše barem jednom u tekstu
+    \item Korišćen je predloženi šablon
+\end{itemize}
+}
+
+\item Da li su slike i tabele funkcionalne i adekvatne?\\
+\odgovor{
+Da. Postoji jedna slika i jedna tabela, na koju se ispravno referiše u tekstu (klikom na referencu se stiže do slike) i one su u vezi sa oblašću koja se obrađuje.
+}
+\end{enumerate}
+
+\section{Ocenite sebe}
+% Napišite koliko ste upućeni u oblast koju recenzirate: 
+% a) ekspert u datoj oblasti
+% b) veoma upućeni u oblast
+% c) srednje upućeni
+% d) malo upućeni 
+% e) skoro neupućeni
+% f) potpuno neupućeni
+% Obrazložite svoju odluku
+
+\odgovor{Potpuno sam neupućena u obrađivanu oblast.}
+
+
+\chapter{Recenzent \odgovor{--- ocena: 5} }
+
+
+\section{O čemu rad govori?}
+% Напишете један кратак пасус у којим ћете својим речима препричати суштину рада (и тиме показати да сте рад пажљиво прочитали и разумели). Обим од 200 до 400 карактера.
+Rad govori o istorijatu i osnovnim konceptima jezika F\#, pri čemu je akcenat stavljen 
+na poklapanje obrazaca, asinhrono i paralelno programiranje. Detaljno je opisan njegov
+nastanak kroz uticaje drugih jezika i želju da se 
+funkcionalni jezik s jakom proverom tipova omogući na .NET platformi.
+Čitalac je upoznat sa osnovnim karakteristikama F\# i kroz nekoliko primera
+uveden u njegovu sintaksu.
+
+
+\section{Krupne primedbe i sugestije}
+% Напишете своја запажања и конструктивне идеје шта у раду недостаје и шта би требало да се промени-измени-дода-одузме да би рад био квалитетнији.
+Uvod bi trebalo da sadrži pregled obrađenih tema po poglavljima 
+radi lakšeg snalaženja čitaoca u radu.
+\\ \odgovor {Primedba prihvaćena. U uvod smo dodali reference na poglavlja u kojima je detaljnije opisane navedene teme.}
+Poglavlje 2 bi se moglo unaprediti tako što bi se skratilo, 
+a dobijeni prostor u radu popuniti pričom o specifičnosti jezika,
+kao i navođenjem kratkog primera za asinhrono i/ili paralelno programiranje. 
+Time pokazati za šta je koristan, u čemu je elegantan i jednostavan jezik F\#.
+
+Ovo unapređenje moglo bi se dobiti brisanjem poglavlja 2.2 o uticaju drugih 
+programskih jezika na F\#, čime se ne bi ništa izgubilo
+pošto je o tome bilo dosta reči u prethodnom potpoglavlju,
+kao i u uvodu. U 2.1 se to i kaže ''Kao što je već ranije opisano, jezik OCaml i .NET platforma imali su najveći uticaj na razvoj jezika F\#''.
+
+Skraćivanjem poglavlja 2 o poreklu jezika, potpoglavlje 2.1 ''Zašto je nastao jezik F\#?'' ne bi moralo da postoji zasebno, već da bude deo poglavlja 2.
+U priči o poreklu nekog jezika, prirodno je da bude reči o tome zašto je nastao taj jezik i nema potrebe za većim odvajanjem, već da ceo tok priče, sažetije, 
+bude u jednom poglavlju. Time bi se olakšalo čitanje i akcentovale samo najvažnije stvari.
+\\ \odgovor {Primedba je delimično prihvaćena. Rečenica koja se ponavlja je obrisana. Poglavlje 2.2 je predviđeno da ukratko objasni i vizuelizuje razvoj jezika. Primeri za paralelno i asinhrono programiranje nisu mogli da budu ubačeni jer nisu trivijalni, a prostor je ograničen.}
+
+U poglavlju 4 se kaže da se F\# programi temeljno proveravaju pre izvršenja.
+Trebalo bi dodati na šta se tačno misli, na koji način se proveravaju?
+\\ \odgovor {Primedba prihvaćena. Rečenica je preformulisana da bi bilo jasnije kako se vrši provera ispravnosti programa. Kako sve ovo funkcioniše, spada u viši nivo poznavanja verifikacije softvera u šta autor nije detaljno zalazio.}
+
+Zaključak treba malo preformulisati. U njemu treba da bude osvrt na to šta je u radu
+urađeno, kao i kratak zaključak o prednostima, odnosno manama jezika. Tek na kraju
+treba da stoji preusmeravanje čitaoca na literaturu koja će mu pomoći u daljem 
+istraživanju i razumevanju jezika. 
+\\ \odgovor {Prihvaćena je primedba. Već je ranije izmenjeno po savetu drugog recenzenta.}
+
+\section{Sitne primedbe}
+% Напишете своја запажања на тему штампарских-стилских-језичких грешки
+
+Uočene su sitne štamparske greške:
+\begin{list}{•}{}
+\item u sažetku se koriste apostrofi umesto navodnika
+\item poglavlje 3, na kraju prvog pasusa treba: ''Takođe'' umesto ''Takodje''
+\item poglavlje 7, u prvoj stavki navođenja: ''među'' umesto ''medju''
+\end{list}
+\odgovor {Primedba prihvaćena. Ispravljene štamparske greške.}  
+
+U poglavljima 2, 2.1, 8.1, 8.2, postoje pasusi koji se sastoje od samo jedne rečenice.
+Ovo se može unaprediti ili spajanjem tekućeg pasusa sa nastavkom ako to ima smisla,
+ili dodavanjem neke dopunske rečenice koja bi upotpunila pasus.\\
+\\ \odgovor {Prihvaćena primedba. Ispravljeni su pasusi.}
+\\ \odgovor {}
+Reči koje nisu nazivi firmi, proizvoda, biblioteka, ključnih reči,
+treba prevesti na srpski jezik, 
+a kod prvog pojavljivanja te reči navesti u zagradi originalni naziv i iz kog je jezika. 
+Na primer, termin poklapanje obrazaca (eng.~{\em pattern matching}) 
+je u radu preveden i koristi se, ali izmešano sa engleskom verzijom. 
+Dakle, samo treba ujednačiti stil pisanja.
+
+Predlažem sledeće prevode: merna jedinica (eng.~{\em Units of Measure}) 
+(koja je korićna kasnije, ali ne u sažetku),
+Don Sajm (eng.~{\em Don Syme}), opcioni tip (eng.~{\em optional type}).
+Kao i koršćenje reči bez navođenja porekla (ispraviti i u tabeli): 
+lista, niz, uređeni par, torka...
+Takođe, umesto ''naredni listing'' prikladnije bi bilo ''naredni primer'' 
+ili ''naredni k\^ od''. \\
+
+\odgovor {Primedba prihvaćena. Stil pisanja je ujednačen.}
+
+U poglavlju 4. u stavci ''Automatski zaključuje tipove'' sintagma ''Tipovi vrednosti''
+zbunjuje. Dovoljno je reći da se tipovi automatski zaključuju. \\
+
+\odgovor {Primedba prihvaćena. Ispravljeno na "tipovi automatski zaključuju".}
+
+U poglavlju 6, u rečenici je pomešano buduće i sadašnje vreme:
+''Mogu se potpuno iskoristiti prednosti više procesora i jezgara tako što se
+podeli jedan posao na više manjih.'' Te se može poboljšati sa:
+''Mogu se potpuno iskoristiti prednosti više procesora i jezgara tako što će se
+jedan posao podeliti na više manjih.'' 
+Poslednja rečenica prvog pasusa poglavlja 6. je već rečena na početku i može se izbaciti.
+
+\odgovor {Primedba prihvaćena. Ispravljene su date zamerke.}
+
+Na početku 6.1 rečenica bi trebalo da počne sa subjektom. 
+''Asinhrono programranje opisuje programe i operacije koje se izvršavaju...''.
+\\ \odgovor {Primedba prihvaćena. Dodat subjekat u rečenicu.}
+
+U 6.2 se govori o paralenom programiranju, pa rečenica ''Za razliku od paralelnog, 
+asinhroni tok izvršavanja je dostupan i na prethodnim verzijama .NET platforme.''
+zbunjuje i deluje da je reč o asinhronom programiranju.
+Odmah nakon toga sledi rečenica o tome šta je Task objekat.
+Bolji tok priče u ovom poglavlju mogao bi da se dobije prvo najavom 
+o čemu će biti reči, uz pominjanje nekih termina kao što je task,
+pa tek onda da sledi njihovo objašnjenje.\\
+
+\odgovor {Primedba delimično prihvaćena. Zamerka koja je navedena kao "zbunjuje i deluje da je reč o asinhronom programiranju" je preformulisana. Zamerka u vezi Task objekta nije prihvaćena jer je na početku navedena biblioteka PFX čija je osnovna struktura baš taj objekat, pa smatram da nema potrebe da ga uvodimo ranije.}
+
+
+U poglavlju 7 treba pojasniti šta znači da se kompilacija izvršava u trenutku.
+Kakvom i kom trenutku? Kao i šta je kôd za upravljanje?\\
+
+\odgovor {Primedba prihvaćena. Pasus je preformulisan i sada je jasnije napisano kada se kod izvršava, koji je to trenutak. }
+
+Prva rečenica zaključka: ''Već nekoliko puta smo naglasili da je F\# jezik velikih mogućnosti.'' zvuči prekorno prema čitaocu i treba je zameniti neutralnijom, kao što je:
+''U ovom radu govoreno je o tome kako je F\# jezik velikih mogućnosti.''
+Ova rečenica dobila bi svoju punu snagu kada bi se usvojile neke od predloga
+i te velike mogućnosti pokazale na još nekom primeru.
+\\ \odgovor {Primedba prihvaćena. Zaključak je već izmenjen i upotpunjen po savetu svih recenzenata.}
+\section{Provera sadržajnosti i forme seminarskog rada}
+% Oдговорите на следећа питања --- уз сваки одговор дати и образложење
+
+\begin{enumerate}
+\item Da li rad dobro odgovara na zadatu temu?\\
+
+Načelno da. Bez preteranog ulaženja u detalje čitalac je uveden u priču o jeziku F\#,
+ali bi ta priča mogla biti uverljivija, da čitaoca više zainteresuje za dalje istraživanje
+- zašto je F\# toliko dobar da bi bio vredan
+pažnje ovog rada?
+
+\item Da li je nešto važno propušteno?\\
+
+Da. Rad bi bio kompletniji i svrsishodniji da su dati neki kratki primeri
+uz objašnjenje o paralelnom i asihnronom programiranju. 
+Takođe bi bilo dobro pokazati kako F\# objedinjuje funkcionalnu, 
+proceduralnu paradigmu i objektnu paradigmu, što je specifično za ovaj jezik. 
+Opciono, može biti reči i o obradi grešaka.
+
+\item Da li ima suštinskih grešaka i propusta?\\
+
+U napisanom tekstu i kodu nema suštinskih grešaka.
+
+\item Da li je naslov rada dobro izabran?\\
+
+Naslov nije pogrešan, ali bi mogao biti kreativniji da bi na prvi pogled više
+zainteresovao čitaoca. Sa druge strane, naslov je dosta generičan. 
+Može da se odnosi na bilo koju priču o jeziku F\# - bilo čitava knjiga ili mali članak.
+
+\item Da li sažetak sadrži prave podatke o radu?\\
+
+Delimično. U sažetku je najavljeno da će čitalac biti upoznat sa paralelnim
+i asinhronim programiranjem, ali nije dat neki kratki, reprezentativni primer
+ove upotrebe i na koji način je specifično za jezik F\#.
+
+\item Da li je rad lak-težak za čitanje?\\
+
+Rad je lak za čitanje, osim u nekoliko delova gde bi mogao da se unapredi prethodno
+navedenim predlozima.
+
+\item Da li je za razumevanje teksta potrebno predznanje i u kolikoj meri?\\
+
+Nije. Potrebno je minimalno predznanje o funkcionalnoj paradigmi.
+Kroz rad su uglavnom svi uvedeni koncepti kao što je poklapanje obrazaca,
+paralelno i asinhrono programiranje, osnovne osobine i upustva za instalaciju
+objašnjeni čitaocu kao uvod za dalje istraživanje o jeziku F\#.
+
+\item Da li je u radu navedena odgovarajuća literatura?\\
+
+Da. Navedena je relevantna literatura o jeziku F\#, kao i veze ka korisnim
+materijalima za dalje učenje jezika.
+
+\item Da li su u radu reference korektno navedene?\\
+
+U velikoj meri da, osim u nekoliko delova gde reference nisu navođene.
+U uvodu nije navedena ni jedna referenca, a trebalo bi da bude više nego u nastavku rada, 
+jer se tu uvodi najviše novih pojmova i pokazuje upućenost autora na temu o kojoj piše. 
+Npr. za prvu rečenicu uvoda gde se kaže da F\# ima širku upotrebu, 
+treba dodati referencu koja to potvrđuje. 
+U poglavlju ''Primena i mogućnosti'' nije data ni jedna referenca
+koja potkrepljuje tvrdnje da je jezik efikasan za rešavanje složenih algoritama,
+niti je dat primer u nastavku koji to pokazuje ili neko poznato poređenje sa drugim jezicima.
+
+\item Da li je struktura rada adekvatna?\\
+
+Da, osim poglavlja 2 čija je izmena predložena na početku. Potrebno je skraćivanje
+i izacivanje potpoglavlja.
+
+\item Da li rad sadrži sve elemente propisane uslovom seminarskog rada (slike, tabele, broj strana...)?\\
+
+Da.\\
+
+\item Da li su slike i tabele funkcionalne i adekvatne?\\
+
+Da. Slika jasno pokazuje razvojno stablo jezika i uticaje kroz godine.
+Tabela dobro pokazuje poklapanje obrazaca, uz sitne napomene: 
+Tabela bi izgledala lepše (rasterećenije) bez horiontalnih linija 
+s obzirom da nema dugačkih redova. 
+Takođe, $(pat, ... ,pat)$ može navesti čitaoca da šablon $pat$ mora biti uvek isti, pa je bolje napisati $(pat_1, ... ,pat_n)$.
+
+\end{enumerate}
+
+\section{Ocenite sebe}
+% Napišite koliko ste upućeni u oblast koju recenzirate: 
+% a) ekspert u datoj oblasti
+% b) veoma upućeni u oblast
+% c) srednje upućeni
+% d) malo upućeni 
+% e) skoro neupućeni
+% f) potpuno neupućeni
+% Obrazložite svoju odluku
+Srednje upućen. 
+Postojeće znanje o funkcionalnoj paradigmi stečeno na fakultetu
+ dobra je podloga za razumevanje jezika F\#.
+Dalje unapređenje i razumevanje jezika stečeno je čitanjem relevantne literature.
+
+
+\chapter{Dodatne izmene}
+%Ovde navedite ukoliko ima izmena koje ste uradili a koje vam recenzenti nisu tražili. 
+
+\end{document}

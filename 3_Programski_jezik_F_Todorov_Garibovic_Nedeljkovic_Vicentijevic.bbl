@@ -1,9 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{ionide}
-{Ionide}.
-\newblock on-line at: \url{http://ionide.io/}.
-
 \bibitem{jetBrains}
 { JetBrains s.r.o. Developed with drive and IntelliJ IDEA}.
 \newblock {Jet Brains rider}, 2000-2019.
@@ -17,7 +13,7 @@ Smith Chris.
 \bibitem{expertFS}
 Antonio~Cisternino Don~Syme, Adam~Granicz.
 \newblock {\em Expert F\#}.
-\newblock Kinetic Publishing Services, LLC, New York, NY 10013., 2007.
+\newblock Kinetic Publishing Services, LLC, New York, NY 10013, 2007.
 
 \bibitem{fwFs}
 {F\# Software Foundation and individual contributors}.
@@ -29,6 +25,11 @@ Antonio~Cisternino Don~Syme, Adam~Granicz.
 \newblock {The F\# Language specification}, 2012-2018.
 \newblock on-line at: \url{https://fsharp.org/specs/language-spec/}.
 
+\bibitem{fizzBuzz}
+Dave Fancher.
+\newblock {\em Book of F\# Breaking Free with Managed Functional Programming}.
+\newblock No Starch Press, March 2014.
+
 \bibitem{Harrop:2008:FS:1481410}
 Jon Harrop.
 \newblock {\em F\# for Scientists}.
@@ -36,31 +37,30 @@ Jon Harrop.
 
 \bibitem{msil}
 Microsoft.
-\newblock {Assemblies in the Common Language Runtime (MSIL)}.
+\newblock {Assemblies in the Common Language Runtime (MSIL)}, 2019.
 \newblock on-line at:
   \url{https://docs.microsoft.com/en-us/dotnet/framework/app-domains/assemblies-in-the-common-language-runtime}.
 
 \bibitem{apm}
 Microsoft.
-\newblock {Asynchronous Programming Model (APM)}.
+\newblock {Asynchronous Programming Model (APM)}, 2019.
 \newblock on-line at:
   \url{https://docs.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/asynchronous-programming-model-apm}.
 
-\bibitem{microsoft_c}
-Microsoft.
-\newblock {C\# Guide}.
-\newblock on-line at:
-  \url{https://docs.microsoft.com/en-us/dotnet/csharp/index}.
-
 \bibitem{cli}
 Microsoft.
-\newblock {Get started with F\# with the .NET Core CLI}.
+\newblock {Get started with F\# with the .NET Core CLI}, 2019.
 \newblock on-line at:
   \url{https://docs.microsoft.com/en-us/dotnet/fsharp/get-started/get-started-command-line}.
 
+\bibitem{ionide}
+{Microsoft}.
+\newblock {Ionide}, 2019.
+\newblock on-line at: \url{http://ionide.io/}.
+
 \bibitem{microsoft_.net}
 Microsoft.
-\newblock {.NET framework}.
+\newblock {.NET framework}, 2019.
 \newblock on-line at:
   \url{https://dotnet.microsoft.com/learn/dotnet/what-is-dotnet}.
 
@@ -69,6 +69,12 @@ Microsoft.
 \newblock {System.Collections.Concurrent}, 2019.
 \newblock on-line at:
   \url{https://docs.microsoft.com/en-us/dotnet/api/system.collections?view=netframework-4.7.2}.
+
+\bibitem{unitsOfMeasure}
+Microsoft.
+\newblock {Tour of F\#}, 2019.
+\newblock on-line at:
+  \url{https://docs.microsoft.com/en-us/dotnet/fsharp/tour}.
 
 \bibitem{vStud}
 {Microsoft}.
@@ -101,24 +107,9 @@ Don Syme.
 \newblock {The Early History of F\#}.
 \newblock on-line at: \url{https://fsharp.org/history/hopl-draft-1.pdf}.
 
-\bibitem{unitsOfMeasure}
-{Microsoft}.
-\newblock {Tour of F\#}, 2019.
-\newblock on-line at: \url{https://docs.microsoft.com/en-us/dotnet/fsharp/tour}
-
 \bibitem{ppNETframework}
 V.~V. Vasilchikov.
 \newblock On the recursive parallel programming for the .net framework.
 \newblock {\em Automatic Control and Computer Sciences}, 2014.
-
-\bibitem{unitsOfMeasureExample}
-{Mark Heath}.
-\newblock {Avoiding Silly Mistakes with F\# Unit of Measure}, 2016.
-\newblock on-line at: \url{https://markheath.net/post/avoid-silly-mistakes-fsharp-units-of-measure}
-
-\bibitem{fizzBuzz}
-Antonio~Cisternino Don~Syme, Adam~Granicz.
-\newblock {\em The Book of F\#: Breaking Free with Managed Functional Programming}.
-\newblock No Starch Press, San Francisco, CA 94103 USA.
 
 \end{thebibliography}

@@ -60,7 +60,7 @@
 \maketitle
 
 \abstract{
-Ovaj rad predstavlja specifičnosti i zanimljivosti o programskom jeziku F\#. U njemu ćete pronaći podatke o njegovom istorijskom poreklu. Zatim, zašto je korisno naučiti ovaj jezik i kakve sve mogućnosti on pruža. Upoznaćete F\# kroz funkcionalno, paralelno i asinhrono programiranje. Možete pročitati zašto je .NET platforma važna za ovaj jezik i kako je ona nastala. Saznaćete kako instalirati i pokrenuti ovaj jezik na Windows i Linux operativnim sistemima. Na {\em Fizz Buzz} problemu predstavljena je ukratko sintaksa jezika F\#. Opisan je mehanizam {\em 'Units of Measure'} koji se u ovom jeziku može koristiti.}
+Ovaj rad predstavlja specifičnosti i zanimljivosti o programskom jeziku F\#. U njemu ćete pronaći podatke o njegovom istorijskom poreklu. Zatim, zašto je korisno naučiti ovaj jezik i kakve sve mogućnosti on pruža. Upoznaćete F\# kroz funkcionalno, paralelno i asinhrono programiranje. Možete pročitati zašto je .NET platforma važna za ovaj jezik i kako je ona nastala. Saznaćete kako instalirati i pokrenuti ovaj jezik na Windows i Linux operativnim sistemima. Na {\em Fizz Buzz} problemu predstavljena je ukratko sintaksa jezika F\#. Opisan je mehanizam mernih jedinica (eng.~{\em Units of Measure}) koji se u ovom jeziku može koristiti.}
 
 \tableofcontents
 \addtocontents{toc}
@@ -71,39 +71,32 @@ Ovaj rad predstavlja specifičnosti i zanimljivosti o programskom jeziku F\#. U 
 \section{Uvod}
 \label{sec:uvod}
 
-F\# je programski jezik koji danas ima veoma široku upotrebu. Pronašao je svoju primenu u raznim oblastima među kojima su i bioinformatika, finansijsko modelovanje, statistika, baze podataka i mnoge druge. Nastao je velikim trudom svog autora, {\em Don Syme}-a, koji je želeo da preusmeri jezike iz familije strogo tipiziranih funkcionalnih jezika na .NET platformu. Ova platforma je razvijena u okviru kompanije {\em Microsoft} i danas ima veoma široku upotrebu. Zahvaljujući tome ovaj jezik je kompatibilan sa svim jezicima koje platforma .NET podržava što pruža jako velike mogućnosti. Jezik je pretežno funkcionalan, ali podržava još mnogo paradigmi među kojima su i paralelna i asinhrona. Postoji širok izbor okruženja za rad koja se mogu koristi za kreiranje programa u ovom programskom jeziku. 
+F\# je programski jezik koji danas ima veoma široku upotrebu. Pronašao je svoju primenu u raznim oblastima među kojima su i bioinformatika, finansijsko modelovanje, statistika, baze podataka i mnoge druge, što je objašnjeno u poglavlju \ref{sec:primena}. Nastao je velikim trudom svog autora, Don Sajma (eng.~{\em Don Syme}), koji je želeo da preusmeri jezike iz familije strogo tipiziranih funkcionalnih jezika na .NET platformu. Ova platforma je razvijena u okviru kompanije {\em Microsoft} i danas ima veoma široku upotrebu. Zahvaljujući tome ovaj jezik je kompatibilan sa svim jezicima koje platforma .NET podržava, što pruža jako velike mogućnosti. Više o tome možete pronaći u poglavlju \ref{sec:poreklo}. Jezik je pretežno funkcionalan, ali podržava još mnogo paradigmi među kojima su i paralelna i asinhrona koje su objašnjene u poglavlju \ref{sec:asinhrono_paralelno}. Postoji širok izbor okruženja za rad koja se mogu koristi za kreiranje programa u ovom programskom jeziku i nešto više o njima možete pronaći u poglavlju \ref{sec:radni_okviri}. 
 
-Cilj nam je bio da izdvojimo neke posebne karakteristike jezika koje ga razlikuju od ostalih. Prikazali smo kroz zanimljive primere svedenu sintaksu koje ovaj jezik poseduje, a koja je dovoljno moćna da reši i složene matematičke probleme. Želeli smo da zaintrigiramo i motivišemo čitaoca za izučavanje i istraživanje F\#-a, kao i jezika koji su sa njim kompatibilni.
+Cilj nam je bio da izdvojimo neke posebne karakteristike jezika koje ga razlikuju od ostalih i da motivišemo čitaoca za izučavanje F\#-a. Prikazali smo kroz zanimljive primere \ref{sec:fizzbuzz} jednostvanu sintaksu koju ovaj jezik poseduje, a koja je dovoljno moćna da reši i složene matematičke probleme.
 
 \section{Poreklo programskog jezika F\#}
 \label{sec:poreklo}
 
-U 2018. godini F\# opisan je u dokumentaciji kao "funkcionalni programski jezik koji se pokreće na .NET platformi" \cite{early_history}, ali odakle je on potekao?
+U 2018. godini F\# opisan je u dokumentaciji kao {\em funkcionalni programski jezik koji se pokreće na .NET platformi} \cite{early_history}, ali odakle je on potekao? Istorija programskog jezika F\# datira još od 1970. godine pa sve do danas. U ranim 70-im godinama na Univerzitetu u Edinburgu Robin Milner sa još nekoliko svojih kolega je razvio jezik ML ({\em Meta-Language}) baziran na programskom jeziku LISP. Njegova osnovna namena bila je pragmatičnog karaktera. Osmišljen je da pomogne u dokazivanju LCF ({\em Logical computable functions}) \cite{Milner:1972:LCF:891954} teorema. ML jezik je koren svih jezika koji pripadaju familiji strogo tipiziranih funkcionalnih jezika, kao npr: {\em Miranda, Haskell, Standard ML, Ocaml, EdinburghML, ReasonML, PureScript}, a među njima i F\#. Sve do danas ključne ideje ove familije jezika ostale su osnova jezika F\# koji se nadograđivao kasnije iz dana u dan. 
 
-Istorija programskog jezika F\# datira još od 1970. godine pa sve do danas. U ranim 70-im godinama na Univerzitetu u Edinburgu Robin Milner sa još nekoliko svojih kolega razvija jezik ML ({\em Meta-Language}) baziran na programskom jeziku LISP. Njegova osnovna namena bila je pragmatičnog karaktera. Osmišljen je da pomogne u dokazivanju LCF ({\em Logical computable functions}) \cite{Milner:1972:LCF:891954} teorema. ML jezik je koren svih jezika koji pripadaju familiji strogo tipiziranih funkcionalnih jezika, kao npr: {\em Miranda, Haskell, Standard ML, Ocaml, EdinburghML, ReasonML, PureScript}, a među njima i F\#.
+Tokom 80-ih godina došlo je do velike ekspanzije u kompjuterskoj industriji. Kako su se brzo razvijali softverski alati tako su se takođe pojavljivali novi jezici i programske paradigme. U tom periodu i {\em Microsoft} je doživeo veliku ekspanziju kao kompanija koja je razvijala operativne sisteme i aplikacije. Međutim, u ovom periodu, a najviše u kasnim 80-im godinama pojavio se novi, objektno-orjentisani talas razmišljanja u programiranju koji je veoma uticao na razvoj softvera.
 
-Sve do danas ključne ideje ove familije jezika ostaju osnova jezika F\# koji se nadograđivao kasnije iz dana u dan. 
-
-Tokom 80-ih godina dolazi do velike ekspanzije u kompjuterskoj industriji. Kako su se brzo razvijali softverski alati tako su se takođe pojavljivali novi jezici i programske paradigme. U tom periodu i {\em Microsoft} doživljava veliku ekspanziju kao kompanija koja razvija operativne sisteme i aplikacije. Međutim, u ovom periodu, a najviše u kasnim 80-im godinama pojavljuje se novi, objektno-orjentisani talas razmišljanja u programiranju koji veoma utiče na razvoj softvera.
-
-Početkom 90-ih godina, dok je {\em Microsoft} težio da održi monopol na tržištu i dok je u fokusu i dalje bila objektno-orjentisana paradigma, strogo tipizirani funkcionalni jezici bili su manje aktivni i okrenuti su ka razvitku na drugim poljima. Njihova primena uglavnom je imala ulogu u pronalaženju bagova, održavanju sistema i verifikaciji hardvera i softvera. Primeri jezika koji su se koristili za izgradnju ovakvih sistema su: {\em Edinburgh ML, Standard ML, Ocaml, Caml Light, LISP}. Takođe, neki funkcionalni jezici razvijeni su u cilju istraživanja u okviru paralelnog programiranja, kao što su {\em Parallel ML} i vrsta paralelnog {\em Haskell}-a \cite{early_history}. 
+Početkom 90-ih godina, dok je {\em Microsoft} težio da održi monopol na tržištu i dok je u fokusu i dalje bila objektno-orjentisana paradigma, strogo tipizirani funkcionalni jezici bili su manje aktivni i okrenuti su ka razvitku na drugim poljima. Uglavnom su se primenjivali u pronalaženju bagova, održavanju sistema i verifikaciji hardvera i softvera. Primeri jezika koji su se koristili za izgradnju ovakvih sistema su: {\em Edinburgh ML, Standard ML, Ocaml, Caml Light, LISP}. Takođe, neki funkcionalni jezici razvijeni su u cilju istraživanja u okviru paralelnog programiranja, kao što su {\em Parallel ML} i vrsta paralelnog {\em Haskell}-a \cite{early_history}. 
 
 \subsection{Zašto je nastao jezik F\#?}
 \label{subsec:nastanak}
 
-Tokom 90-ih godina {\em Microsoft} razvija .NET \cite{microsoft_.net,early_history} platformu za razvoj softvera. Ideja je bila da se omogući međusobna kompatibilnost više programskih jezika, odnosno da svaki jezik podržan na ovoj platformi može da koristi kôd nekog drugog jezika platforme. Glavni cilj {\em Microsoft}-a bio je da se na ovoj platformi podrži što veći broj jezika iz različitih paradigmi. 
+Tokom 90-ih godina {\em Microsoft} je razvio .NET \cite{microsoft_.net,early_history} platformu za razvoj softvera. Ideja je bila da se omogući međusobna kompatibilnost više programskih jezika, odnosno da svaki jezik podržan na ovoj platformi može da koristi kôd nekog drugog jezika platforme. Glavni cilj {\em Microsoft}-a bio je da se na ovoj platformi podrži što veći broj jezika iz različitih paradigmi. 
 
-U okviru ovoga {\em Don Syme} razija projekat SML.NET koji je za ideju imao preusmeravanje {\em Standard ML}-a na .NET. Sistem je imao visok kvalitet, ali nije bio usvojen od strane programera. Početkom 2000-ih platforma .NET je već uveliko zaživela, ali za jezik SML.NET nije bilo većeg interesovanja. Autor je imao veliku želju da implementira strogo tipiziran funkcionalni jezik na način koji bi zainteresovao veliki broj programera. U razmatranje ulazi i jezik {\em OCaml}, ali prethodno dolazi do pokušaja implementacije {\em Haskell}-a za .NET. Ovaj pokušaj bio je samo delimično uspešan i primenjen na malim programima. Rad na daljoj implementaciji je zaustavljen.
+U okviru ovoga Don Sajm (eng.~{\em Don Syme}) je razvio projekat SML.NET koji je za ideju imao preusmeravanje {\em Standard ML}-a na .NET. Sistem je imao visok kvalitet, ali nije bio usvojen od strane programera. Početkom 2000-ih platforma .NET je već uveliko zaživela, ali za jezik SML.NET nije bilo većeg interesovanja. Autor je imao veliku želju da implementira strogo tipiziran funkcionalni jezik na način koji bi zainteresovao veliki broj programera. U razmatranje je ušao i jezik {\em OCaml}, ali je prethodno došlo do pokušaja implementacije {\em Haskell}-a za .NET. Ovaj pokušaj bio je samo delimično uspešan i primenjen na malim programima. Rad na daljoj implementaciji je zaustavljen. U decembru 2001. godine Don Sajm (eng.~{\em Don Syme}) je u razmatranje vratio jezik {\em OCaml} i razvio projekat Caml.NET koji se kasnije preimenovao u F\#.
 
-U decembru 2001. godine {\em Don Syme} u razmatranje vraća jezik {\em OCaml} i razvija projekat Caml.NET koji će se kasnije preimenovati u F\#.
-
-Inicijalna ideja F\# programskog jezika bila je jednostavna. Trebalo je da poveže prednosti {\em OCaml} programskog jezika sa prednostima .NET platforme. Godine 2002. pojavljuje se prva verzija F\# 0.5 koja je bila slabo primećena. {\em Don Syme} 2004. godine nastavlja intenzivno da razvija ovaj jezik, a početkom 2005. godine izbacuje prvu potpunu verziju F\#-a \cite{early_history}.
-Poslednja aktuelna verzija jezika je F\# 4.1 \cite{fsharp}.
+Inicijalna ideja F\# programskog jezika bila je jednostavna. Trebalo je da poveže prednosti {\em OCaml} programskog jezika sa prednostima .NET platforme. Godine 2002. pojavila se prva verzija F\# 0.5 koja je bila slabo primećena. Don Sajm (eng.~{\em Don Syme}) 2004. godine nastavlja intenzivno da razvija ovaj jezik, a početkom 2005. godine je izbacio prvu potpunu verziju F\#-a \cite{early_history}. Poslednja aktuelna verzija jezika je F\# 4.1 \cite{fsharp}.
 
 \subsection{Koji programski jezici su najviše uticali na razvoj jezika F$\#$?}
 \label{subsec:uticaj}
 
-Najveći značaj za razvoj jezika F\# imaju jezik SML ({\em Standard ML}) i CAML ({\em Categorical Abstarct Machine Language}) porodica jezika koja je razvijana na Nacionalnom institutu za istraživanje informatike i automatizacije u Francuskoj 1994. godine \cite{Harrop:2008:FS:1481410}. U okviru ovog projekta pod nazivom {\em “Cristal project”} razvija se jezik {\em Objective Caml} koji ima veoma visoke performanse i naučnici ga koriste na Linux i MAC OS X platformama. Kao što je već ranije opisano, jezik {\em OCaml} i .NET platforma imali su najveći uticaj na razvoj jezika F\#. Na slici \ref{fig:stablo} može se videti deo razvojnog stabla koji ovo prikazuje. Čak možemo primetiti da je ovaj jezik uticao na pojavu još jednog zanimljivog jezika koji je takođe dizajniran za .NET platformu. To je jezik {\em Nemerle}.
+Najveći značaj za razvoj jezika F\# imaju jezik SML ({\em Standard ML}) i CAML ({\em Categorical Abstarct Machine Language}) porodica jezika koja je razvijana na Nacionalnom institutu za istraživanje informatike i automatizacije u Francuskoj 1994. godine \cite{Harrop:2008:FS:1481410}. U okviru ovog projekta pod nazivom {\em “Cristal project”} razvija se jezik {\em Objective Caml} koji ima veoma visoke performanse i naučnici ga koriste na Linux i MAC OS X platformama. Na slici \ref{fig:stablo} može se videti deo razvojnog stabla koji prikazuje uticaj svih pomenutih jezika na F\#. Čak možemo primetiti da je ovaj jezik uticao na pojavu još jednog zanimljivog jezika koji je takođe dizajniran za .NET platformu. To je jezik {\em Nemerle}.
 
 \begin{figure}[h!]
 \begin{center}
@@ -116,24 +109,24 @@ Najveći značaj za razvoj jezika F\# imaju jezik SML ({\em Standard ML}) i CAML
 \section{Primena i mogućnosti}
 \label{sec:primena}
 
-Snaga F\# programskog jezika leži u svedenoj sintaksi koja omogućava laku čitljivost koda, kao i efikasan razvoj programa koji zahtevaju primenu složenih matematičkih algoritama. Jezik omogućava brzo generisanje prototipova i njihovu brzu transformaciju u produkcioni kôd. Kôd napisan u F\#-u lako se može paralelizovati, što je posebno značajno danas kada svi novi računari imaju više jezgara. F\# danas ima široku primenu u obradi baza podataka, finansijskog modelovanja, statistici i bioinformatici. Takodje, domen primene svakodnevno raste.
+Snaga F\# programskog jezika leži u svedenoj sintaksi koja omogućava laku čitljivost koda, kao i efikasan razvoj programa koji zahtevaju primenu složenih matematičkih algoritama. Jezik omogućava brzo generisanje prototipova i njihovu brzu transformaciju u produkcioni kôd. Kôd napisan u F\#-u lako se može paralelizovati, što je posebno značajno danas kada svi novi računari imaju više jezgara. F\# danas ima široku primenu u obradi baza podataka, finansijskom modelovanju, statistici i bioinformatici. Takođe, domen primene svakodnevno raste.
 
-F\# je jezik koji ima pretežno funkcionalne karakteristike, ali on je svoju primenu pronašao u još mnogo vrsta programiranja. Neki od njih su: imperativno, objektno-orjentisano, paralelno, distribuirano, asinhrono, meta programiranje, veb programiranje, skript programiranje, analitičko programiranje, i sl. Danas se on može koristiti na velikom broju sistema, kao što su: Linux, MAC, Windows, Android, iOS, i sl. O ovome će biti više reči u nastavku. 
+F\# je jezik koji ima pretežno funkcionalne karakteristike, ali on je svoju primenu pronašao u još mnogim vrstama programiranja. Neke od njih su: imperativno, objektno-orjentisano, paralelno, distribuirano, asinhrono, meta programiranje, veb programiranje, skript programiranje, analitičko programiranje, i sl. Danas se on može koristiti na velikom broju sistema, kao što su: Linux, MAC, Windows, Android, iOS, i sl. O ovome će biti više reči u nastavku. 
 
 
 \section{Osnovne osobine programskog jezika F\#}
 
 Neke od osnovnih osobina programskog jezika F\# su:\\
 
-	$\bullet$ \textbf{Bezbedan}: F\# programi se temeljno proveravaju pre izvršenja, što ga čini bezbednim za pokretanje.
+	$\bullet$ \textbf{Bezbedan}: F\# programi se pre izvršavanja temeljno matematički proveravaju korišćenjem posebnih alata čime se garantuje njihova ispravnost, što ga čini bezbednim za pokretanje.
 
 	$\bullet$ \textbf{Funkcionalan}: Funkcije mogu biti ugnježdene, prosleđene kao argumenti drugim funkcijama i vraćene kao povratna vrednost.
 
 	$\bullet$ \textbf{Strogo tipiziran}: Provera tipova se vrši u toku kompilacije, kako bi se utvrdilo da su dobro definisani. 
 
-	$\bullet$ \textbf{Automatski zaključuje tipove}: Tipovi vrednosti se automatski zaključuju prilikom kompilacije u zavisnosti od konteksta u kome se javljaju, što dovodi do toga da se eksplicitno navođenje retko dešava.
+	$\bullet$ \textbf{Automatski zaključuje tipove}: Tipovi se automatski zaključuju prilikom kompilacije u zavisnosti od konteksta u kome se javljaju, što dovodi do toga da se eksplicitno navođenje retko dešava.
 
-	$\bullet$ \textbf{Kompatibilan}: F\# programi mogu da pozivaju i da budu pozvani iz drugih programa koji su napisani na nekom od jezika koje podržava .NET platforma, kao na primer C\#\cite{microsoft_c}. 
+	$\bullet$ \textbf{Kompatibilan}: F\# programi mogu da pozivaju programe koji su napisani na nekom od jezika koje podržava .NET platforma, kao na primer C\# i da budu pozvani od strane istih. 
 \\
 %Nešto više o njima\cite{Harrop:2008:FS:1481410}.
  
@@ -147,16 +140,15 @@ Neke od osnovnih osobina programskog jezika F\# su:\\
 	 
 	$\bullet$ Struktura \textbf{switch/case} je u F\# zamenjena {\em pattern matching}-om\cite{expertFS}.
 	 
-$\bullet$ Pored uobičajenih tipova podataka podržanih u većini programskih jezika, F\# podržava novi tip \textbf{option type}, koji označava vrednost promenljive koja može da postoji a i ne mora. Dve moguće vrednosti ovog tipa su: {\em Some(x)} i {\em None}.
+$\bullet$ Pored uobičajenih tipova podataka podržanih u većini programskih jezika, F\# podržava novi tip, opcioni tip (eng.~{\em option type}), koji označava vrednost promenljive koja može da postoji a i ne mora. Dve moguće vrednosti ovog tipa su: {\em Some(x)} i {\em None}.
 
-\section{Funkcionalno programiranje}
+\section{Pattern matching u funkcionalnom programiranju}
 
 
-Kao glavna, funkcionalna paradigma programskog jezika F\# podržava osnovne koncepte koji su podržani i od strane nekih drugih programskih jezika. U ovom odeljku nećemo davati prevelik značaj osnovama funkcionalne paradigme, već ćemo akcenat staviti na {\em pattern matching} \cite{expertFS}.
-
-Jedan od važnih mehanizama u F\# programiranju jeste pattern matching. Predstavlja se kao {\em match ... with ...} konstrukcija koja kombinuje mehanizme dekompozicije i kontrole toka za poklapanje obrazaca. Kao takav, možemo ga koristiti sa  jednostavnim kolekcijama (na primer: {\em list,tuple}) i {\em option} vrednostima. Naredni listing \ref{primer} pokazuje kako se definiše pattern matching.
+Kao glavna, funkcionalna paradigma programskog jezika F\# podržava osnovne koncepte koji su podržani i od strane nekih drugih programskih jezika. U ovom odeljku nećemo davati prevelik značaj osnovama funkcionalne paradigme, već ćemo akcenat staviti na poklapanje obrazaca (eng. {\em pattern matching}) \cite{expertFS} koji je jedan od važnih mehanizama u F\#.
+Predstavlja se kao {\em match ... with ...} konstrukcija koja kombinuje mehanizme dekompozicije i kontrole toka podataka. Kao takav, možemo ga koristiti sa  jednostavnim kolekcijama (na primer: {\em list,tuple}) i {\em option} vrednostima. Naredni primer \ref{primer} pokazuje kako se definiše poklapanje obrazaca.
 \\
-\begin{lstlisting}[caption={Primer pattern matching-a \cite{expertFS}},frame=single, label=primer]
+\begin{lstlisting}[caption={Primer poklapanja obrazaca \cite{expertFS}},frame=single, label=primer]
 let urlFilter url agent =
  match (url,agent) with
  | "http://www.matf.bg.ac.rs", 99 -> true
@@ -178,11 +170,11 @@ Izraz nakon ključne reči {\em match} je tuple tipa {\em (string * int)}. Svako
 \caption{Načini formiranja obrazaca u F\#}
 \begin{tabular}{|c|c|c|} \hline
 \textbf{Opšti oblik}& \textbf{Vrsta}& \textbf{Primer}\\ \hline
-(pat, ... ,pat) &Tuple pattern&(1,2,("3",x))
+($pat_{1}$, ... ,$pat_{n}$) &Torka&(1,2,("3",x))
 \\ \hline
-[pat, ... ,pat] &List pattern&[x;y;z]\\ \hline
-[|pat, ... ,pat|] &Array pattern&['a';'b';'c']\\ \hline
-null &Null test pattern&null\\ \hline
+[$pat_{1}$, ... ,$pat_{n}$] &Lista&[x;y;z]\\ \hline
+[|$pat_{1}$, ... ,$pat_{n}$|] &Niz&['a';'b';'c']\\ \hline
+null &Null test &null\\ \hline
 \end{tabular}
 \label{tab:tabela1}
 \end{center}
@@ -190,13 +182,13 @@ null &Null test pattern&null\\ \hline
 
 
 \section{Asinhrono i paralelno programiranje}
+\label{sec:asinhrono_paralelno}
 
-Razlog zbog kojeg izučavamo asinhrono i paralelno programiranje se ogleda u maksimalnoj iskorišćenosti hardvera. Ranije se ovaj način programiranja izbegavao zbog dodatne složenosti i rizika od bagova. Sa pojavom velikog broja biblioteka u kombinaciji sa funkcionalnim programiranjem i izbegavanjem bočnih efekata ovaj problem je smanjen. Fokus ćemo staviti na to kako ubrzati računanje u F\# koristeći asinhrono i paralelno programiranje. Izvršavanje koda se odvija pomoću niti i F\# biblioteka. Mogu se potpuno iskoristiti prednosti više procesora i jezgara tako što se podeli jedan posao na više manjih. Najvažniji razlog uvođenja ova dva načina programiranja je ubrzanje izvršavanja programa.
-
+Razlog zbog kojeg izučavamo asinhrono i paralelno programiranje se ogleda u maksimalnoj iskorišćenosti hardvera. Ranije se ovaj način programiranja izbegavao zbog dodatne vremenske složenosti i rizika od bagova. Sa pojavom velikog broja biblioteka u kombinaciji sa funkcionalnim programiranjem i izbegavanjem bočnih efekata ovaj problem je smanjen. Fokus ćemo staviti na to kako ubrzati računanje u F\# koristeći asinhrono i paralelno programiranje. U F\# bibliotekama mogu se naći moćni mehanizmi za rad sa nitima. Mogu se potpuno iskoristiti prednosti više procesora i jezgara tako što će se podeli jedan posao na više manjih. 
 
 \subsection{Asinhrono programiranje} 
 
-Opisuje programe i operacije koje se izvršavaju u pozadini i završavaju nakon nekog vremena (na primer: preuzimanje novog email-a bez čestog proveravanja). Asinhroni programi na .NET platformi su pisani korišćenjem modela asinhronog programiranja (APM) \cite{apm}. APM je obrazac koji deli asinhrone operacije na dve metode: {\em BeginOperation} i {\em EndOperation}. Kada se pozove {\em BeginOperation} operacije počinju sa asinhronim izvršavanjem koje po završetku pozivaju {\em EndOperation} koji dohvata rezultat asinhronog izračunavanja. Problemi koji nastaju korišćenjem ovog obrasca su: \\
+Asinhrono programiranje opisuje programe i operacije koje se izvršavaju u pozadini i završavaju nakon nekog vremena (na primer: preuzimanje novog email-a bez čestog proveravanja). Asinhroni programi na .NET platformi su pisani korišćenjem modela asinhronog programiranja (APM) \cite{apm}. APM je obrazac koji deli asinhrone operacije na dve metode: {\em BeginOperation} i {\em EndOperation}. Kada se pozove {\em BeginOperation} operacije počinju sa asinhronim izvršavanjem koje po završetku pozivaju {\em EndOperation} koji dohvata rezultat asinhronog izračunavanja. Problemi koji nastaju korišćenjem ovog obrasca su: \\
 
 $\bullet$ Izostavljanjem poziva {\em EndOperation} dolazi do neželjenih efekata i curenja memorije. 
  
@@ -208,32 +200,31 @@ Umesto APM-a sve asinhrone operacije mogu se izvršavati pomoću F\# biblioteke 
 
 \subsection{Paralelno programiranje}
 
-Paralelno programiranje se koristi za podelu poslova na n delova kako bi se dobilo n puta brže izvršavanje, što je retko u praksi. Najjednostavniji način korišćenja paralelnog programiranja na .NET 4.0 platformi se zasniva na upotrebi {\em Parallel Extesions} biblioteke (PFX) \cite{progFs}. Jedna od pogodnosti PFX biblioteke je ta što programer ne mora da misli o kontroli rada niti. Za razliku od paralelnog, asinhroni tok izvršavanja je dostupan i na prethodnim verzijama .NET platforme. {\em Task} objekat predstavlja osnovnu strukturu PFX paralelizma, koji ima zadatak da izvrši posao nakon nekog vremena. Kao takav, nije dovoljan za paralelne aplikacije. Zbog problema koji se javlja pri radu Task objekta sa deljivim podacima uvodi se zaključavanje podatka (eng.~{\em exclusive lock}). PFX biblioteka uvodi nove tipove kolekcija {\em System.Collections.Concurrent} \cite{sysCC} kao rešenje prethodnog problema.  
+Paralelno programiranje se koristi za podelu poslova na n delova kako bi se dobilo n puta brže izvršavanje, što je retko u praksi. Za razliku od asinhronog, paralelni tok izvršavanja nije dostupan na prethodnim verzijama .NET platforme. Najjednostavniji način korišćenja paralelnog programiranja na .NET 4.0 platformi se zasniva na upotrebi {\em Parallel Extesions} biblioteke (PFX) \cite{progFs}. Jedna od pogodnosti PFX biblioteke je ta što programer ne mora da misli o kontroli rada niti.  Osnovnu strukturu PFX paralelizma predstavlja {\em Task} objekat, koji ima zadatak da izvrši posao nakon nekog vremena. Kao takav, nije dovoljan za paralelne aplikacije. Zbog problema koji se javlja pri radu Task objekta sa deljivim podacima uvodi se zaključavanje podatka (eng.~{\em exclusive lock}). PFX biblioteka uvodi nove tipove kolekcija {\em System.Collections.Concurrent} \cite{sysCC} kao rešenje prethodnog problema.  
 
 
 \section{Radni okviri}
+\label{sec:radni_okviri}
 
 Najpoznatiji i najznačajniji radni okvir (eng.~{\em framework}) za ovaj programski jezik je .NET koji je ranije već pomenut. .NET je pojednostavio razvoj RP({\em Reactive Programming}) \cite{RPapp} aplikacija. Ovaj radni okvir je potpuno besplatan i na njemu je moguće kreirati veliki broj različitih aplikacija. On podržava veliki broj programskih jezika iz različitih paradigmi, editora i biblioteka za izgradnju mobilnih i veb aplikacija. Razvijene su dve glavne komponente za korišćenje rekurzivnog paralelnog izračunavanja na lokalnoj mreži i obe su dostupne programima na .NET platformi \cite{ppNETframework}. 
 
-Temelj .NET platforme je zajednička jezička infrastruktura CLI ({\em Common Language Infrastructure}) \cite{cli}. Pokretanje F\# koda na ovoj platformi se vrši tako što na samom početku kompajler prevodi kôd u binarni fajl koji je preveden na asemblerski jezik višeg nivoa koji se zove MSIL ({\em Microsoft Intermediate Language}) \cite{msil}. Implementacija na CLI kompajleru ovog asemblerskog koda u toku izvršavanja je mnogo brža nego da je kôd samo interpretiran i ova kompilacija se izvršava u trenutku \cite{progFs}.
-Kôd koji je preveden u MSIL i izvršen u trenutku, predstavlja kôd za upravljanje za razliku od kodova pisanih na drugim programskim jezicima kao što su C ili C++.   
+Temelj .NET platforme je zajednička jezička infrastruktura CLI ({\em Common Language Infrastructure}) \cite{cli}. Pokretanje F\# koda na ovoj platformi se vrši tako što na samom početku kompajler prevodi kôd u binarni fajl koji je preveden na asemblerski jezik višeg nivoa koji se zove MSIL ({\em Microsoft Intermediate Language}) \cite{msil}. Ako se MSIL asemblerski kôd prevede pomoću CLI kompajlera i potom izvrši, takvo izvršavanje je mnogo brže nego da se samo interpretira \cite{progFs}.
+Postoje neke prednosti za korišćenje CLI-a, a ne običnog kompiliranja na mašinski nivo:	\\
 
-Postoje neke prednosti za prolazak kroz CLI ili upravljani kôd, a ne direktnog kompiliranja na mašinski nivo:	\\
-
-	$\bullet$ kompatibilnost medju jezicima
+	$\bullet$ kompatibilnost među jezicima
 	
 	$\bullet$ mogućnost rada na više platformi
 	
 	$\bullet$ mašinska nezavisnost
 \\
 
-.NET platforma ima još jednu prednost, a to je prikupljanje smeća što omogućava programeru da ne razmišlja mnogo o alociranju i oslobađanju memorije, već da se samo skoncentriše na pisanje koda. Iako ne mora da obraća pažnju na smeće i rad sa memorijom poželjno je da programer zna na koji način taj sakupljač smeća radi, kako on oslobađa memoriju i rešava taj problem.
+.NET platforma ima još jednu prednost, a to je prikupljanje smeća (eng.~{\em garbage collector}) što omogućava programeru da ne razmišlja mnogo o alociranju i oslobađanju memorije, već da se samo skoncentriše na pisanje koda. Iako ne mora da obraća pažnju na smeće i rad sa memorijom poželjno je da programer zna na koji način taj sakupljač smeća radi, kako on oslobađa memoriju i rešava taj problem.
 
 Naravno da ova platforma nije jedina koja se koristi za ovaj programski jezik, pored nje postoje: veb radni okviri (na primer: {\em Suave, Fable, ASP.NET Core, Giraffe, WebSharper, Freya, NancyFx, Serving Requests with IHttpHandler, Serving Requests with Azure, Functions, Pure F\# Web API 2.0, SignalR, ServiceStack, ASP.NET Blazor}) i radni okviri za testiranje veba (na primer: {\em Web Testing, Frameworks, Canopy for Client-side Testing, Unit Testing Libraries}) \cite{fwFs}.
 
 \section{Uputstvo za instalaciju}
 
-U ovom poglavlju biće opisano uputstvo za instalaciju programskog jezika F\# na Windows i Linux operativnim sistemima, kao i uputstvo za pokretanje F\# programa.
+U ovom poglavlju biće opisano uputstvo za instalaciju programskog jezika F\#. Prikazaćemo ih na Windows i Linux operativnim sistemima. Pored instalacije biće opisano i uputstvo za pokretanje F\# programa.
 
 \subsection{Uputstvo za Windows}
 
@@ -243,7 +234,7 @@ Pokretanje F\# koda na Windows-u se vrši tako što prvo označite kôd ili deo 
 
 \subsubsection{Visual studio}
 	
-Na Windows operativnim sistemima se uglavnom koristi {\em Visual Studio} alat. {\em Visual studio 2017} je alat koji dolazi sa podrškom za F\# u svim verzijama: {\em Professional, Enterprise} i {\em Community} (verzija je potpuno besplatna). Međutim, ukoliko imate  već instaliran {\em Visual Studio 2012/13/15  Professional} ili {\em Above} možete ga takođe koristiti zato što i on podržava alate za F\# iako nije toliko napredan kao {\em Visual Studio 2017}.
+Na Windows operativnim sistemima se uglavnom koristi {\em Visual Studio} alat. {\em Visual studio 2017} je alat koji dolazi sa podrškom za F\# u svim verzijama: {\em Professional, Enterprise} i {\em Community} (verzija je potpuno besplatna). Međutim, ukoliko imate  već instaliran {\em Visual Studio 2012/13/15  Professional} možete ga takođe koristiti zato što i on podržava alate za F\# iako nije toliko napredan kao {\em Visual Studio 2017}.
 
 \subsubsection{Visual Studio Code}
 	
@@ -270,11 +261,7 @@ Takođe vam je potrebno da instalirate ceo {\em Visual Studio} ili F\# kompajler
 
 \subsection{Uputstvo za Linux}
 
-Kada koristite jezik koji podržava .NET platforma, kao što je F\#, onda on zahteva Mono \cite{mono} softversku platformu. Većina Linux distributera sadrži neku verziju te platforme koja omogućava programerima lakše kreiranje aplikacija. 
-
-Instalacija F\# na Linuxu se izvršava na potpuno identičan način za {\em Ubuntu, Mint} i {\em Debian} verzije.
-
-Za pokretanje F\# programa na Linux-u preko terminala koristi se sledeća naredba ukoliko se nalazite u direktorijumu u kom se nalazi primer koji pokrećete.
+Kada koristite jezik koji podržava .NET platforma, kao što je F\#, onda on zahteva Mono \cite{mono} softversku platformu. Većina Linux distributera sadrži neku verziju te platforme koja omogućava programerima lakše kreiranje aplikacija. Instalacija F\# na Linuxu se izvršava na potpuno identičan način za {\em Ubuntu, Mint} i {\em Debian} verzije. Za pokretanje F\# programa na Linux-u preko terminala koristi se sledeća naredba ukoliko se nalazite u direktorijumu u kom se nalazi primer koji pokrećete.
 \\
 \begin{lstlisting}
 fsharpc primer.fs
@@ -292,6 +279,7 @@ sudo apt-get install fsharp
 \end{lstlisting}
  
 \section{Fizz Buzz problem}
+\label{sec:fizzbuzz}
 \textit{Fizz Buzz} je problem koji je osmišljen za intervjuisanje kandidata koji konkurišu za posao programera. Treba napisati program koji štampa brojeve od 1 do 100 pri čemu, ako je broj deljiv sa 3 tada umesto tog broja ispisuje \textit{Fizz}, ako je deljiv sa 5 ispisuje \textit{Buzz}, dok ako je deljiv i sa 3 i sa 5 ispisuje \textit{FizzBuzz}. \\
 
 \begin{lstlisting}[caption={Fizz Buzz \cite{fizzBuzz}},frame=single, label=fizzbuzz]
@@ -317,7 +305,7 @@ Navedeni primer \ref{fizzbuzz} sadrži korisničko definisani šablon koji prepo
 \section{Jedinica mere - osobina svojstvena jeziku F\texttt{\#}}
 Jedinica mere (eng.~{\em Units of Measure}), svojstvena samo za F\#, je mehanizam koji omogućava da se numeričkim tipovima pridruže dodatne informacije i na taj način spreče potencijalne greške pri radu sa različitim mernim jedinicama \cite{unitsOfMeasure}. U nastavku je dat demonstrativni program \ref{jedinice} koji računa godišnju zaradu u evrima. \\
 
-\begin{lstlisting}[caption={Primer jedinice mere \cite{unitsOfMeasureExample}},frame=single, label=jedinice]
+\begin{lstlisting}[caption={Primer jedinice mere},frame=single, label=jedinice]
 [<Measure>] type rsd
 [<Measure>] type eur
 [<Measure>] type hour
@@ -339,9 +327,7 @@ printfn "%f" (eurPerYear + bonus)
 
 \end{lstlisting}
 
-Jedinica mere se definiše kao \textbf{[<Measure>] type} nakon čega sledi njen naziv. U našem primeru imamo vremenske jedinice (sat, vikend i godina) kao i jedinice koje označavaju valutu (dinar i evro). Dalje, pri definisanju promenljivih, dodatno pišemo informaciju o jedinici. Zbog toga, ako definišemo zaradu po satu dopisujemo \textbf{<rsd/hour>}. Program na kraju ispisuje zaradu sa godišnjim bonusom. 
-
-Ukoliko bi promenili 10. liniju koda i stavili suprotan odnos valuta \ref{valuta}, tj. vrednost evra u odnosu na dinar, došlo bi do greške u fazi kompilacije \ref{greska}. \\
+Jedinica mere se definiše kao \textbf{[<Measure>] type} nakon čega sledi njen naziv. U našem primeru imamo vremenske jedinice (sat, vikend i godina) kao i jedinice koje označavaju valutu (dinar i evro). Dalje, pri definisanju promenljivih, dodatno pišemo informaciju o jedinici. Zbog toga, ako definišemo zaradu po satu dopisujemo \textbf{<rsd/hour>}. Program na kraju ispisuje zaradu sa godišnjim bonusom. Ukoliko bi promenili 10. liniju koda i stavili suprotan odnos valuta \ref{valuta}, tj. vrednost evra u odnosu na dinar, došlo bi do greške u fazi kompilacije \ref{greska}. \\
  
 \begin{lstlisting}[caption={Promenjen odnos valuta},frame=single, firstnumber=10, label = valuta]
 let exchangeRate = 117.0<rsd/eur>
@@ -359,7 +345,7 @@ let eurPerYear = rsdPerHour * hoursBilledPerWeek * weeksWorkedPerYear / exchange
 \section{Zaključak}
 \label{sec:zakljucak}
 
-Već nekoliko puta smo naglasili da je F\# jezik velikih mogućnosti. Ovim radom predstavili smo neke zanimljive koncepte koje on poseduje, ali se nismo bavili osnovama koje mogu pomoći u učenju ovog jezika. Ako smo uspeli da zaintrigiramo čitaoca, savetujemo učenje jezika ili unapređivanje znanja o njemu ukoliko se već susretao sa njim i ranije. Rad nije bio namenjen tome. U literaturi koju smo koristili postoji mnogo knjiga, članaka i sajtova na ovu temu koji u učenju mogu pomoći. Objasnili smo kako se na dva sistema mogu pokrenuti platforme za rad u F\#-u. Osim toga, postoji još puno lako dostupne literature na slične teme.
+Ovim radom predstavili smo neke zanimljive koncepte koje F\# poseduje, ali se nismo bavili osnovama koje mogu pomoći u učenju ovog jezika. Savetujemo učenje jezika ili unapređivanje znanja o njemu ukoliko ste se već susretali sa njim i ranije. Razlog za to je što ovaj jezik ima velike mogućnosti. Jednu njegovu važnu primenu naveli smo u radu kroz asinhrono i paralelno programiranje koje je danas veoma zastupljeno. Objasnili smo kako se na dva sistema mogu koristiti platforme za rad u F\#-u. U literaturi koju smo koristili postoje knjige, članci i sajtovi na ovu temu koji u učenju mogu pomoći. Osim toga, postoji još puno lako dostupne literature na slične teme.
 
 \addcontentsline{toc}{section}{Literatura}
 \appendix
