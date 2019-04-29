@@ -109,7 +109,7 @@ Najveći značaj za razvoj jezika F\# imaju jezik SML ({\em Standard ML}) i CAML
 \section{Primena i mogućnosti}
 \label{sec:primena}
 
-Snaga F\# programskog jezika leži u svedenoj sintaksi koja omogućava laku čitljivost koda, kao i efikasan razvoj programa koji zahtevaju primenu složenih matematičkih algoritama. Jezik omogućava brzo generisanje prototipova i njihovu brzu transformaciju u produkcioni kôd. Kôd napisan u F\#-u lako se može paralelizovati, što je posebno značajno danas kada svi novi računari imaju više jezgara. F\# danas ima široku primenu u obradi baza podataka, finansijskom modelovanju, statistici i bioinformatici. Takođe, domen primene svakodnevno raste.
+Snaga F\# programskog jezika leži u svedenoj sintaksi koja omogućava laku čitljivost koda, kao i efikasan razvoj programa koji zahtevaju primenu složenih matematičkih algoritama. Jezik omogućava brzo generisanje prototipova i njihovu brzu transformaciju u produkcioni kôd. Kôd napisan u F\#-u lako se može paralelizovati, što je posebno značajno danas kada svi novi računari imaju više jezgara. F\# danas ima široku primenu u obradi baza podataka, finansijskom modelovanju, statistici i bioinformatici \cite{primena}. Takođe, domen primene svakodnevno raste.
 
 F\# je jezik koji ima pretežno funkcionalne karakteristike, ali on je svoju primenu pronašao u još mnogim vrstama programiranja. Neke od njih su: imperativno, objektno-orjentisano, paralelno, distribuirano, asinhrono, meta programiranje, veb programiranje, skript programiranje, analitičko programiranje, i sl. Danas se on može koristiti na velikom broju sistema, kao što su: Linux, MAC, Windows, Android, iOS, i sl. O ovome će biti više reči u nastavku. 
 
@@ -206,9 +206,9 @@ Paralelno programiranje se koristi za podelu poslova na n delova kako bi se dobi
 \section{Radni okviri}
 \label{sec:radni_okviri}
 
-Najpoznatiji i najznačajniji radni okvir (eng.~{\em framework}) za ovaj programski jezik je .NET koji je ranije već pomenut. .NET je pojednostavio razvoj RP({\em Reactive Programming}) \cite{RPapp} aplikacija. Ovaj radni okvir je potpuno besplatan i na njemu je moguće kreirati veliki broj različitih aplikacija. On podržava veliki broj programskih jezika iz različitih paradigmi, editora i biblioteka za izgradnju mobilnih i veb aplikacija. Razvijene su dve glavne komponente za korišćenje rekurzivnog paralelnog izračunavanja na lokalnoj mreži i obe su dostupne programima na .NET platformi \cite{ppNETframework}. 
+.NET platforma je platforma koja podržava veliki broj različitih kompatabilnih programskih jezika kao i programskih paradigmi. Ona  podržava .NET radni okvir (eng.~{\em framework}) koji je najpoznatiji i najznačajniji za ovaj programski jezik, što je ranije već pomenuto. .NET radni okvir je pojednostavio razvoj RP({\em Reactive Programming}) \cite{RPapp} aplikacija. Potpuno je besplatan i na njemu je moguće kreirati veliki broj različitih aplikacija. On podržava veliki broj editora, biblioteka za izgradnju mobilnih i veb aplikacija. Razvijene su dve glavne komponente za korišćenje rekurzivnog paralelnog izračunavanja na lokalnoj mreži i obe su dostupne programima na .NET platformi \cite{ppNETframework}. 
 
-Temelj .NET platforme je zajednička jezička infrastruktura CLI ({\em Common Language Infrastructure}) \cite{cli}. Pokretanje F\# koda na ovoj platformi se vrši tako što na samom početku kompajler prevodi kôd u binarni fajl koji je preveden na asemblerski jezik višeg nivoa koji se zove MSIL ({\em Microsoft Intermediate Language}) \cite{msil}. Ako se MSIL asemblerski kôd prevede pomoću CLI kompajlera i potom izvrši, takvo izvršavanje je mnogo brže nego da se samo interpretira \cite{progFs}.
+Temelj .NET radnog okvira je zajednička jezička infrastruktura CLI ({\em Common Language Infrastructure}) \cite{cli}. Pokretanje F\# koda u ovom okruženju se vrši tako što na samom početku kompajler prevodi kôd u binarni fajl koji je preveden na asemblerski jezik višeg nivoa čiji je naziv MSIL ({\em Microsoft Intermediate Language}) \cite{msil}. Ako se MSIL asemblerski kôd prevede pomoću CLI kompajlera i potom izvrši, takvo izvršavanje je mnogo brže nego da se samo interpretira \cite{progFs}.
 Postoje neke prednosti za korišćenje CLI-a, a ne običnog kompiliranja na mašinski nivo:	\\
 
 	$\bullet$ kompatibilnost među jezicima
@@ -218,9 +218,9 @@ Postoje neke prednosti za korišćenje CLI-a, a ne običnog kompiliranja na maš
 	$\bullet$ mašinska nezavisnost
 \\
 
-.NET platforma ima još jednu prednost, a to je prikupljanje smeća (eng.~{\em garbage collector}) što omogućava programeru da ne razmišlja mnogo o alociranju i oslobađanju memorije, već da se samo skoncentriše na pisanje koda. Iako ne mora da obraća pažnju na smeće i rad sa memorijom poželjno je da programer zna na koji način taj sakupljač smeća radi, kako on oslobađa memoriju i rešava taj problem.
+.NET radni okvir ima još jednu prednost, a to je prikupljanje smeća (eng.~{\em garbage collector}) što omogućava programeru da ne razmišlja mnogo o alociranju i oslobađanju memorije, već da se samo skoncentriše na pisanje koda. Iako ne mora da obraća pažnju na smeće i rad sa memorijom poželjno je da programer zna na koji način taj sakupljač smeća radi, kako on oslobađa memoriju i rešava taj problem.
 
-Naravno da ova platforma nije jedina koja se koristi za ovaj programski jezik, pored nje postoje: veb radni okviri (na primer: {\em Suave, Fable, ASP.NET Core, Giraffe, WebSharper, Freya, NancyFx, Serving Requests with IHttpHandler, Serving Requests with Azure, Functions, Pure F\# Web API 2.0, SignalR, ServiceStack, ASP.NET Blazor}) i radni okviri za testiranje veba (na primer: {\em Web Testing, Frameworks, Canopy for Client-side Testing, Unit Testing Libraries}) \cite{fwFs}.
+Naravno da ovaj radni okvir nije jedini koji se koristi za ovaj programski jezi. Pored njega postoje: veb radni okviri (na primer: {\em Suave, Fable, ASP.NET Core, Giraffe, WebSharper, Freya, NancyFx, Serving Requests with IHttpHandler, Serving Requests with Azure, Functions, Pure F\# Web API 2.0, SignalR, ServiceStack, ASP.NET Blazor}) i radni okviri za testiranje veba (na primer: {\em Web Testing, Frameworks, Canopy for Client-side Testing, Unit Testing Libraries}) \cite{fwFs}.
 
 \section{Uputstvo za instalaciju}
 

@@ -35,6 +35,12 @@ Jon Harrop.
 \newblock {\em F\# for Scientists}.
 \newblock Wiley-Interscience, New York, NY, USA, 2008.
 
+\bibitem{primena}
+Milena~Vujosevic Janicic.
+\newblock {primena funkcionalnih jezika slajd 23}, 2018.
+\newblock on-line at:
+  \url{http://www.programskijezici.matf.bg.ac.rs/ppR/2019/predavanja/fp/funkcionalno_programiranje_slajdovi.pdf}.
+
 \bibitem{msil}
 Microsoft.
 \newblock {Assemblies in the Common Language Runtime (MSIL)}, 2019.
