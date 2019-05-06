@@ -4,4 +4,6 @@
 *.toc
 *.gz
 *.blg
-
+*.nav
+*.snm
+*.vrb

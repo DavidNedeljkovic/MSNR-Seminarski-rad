@@ -6,7 +6,7 @@
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
-\usepackage[serbian]{babel}
+\usepackage[english,serbian]{babel}
 \usepackage{chemfig}
 \usepackage[version=3]{mhchem}
 \usepackage{multicol}
@@ -43,7 +43,7 @@
   language=Python,                
   morekeywords={*,...},
   numbers=left, 
-  numbersep=5pt,                  
+  numbersep=4pt,                  
   numberstyle=\tiny\color{mygray}, 
   rulecolor=\color{black},
   showspaces=false,
@@ -51,7 +51,7 @@
   showtabs=false,
   stepnumber=1, 
   stringstyle=\color{mymauve},
-  tabsize=2,
+  tabsize=1,
   title=\lstname
 }
 \usepackage{pgfpages}
@@ -61,7 +61,7 @@
 
 % Here's where the presentation starts, with the info for the title slide
 \title{F\# na .NET platformi}
-\author{T.Todorov T.Garibovic D.Nedeljkovic M.Vicentijevic}
+\author{T.Todorov T.Garibović D.Nedeljković M.Vićentijević}
 \date{\today}
 
 \begin{document}
@@ -71,40 +71,54 @@
 \end{frame}
 
 % These three lines create an automatically generated table of contents.
-\begin{frame}{Outline}
+\begin{frame}{Pregled}
   \tableofcontents
 \end{frame}
 
 \section{Uvod}
 
 \begin{frame}{Uvod}
+\begin{itemize}
+\item F\# je jezik koji danas ima veoma široku upotrebu
+\item Nastao je iz ideje da se strogo tipizirani funkcionalni jezik preusmeri na .NET platformu
+\item Autor jezika je Don Sajm (eng.~{\em Don Syme})
+\item Pretežno je funkcionalan jezik, ali podržava još dosta programskih paradigmi
+\item F\# ima jednostavnu sintaksu, a dovoljno moćnu i za složene matematičke probleme
+\item Cilj rada je izdvajanje nekih specifičnih karakteristika
+\end{itemize}
+\end{frame}
+
+\section{Nastanak i primena jezika F\#}
+\subsection*{Poreklo i uticaj drugih jezika}
+\begin{frame}{Poreklo i uticaj drugih jezika}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.3]{stablo.jpg}
+\end{center}
+\caption{Razvojno stablo}
+\end{figure}
 
 \end{frame}
 
-\section{Istorijat}
-\begin{frame}{Istorijat}
- 
-Nastao je 1970 god. \\
-Osnova F\#-a je ML({\em Meta-Language}) jezik baziran na programskom jeziku LISP koji je koren strogo tipizirnih programskih jezika. \\
-U decembru 2001. godine u razmatranje vraca jezik {\em OCaml} i razvija projekat Caml.NET koji ce se kasnije preimenovati u F\#. \\
-Godine 2002. pojavljuje se prva verzija F\# 0.5 koja je bila slabo primecena. {\em Don Syme} 2004. godine nastavlja intenzivno da razvija ovaj jezik, a pocetkom 2005. godine izbacuje prvu potpunu verziju F\#-a. \\
-Poslednja aktuelna verzija jezika je F\# 4.1.
+\subsection*{Primena i mogućnosti}
+\begin{frame}{Primena i mogućnosti}
 
-\end{frame}
+\begin{itemize}
+\item Jednostavna sintaksa omogućava laku čitljivost koda
+\item Jezik omogućava brzo generisanje prototipova
+\item Kôd napisan u F\#-u lako može da se paralelizuje
+\item Jezik ima primenu u oblastima: bioinformatika, baze podataka, statistika, finansijsko modelovanje, ...
+\item Osim funkcionalnog, jezik F\#, podržava još neke tipove prgramiranja: imperativno, objektono-orjentisano, paralelno, distribuirano, asinhrono, veb programiranje, skript programiranje, ...
+\item Koristi se na dosta operativnih sistema: Linux, MAC, Windows, Android, iOS, ...
+\end{itemize}
 
-\section{Primena i mogucnosti}
-\begin{frame}{Primena i mogucnosti}
-
-F\# ima svedenu sintaksu koja omogucava laku citljivost koda i koristi se za resavanje slozenih matematickih algoritama.  \\
-F\# danas ima siroku primenu u obradi baza podataka, finansijskog modelovanja, statistici i bioinformatici. \\
-F\# podrzava sledece paradigme: funkcionalnu, imperativnu, objektno-orjentisanu, paralelnu, distribuiranu, asinhronu, meta programiranje, veb programiranje, skript programiranje, analiticko programiranje... \\
-Sistemi na kojima je podrzan: Linux, MAC, Windows, Android, iOS... 
 \end{frame}
 
 \section{Osobine i specificnosti jezika}
 \begin{frame}{Osobine i specificnosti}
 \begin{center}
-Osobine:						Specificnosti:
+Osobine: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Specificnosti:
 \begin{multicols}{2}
 \begin{itemize}
   \item Bezbedan
