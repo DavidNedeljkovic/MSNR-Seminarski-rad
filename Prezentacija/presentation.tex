@@ -11,6 +11,15 @@
 \usepackage[version=3]{mhchem}
 \usepackage{multicol}
 
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
 \mode<presentation>
 {
   \usetheme{Warsaw}       % or try default, Darmstadt, Warsaw, ...
@@ -66,6 +75,7 @@
 
 \begin{document}
 
+
 \begin{frame}
   \titlepage
 \end{frame}
@@ -109,105 +119,141 @@
 \item Jezik omogućava brzo generisanje prototipova
 \item Kôd napisan u F\#-u lako može da se paralelizuje
 \item Jezik ima primenu u oblastima: bioinformatika, baze podataka, statistika, finansijsko modelovanje, ...
-\item Osim funkcionalnog, jezik F\#, podržava još neke tipove prgramiranja: imperativno, objektono-orjentisano, paralelno, distribuirano, asinhrono, veb programiranje, skript programiranje, ...
+\item Osim funkcionalnog, jezik F\#, podržava još neke tipove programiranja: imperativno, objektno-orjentisano, paralelno, distribuirano, asinhrono, veb programiranje, skript programiranje, ...
 \item Koristi se na dosta operativnih sistema: Linux, MAC, Windows, Android, iOS, ...
 \end{itemize}
 
 \end{frame}
 
-\section{Osobine i specificnosti jezika}
-\begin{frame}{Osobine i specificnosti}
+\section{Osobine. Funkcionalna, asinhrona i paralelna paradigma F\#}
+\subsection*{Osobine i specificnosti jezika}
+\begin{frame}{Osobine i specifičnosti}
 \begin{center}
-Osobine: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Specificnosti:
+
+\textbf{Osobine:} ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \textbf{Specifičnosti:}
+\end{center}
 \begin{multicols}{2}
 \begin{itemize}
   \item Bezbedan
   \item Funkcionalan
   \item Strogo tipiziran
-  \item Automatski zakljucuje tipove
+  \item Automatski zaključuje tipove
   \item Kompatibilan
   \item Povratna vrednost if/else
   \item Opciono - return
-  \item Kljucne reci let i mutable
+  \item Ključne reči let i mutable
   \item Pattern matching
   \item Novi tip option type
 \end{itemize}
 \end{multicols}
-\end{center}
+
 \end{frame}
 
-\section{Funcionalna paradigma - Pattern matching}  
+\subsection*{Funcionalna paradigma - Pattern matching}  
 \begin{frame}[fragile]
 \frametitle{Funcionalna paradigma - Pattern matching}
 
-\begin{itemize}
-  \item Glavna paradigma programskog jezika F\#
-\end{itemize}
 
 \begin{block}{Pattern matching}
 Pattern matching je mehanizam koji koristi dekompoziciju i kontrolu toka podataka za poklapanje obrazaca koriscenjem navedene konstrukcije:
 \textbf{ match ... with ...}
+\end{block}
 \begin{lstlisting}
-let urlFilter url agent =
- match (url,agent) with
+let urlFilter url port =
+ match (url,port) with
  | "http://www.control.org", 99 -> true
  | "http://www.kaos.org" , _ -> false
  | _, 86 -> true
  | _ -> false
 \end{lstlisting} 
-\end{block}
 
 \end{frame}
 
-\section{Asinhrono i paralelno programiranje}
+\subsection*{Asinhrono i paralelno programiranje}
 \begin{frame}[fragile]
 \frametitle{Asinhrono i paralelno programiranje}
 
+\begin{itemize}
+\item \textbf{Asinhrono programiranje}
+\begin{itemize}
+	\item Opisuje programe i operacije koje se izvršavaju u pozadini i završavaju nakon nekog vremena
+	\item Programe možemo pisati korišćenjem \textbf{APM} biblioteke
+	\item APM deli asinhrone operacije na dve metode: BeginOperation i EndOperation
+\end{itemize}
+
+\item \textbf{Paralelno programiranje}
+\begin{itemize}
+	\item Na .NET 4.0 platformi se koristi \textbf{PFX} biblioteka čija je osnovna struktura \textbf{Task objekat}
+	\item Zbog problema Task objekta sa deljenim podacima uvodi se zaključavanje podataka
+	\item PFX biblioteka uvodi nove kolekcije System.Collections.Concurrent	
+\end{itemize}
+\end{itemize}
+
 
 
 \end{frame}
 
-\section{Radni okvir - .NET framework}
+\section{Radni okviri i instalacija}
+\subsection*{Radni okvir - .NET framework}
 \begin{frame}[fragile]
 \frametitle{Radni okvir - .NET framework}
-Temelj .NET platforme je zajednicka jezicka infrastruktura CLI({\em(Common Language Infrastructure)}.Kodovi se prevode na MSIL({\em Microsoft Intermediate Language}) alemblerski jezik.\\
-Implementacija MSIL-a na CLI kompajleru je brza i ima sledece prednosti u odnosu na masinski:
+
 \begin{itemize}
-	\item kompatibilnost medju jezicima
-	\item mogucnost rada na vise platformi
-	\item masinska nezavisnost
+\item \textbf{.NET platforma} je platforma koja podržava veliki broj različitih kompatabilnih jezika, programskih paradigmi ali i .NET radni okvir (eng.~{\em framework}).
+\item .NET radni okvir je pojednostavio razvoj RP({\em Reactive Programming}) aplikacija ali i podržava veliki broj biblioteka i editora.
+\item Temelj .NET platforme je zajednička jezička infrastruktura \textbf{CLI} ({\em Common Language Infrastructure)}.
+\item Kodovi se prevode na \textbf{MSIL} ({\em Microsoft Intermediate Language}) asemblerski jezik.\\
 \end{itemize}
-Mogucnost automatskog prikupljanja smeca je jos jedna prednost.
-Jos neki okviri: veb radni okviri({\em Suave, Fable, ASP.NET Core}...) i radni okviri za testiranje veba ({\em Web Testing, Frameworks, Unit Testing Libraries}...)
+
 \end{frame}
 
-\section{Instalacija i pokretanje}
+\subsection*{Radni okvir - .NET framework}
+\begin{frame}[fragile]
+\frametitle{Radni okvir - .NET framework}
+
+\begin{itemize}
+\item Implementacija MSIL-a na CLI kompajleru je brža i ima sledeće prednosti u odnosu na mašinski:
+\begin{itemize}
+
+	\item kompatibilnost među jezicima
+	\item mogućnost rada na više platformi
+	\item mašinska nezavisnost
+\end{itemize}
+\item Mogućnost automatskog prikupljanja smeća je još jedna prednost.
+\end{itemize}
+
+Još neki radni okviri: \textbf{veb} radni okviri({\em Suave, Fable, ASP.NET Core}...) i radni okviri za \textbf{testiranje veba} ({\em Web Testing, Frameworks, Unit Testing Libraries}...)
+\end{frame}
+
+\subsection*{Instalacija i pokretanje}
 \begin{frame}[fragile]
 \frametitle{Instalacija i pokretanje}
 
 \begin{itemize}
-\item Alati koji na Windows-u podrzavaju F\# se instaliraju u nekoliko koraka:
+\item Alati koji na \textbf{Windows-u} podržavaju F\# instaliraju se u nekoliko koraka:
 	\begin{itemize}
 	\item Visual Studio Code
 	\item Visual studio
 	\item JetBrains Rider
 	\end{itemize}
-\item Na Linux-u se instalacija vrsi na isti nacin za sledece verzije:
+\item Na \textbf{Linux-u} se instalacija vrši na isti način za sledece verzije:
 	\begin{itemize}
 	\item Ubuntu
 	\item Mint
 	\item Debian
 	\end{itemize}
-	\item \begin{lstlisting}
-fsharpc primer.fs
+\item \begin{lstlisting}
+sudo apt-get update
+sudo apt-get install fsharp
 \end{lstlisting}
 \end{itemize}
 \end{frame}
 
-\section{Fizz Buzz}
+
+\section{F\# kroz primere}
+\subsection*{Fizz Buzz}
 \begin{frame}[fragile]
 \frametitle{Fizz Buzz}
-
 \begin{lstlisting}
 let (|Fizz|Buzz|FizzBuzz|Other|) n =
     match (n % 3, n % 5) with
@@ -228,18 +274,18 @@ seq { 1..100 } |> Seq.map fizzBuzz|> Seq.iter (printfn "%s")
 
 \end{frame}
 
-\section{Jedinica mere}
+\subsection*{Jedinica mere}
 \begin{frame}[fragile]
 \frametitle{Jedinica mere}
 
 \begin{itemize}
   \item Pad orbitera poslatog na Mars 1999.
   \begin{itemize}
-  	\item Uzrokovan cinjenicom da je deo softvera koristio numericke, a deo softvera engleske jedinice
+  	\item Uzrokovan činjenicom da je deo softvera koristio numeričke, a deo softvera engleske jedinice
   \end{itemize}
-  \item Prevencija gresaka na osnovu konteksta primene
+  \item Prevencija grešaka na osnovu konteksta primene
   \begin{itemize}
-  	\item Numerickim tipovima se pridruzuju metapodaci
+  	\item Numeričkim tipovima se pridružuju metapodaci
   	\item Kompajler na osnovu metapodataka proverava ispravnost
   \end{itemize}
   \item Jedinstveno svojstvo jezika F\#
@@ -251,6 +297,7 @@ seq { 1..100 } |> Seq.map fizzBuzz|> Seq.iter (printfn "%s")
 \end{itemize}
 \end{frame}
 
+\subsection*{Jedinica mere}
 \begin{frame}[fragile]
 \frametitle{Jedinica mere}
 
@@ -271,15 +318,26 @@ let bonus = 500.0<eur/year>
 
 printfn "%f" (eurPerYear + bonus)
 \end{lstlisting}
-\cite{progFs}
 \end{frame}
 
 \section{Literatura}
 
 \begin{frame}{Literatura}
+ \begin{itemize}
+	\item Don Syme, The Early History of F\# 	
+  	\item Smith Chris, Programing F\# O’Reilly (2009)
+  	\item Antonio Cisternino, Don Syme, Adam Granicz, Expert F\# (2007)
+  	\item Jon Harrop, F\# for Scientists (2008)
+  	\item \href{https://fsharp.org}{https://fsharp.org}
+  \end{itemize}
+ 
+\end{frame}
 
-\bibliography{primer1.bib}
-
+\section{}
+\begin{frame}{}
+ \begin{center}
+ 	\textbf {Hvala na pažnji!}
+ \end{center}
 \end{frame}
 
 \end{document}
